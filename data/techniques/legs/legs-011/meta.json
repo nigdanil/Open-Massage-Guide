@@ -1,0 +1,31 @@
+{
+  "id": "legs-011",
+  "slug": "gluteal-circular-rubbing",
+  "category": "legs",
+  "order": 710,
+  "image": null,
+  "pressure": 3,
+  "tempo": "moderate",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 360
+  },
+  "repetitions": {
+    "min": 8,
+    "max": 12
+  },
+  "areas": [
+    "gluteal"
+  ],
+  "tags": [
+    "rubbing",
+    "gluteal",
+    "consent"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

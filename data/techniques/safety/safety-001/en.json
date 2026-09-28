@@ -1,0 +1,35 @@
+{
+  "title": "When to Postpone Massage",
+  "shortTitle": "When Not to Massage",
+  "summary": "A brief list of situations where home massage should be postponed.",
+  "goal": "Help recognize basic stop signs before massage begins.",
+  "startingPosition": "Before massage, assess general wellbeing and the intended area.",
+  "instructions": [
+    "Do not begin during fever or significant acute illness.",
+    "Do not massage a recent injury, active inflammation, or damaged skin.",
+    "Do not massage an area with unexplained marked swelling, redness, or heat.",
+    "New severe pain, numbness, weakness, or dizziness should be assessed first.",
+    "When uncertain, postpone massage."
+  ],
+  "direction": "This is a safety check rather than a movement technique.",
+  "pressureText": "Not applicable",
+  "tempoText": "Calm check",
+  "durationText": "1–2 min",
+  "repetitionsText": "1 check",
+  "areasText": [
+    "general condition",
+    "working area"
+  ],
+  "tips": [
+    "Uncertainty is enough reason to reduce intensity or postpone massage.",
+    "Safety takes priority over completing a plan."
+  ],
+  "mistakes": [
+    "Ignoring symptoms.",
+    "Trying to continue at any cost.",
+    "Making overly confident conclusions without professional assessment."
+  ],
+  "warning": "This guide is educational and does not replace medical diagnosis or individualized professional advice.",
+  "imageAlt": "Educational diagram: when to postpone massage, without text labels.",
+  "telegramCaption": "A brief list of situations where home massage should be postponed."
+}

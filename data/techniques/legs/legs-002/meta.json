@@ -1,0 +1,30 @@
+{
+  "id": "legs-002",
+  "slug": "posterior-thigh-stroking",
+  "category": "legs",
+  "order": 620,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "posterior-thigh"
+  ],
+  "tags": [
+    "stroking",
+    "hamstrings"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

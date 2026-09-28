@@ -1,0 +1,30 @@
+{
+  "id": "feet-006",
+  "slug": "toe-stroking",
+  "category": "feet",
+  "order": 860,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 240
+  },
+  "repetitions": {
+    "min": 3,
+    "max": 5
+  },
+  "areas": [
+    "toes"
+  ],
+  "tags": [
+    "toes",
+    "stroking"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

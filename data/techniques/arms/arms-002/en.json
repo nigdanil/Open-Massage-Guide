@@ -1,0 +1,34 @@
+{
+  "title": "Longitudinal Upper-Arm Stroking",
+  "shortTitle": "Upper-Arm Stroking",
+  "summary": "The palm glides over the upper arm from the elbow toward the shoulder.",
+  "goal": "Prepare the upper-arm muscles for later work.",
+  "startingPosition": "The arm is relaxed and supported.",
+  "instructions": [
+    "Begin above the elbow.",
+    "Glide upward over the muscular upper arm.",
+    "Do not press on the joint.",
+    "Return gently.",
+    "Repeat."
+  ],
+  "direction": "From elbow toward shoulder.",
+  "pressureText": "Light",
+  "tempoText": "Slow",
+  "durationText": "2–5 min",
+  "repetitionsText": "6–10 passes",
+  "areasText": [
+    "upper arm"
+  ],
+  "tips": [
+    "Follow the muscle contour.",
+    "Keep the shoulder relaxed."
+  ],
+  "mistakes": [
+    "Pressing on the joint.",
+    "Moving too fast.",
+    "Lifting the shoulder."
+  ],
+  "warning": "Do not massage with acute pain, recent injury, marked swelling, inflammation, or impaired sensation.",
+  "imageAlt": "Educational diagram: longitudinal upper-arm stroking, without text labels.",
+  "telegramCaption": "The palm glides over the upper arm from the elbow toward the shoulder."
+}

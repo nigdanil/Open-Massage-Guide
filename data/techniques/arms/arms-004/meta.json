@@ -1,0 +1,30 @@
+{
+  "id": "arms-004",
+  "slug": "forearm-kneading",
+  "category": "arms",
+  "order": 540,
+  "image": null,
+  "pressure": 3,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 360
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "forearm"
+  ],
+  "tags": [
+    "kneading",
+    "forearm"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

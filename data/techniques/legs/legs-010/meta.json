@@ -1,0 +1,31 @@
+{
+  "id": "legs-010",
+  "slug": "gluteal-surface-stroking",
+  "category": "legs",
+  "order": 700,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "gluteal"
+  ],
+  "tags": [
+    "stroking",
+    "gluteal",
+    "consent"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Pressure Scale 1–5",
+  "shortTitle": "Pressure Scale",
+  "summary": "A simple scale describes intensity from barely perceptible contact to pronounced pressure.",
+  "goal": "Make pressure easier to understand across cards.",
+  "startingPosition": "Agree beforehand that pain is not the goal of massage.",
+  "instructions": [
+    "1/5 — barely perceptible contact.",
+    "2/5 — light pressure.",
+    "3/5 — moderate comfortable pressure.",
+    "4/5 — pronounced pressure only when appropriate and comfortable.",
+    "5/5 — not used as a routine target in this home guide."
+  ],
+  "direction": "Increase pressure gradually.",
+  "pressureText": "Usually 1/5–3/5",
+  "tempoText": "Gradual",
+  "durationText": "1–2 min",
+  "repetitionsText": "Check continuously",
+  "areasText": [
+    "any area"
+  ],
+  "tips": [
+    "Uncertainty is enough reason to reduce intensity or postpone massage.",
+    "Safety takes priority over completing a plan."
+  ],
+  "mistakes": [
+    "Ignoring symptoms.",
+    "Trying to continue at any cost.",
+    "Making overly confident conclusions without professional assessment."
+  ],
+  "warning": "This guide is educational and does not replace medical diagnosis or individualized professional advice.",
+  "imageAlt": "Educational diagram: pressure scale 1–5, without text labels.",
+  "telegramCaption": "A simple scale describes intensity from barely perceptible contact to pronounced pressure."
+}

@@ -1,0 +1,37 @@
+{
+  "title": "Self-Massage — 10 Minutes",
+  "shortTitle": "Self-Massage · 10 Minutes",
+  "summary": "A short sequence for the shoulders, forearms, hands, and scalp.",
+  "goal": "Combine gentle techniques into a short daily break.",
+  "startingPosition": "Sit stably, relax the shoulders, and keep the neck neutral.",
+  "instructions": [
+    "2 min — shoulders.",
+    "2 min — forearms.",
+    "2 min — hands.",
+    "2 min — scalp.",
+    "2 min — light finishing."
+  ],
+  "direction": "From shoulders to arms and scalp, then a gradual finish.",
+  "pressureText": "Very light to light",
+  "tempoText": "Slow",
+  "durationText": "10 min",
+  "repetitionsText": "1 sequence",
+  "areasText": [
+    "shoulders",
+    "forearms",
+    "hands",
+    "scalp"
+  ],
+  "tips": [
+    "Keep transitions smooth.",
+    "Reduce pressure with tenderness."
+  ],
+  "mistakes": [
+    "Using excessive intensity.",
+    "Rushing transitions.",
+    "Working through pain."
+  ],
+  "warning": "This educational routine is not treatment. Do not perform it with contraindications, acute pain, recent injury, inflammation, or worsening wellbeing.",
+  "imageAlt": "Educational diagram: self-massage — 10 minutes, without text labels.",
+  "telegramCaption": "A short sequence for the shoulders, forearms, hands, and scalp."
+}

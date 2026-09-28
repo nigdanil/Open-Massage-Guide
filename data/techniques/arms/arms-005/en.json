@@ -1,0 +1,34 @@
+{
+  "title": "Upper-Arm Kneading",
+  "shortTitle": "Upper-Arm Kneading",
+  "summary": "The upper-arm muscle is gently compressed and released between the palm and fingers.",
+  "goal": "Work the larger upper-arm muscles.",
+  "startingPosition": "The arm is fully relaxed.",
+  "instructions": [
+    "Place the hand on the muscular upper arm.",
+    "Gently grasp the tissue.",
+    "Compress to a comfortable level.",
+    "Release smoothly.",
+    "Progress while avoiding joints."
+  ],
+  "direction": "Along the muscular upper arm.",
+  "pressureText": "Moderate",
+  "tempoText": "Slow",
+  "durationText": "3–6 min",
+  "repetitionsText": "6–10 cycles",
+  "areasText": [
+    "upper arm"
+  ],
+  "tips": [
+    "Support the arm.",
+    "Do not pinch the skin."
+  ],
+  "mistakes": [
+    "Excessive squeezing.",
+    "Pressing a joint.",
+    "Painful kneading."
+  ],
+  "warning": "Do not massage with acute pain, recent injury, marked swelling, inflammation, or impaired sensation.",
+  "imageAlt": "Educational diagram: upper-arm kneading, without text labels.",
+  "telegramCaption": "The upper-arm muscle is gently compressed and released between the palm and fingers."
+}

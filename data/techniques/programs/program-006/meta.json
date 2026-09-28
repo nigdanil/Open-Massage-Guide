@@ -1,0 +1,36 @@
+{
+  "id": "program-006",
+  "slug": "self-massage-10",
+  "category": "programs",
+  "order": 1160,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "seconds": 600
+  },
+  "repetitions": {
+    "count": 1
+  },
+  "areas": [
+    "self"
+  ],
+  "tags": [
+    "program",
+    "self-massage",
+    "10-min"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1,
+  "sequence": [
+    "self-002",
+    "self-003",
+    "self-004",
+    "self-008",
+    "self-010"
+  ]
+}

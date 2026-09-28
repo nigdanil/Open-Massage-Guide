@@ -1,0 +1,30 @@
+{
+  "id": "arms-007",
+  "slug": "palm-massage",
+  "category": "arms",
+  "order": 570,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "palm"
+  ],
+  "tags": [
+    "hand",
+    "palm"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

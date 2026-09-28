@@ -1,0 +1,35 @@
+{
+  "title": "Back Massage — 15 Minutes",
+  "shortTitle": "Back · 15 Minutes",
+  "summary": "A short sequence of gentle back techniques without deep forceful pressure.",
+  "goal": "Combine basic back techniques into a simple educational routine.",
+  "startingPosition": "The person lies comfortably face down.",
+  "instructions": [
+    "2 min — longitudinal stroking.",
+    "2 min — fan stroking.",
+    "3 min — circular rubbing.",
+    "4 min — gentle kneading.",
+    "2 min — trapezius area.",
+    "2 min — finishing stroking."
+  ],
+  "direction": "From gentle warming to moderate work and back to a light finish.",
+  "pressureText": "Light to moderate",
+  "tempoText": "Calm",
+  "durationText": "15 min",
+  "repetitionsText": "1 sequence",
+  "areasText": [
+    "back"
+  ],
+  "tips": [
+    "Keep transitions smooth.",
+    "Reduce pressure with tenderness."
+  ],
+  "mistakes": [
+    "Using excessive intensity.",
+    "Rushing transitions.",
+    "Working through pain."
+  ],
+  "warning": "This educational routine is not treatment. Do not perform it with contraindications, acute pain, recent injury, inflammation, or worsening wellbeing.",
+  "imageAlt": "Educational diagram: back massage — 15 minutes, without text labels.",
+  "telegramCaption": "A short sequence of gentle back techniques without deep forceful pressure."
+}

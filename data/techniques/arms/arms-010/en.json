@@ -1,0 +1,36 @@
+{
+  "title": "Finishing Arm Stroking",
+  "shortTitle": "Finishing Arm Stroking",
+  "summary": "Long, light passes connect the hand, forearm, and upper arm.",
+  "goal": "Gradually reduce intensity and finish the arm massage.",
+  "startingPosition": "The whole arm is relaxed and supported.",
+  "instructions": [
+    "Begin at the hand.",
+    "Glide over the forearm.",
+    "Continue over the upper arm while avoiding joints.",
+    "Reduce pressure with each pass.",
+    "Finish very lightly."
+  ],
+  "direction": "From the hand upward along the arm.",
+  "pressureText": "Light, decreasing",
+  "tempoText": "Slow",
+  "durationText": "2–4 min",
+  "repetitionsText": "6–10 passes",
+  "areasText": [
+    "hand",
+    "forearm",
+    "upper arm"
+  ],
+  "tips": [
+    "Maintain continuous contact.",
+    "Finish gradually."
+  ],
+  "mistakes": [
+    "Ending abruptly.",
+    "Increasing pressure.",
+    "Pressing joints."
+  ],
+  "warning": "Do not massage with acute pain, recent injury, marked swelling, inflammation, or impaired sensation.",
+  "imageAlt": "Educational diagram: finishing arm stroking, without text labels.",
+  "telegramCaption": "Long, light passes connect the hand, forearm, and upper arm."
+}

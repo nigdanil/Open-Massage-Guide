@@ -1,0 +1,34 @@
+{
+  "title": "Finger Massage",
+  "shortTitle": "Fingers",
+  "summary": "Each finger is gently stroked from base to tip without forceful traction.",
+  "goal": "Finish hand work with gentle finger contact.",
+  "startingPosition": "The hand is supported and the fingers are relaxed.",
+  "instructions": [
+    "Hold one finger with a broad, gentle grip.",
+    "Stroke from base to tip.",
+    "Optionally add very gentle rolling.",
+    "Do not pull or twist the joint.",
+    "Repeat for each finger."
+  ],
+  "direction": "From the base of the finger toward the tip.",
+  "pressureText": "Very light",
+  "tempoText": "Slow",
+  "durationText": "2–5 min",
+  "repetitionsText": "3–5 passes per finger",
+  "areasText": [
+    "fingers"
+  ],
+  "tips": [
+    "Keep the grip broad.",
+    "Monitor joint comfort."
+  ],
+  "mistakes": [
+    "Forceful traction.",
+    "Twisting.",
+    "Pinching."
+  ],
+  "warning": "Do not massage with acute pain, recent injury, marked swelling, inflammation, or impaired sensation.",
+  "imageAlt": "Educational diagram: finger massage, without text labels.",
+  "telegramCaption": "Each finger is gently stroked from base to tip without forceful traction."
+}

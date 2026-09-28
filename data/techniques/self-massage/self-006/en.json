@@ -1,0 +1,34 @@
+{
+  "title": "Calf Self-Massage",
+  "shortTitle": "Calf Self-Massage",
+  "summary": "The hands lightly stroke the calf upward without deep pressure.",
+  "goal": "Gently relax the calf muscles after walking.",
+  "startingPosition": "Sit with the leg fully supported.",
+  "instructions": [
+    "Place the hands on the calf above the Achilles tendon.",
+    "Glide upward over the muscle.",
+    "Do not press the tendon or behind the knee.",
+    "Use light pressure.",
+    "Switch legs."
+  ],
+  "direction": "Upward along the calf.",
+  "pressureText": "Light",
+  "tempoText": "Slow",
+  "durationText": "2–5 min",
+  "repetitionsText": "6–10 passes",
+  "areasText": [
+    "calf muscle"
+  ],
+  "tips": [
+    "Keep pressure comfortable.",
+    "Work smoothly without jerky movements."
+  ],
+  "mistakes": [
+    "Using excessive pressure.",
+    "Working through pain.",
+    "Jerky movements."
+  ],
+  "warning": "Stop self-massage with pain, numbness, weakness, dizziness, radiating sensations, or other unusual symptoms.",
+  "imageAlt": "Educational diagram: calf self-massage, without text labels.",
+  "telegramCaption": "The hands lightly stroke the calf upward without deep pressure."
+}

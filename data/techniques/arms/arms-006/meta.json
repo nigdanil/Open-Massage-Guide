@@ -1,0 +1,30 @@
+{
+  "id": "arms-006",
+  "slug": "elbow-surrounding-work",
+  "category": "arms",
+  "order": 560,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 4,
+    "max": 8
+  },
+  "areas": [
+    "elbow"
+  ],
+  "tags": [
+    "gentle",
+    "elbow"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

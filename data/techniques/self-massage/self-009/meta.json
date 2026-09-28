@@ -1,0 +1,32 @@
+{
+  "id": "self-009",
+  "slug": "desk-break",
+  "category": "self-massage",
+  "order": 1090,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 4,
+    "max": 8
+  },
+  "areas": [
+    "neck",
+    "shoulders",
+    "forearms"
+  ],
+  "tags": [
+    "self-massage",
+    "desk-break"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

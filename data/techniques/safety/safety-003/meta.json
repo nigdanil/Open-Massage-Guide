@@ -1,0 +1,29 @@
+{
+  "id": "safety-003",
+  "slug": "consent-and-boundaries",
+  "category": "safety",
+  "order": 1230,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "count": 1
+  },
+  "areas": [
+    "safety"
+  ],
+  "tags": [
+    "safety",
+    "consent"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

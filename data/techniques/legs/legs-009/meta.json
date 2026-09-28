@@ -1,0 +1,30 @@
+{
+  "id": "legs-009",
+  "slug": "ankle-surrounding-stroking",
+  "category": "legs",
+  "order": 690,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 4,
+    "max": 8
+  },
+  "areas": [
+    "ankle"
+  ],
+  "tags": [
+    "ankle",
+    "gentle"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Dorsal Hand Stroking",
+  "shortTitle": "Back of the Hand",
+  "summary": "Very light longitudinal movements are made between bony and tendon structures.",
+  "goal": "Gently work the back of the hand.",
+  "startingPosition": "The hand is supported with the back facing upward.",
+  "instructions": [
+    "Support the hand.",
+    "Use light stroking.",
+    "Move from the wrist toward the fingers.",
+    "Avoid pressing prominent tendons.",
+    "Repeat."
+  ],
+  "direction": "From wrist toward the finger bases.",
+  "pressureText": "Very light",
+  "tempoText": "Slow",
+  "durationText": "1–3 min",
+  "repetitionsText": "6–10 passes",
+  "areasText": [
+    "back of the hand"
+  ],
+  "tips": [
+    "Use less pressure than on the palm.",
+    "Use broad finger-pad contact."
+  ],
+  "mistakes": [
+    "Strong focal pressure.",
+    "Pressing joints.",
+    "Stretching the skin."
+  ],
+  "warning": "Do not massage with acute pain, recent injury, marked swelling, inflammation, or impaired sensation.",
+  "imageAlt": "Educational diagram: dorsal hand stroking, without text labels.",
+  "telegramCaption": "Very light longitudinal movements are made between bony and tendon structures."
+}

@@ -1,0 +1,41 @@
+{
+  "id": "program-002",
+  "slug": "back-relax-30",
+  "category": "programs",
+  "order": 1120,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "seconds": 1800
+  },
+  "repetitions": {
+    "count": 1
+  },
+  "areas": [
+    "back"
+  ],
+  "tags": [
+    "program",
+    "back",
+    "30-min"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1,
+  "sequence": [
+    "back-001",
+    "back-002",
+    "back-004",
+    "back-006",
+    "back-007",
+    "back-009",
+    "back-008",
+    "back-010",
+    "back-011",
+    "back-012"
+  ]
+}

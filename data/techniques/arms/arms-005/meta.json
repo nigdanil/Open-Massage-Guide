@@ -1,0 +1,30 @@
+{
+  "id": "arms-005",
+  "slug": "upper-arm-kneading",
+  "category": "arms",
+  "order": 550,
+  "image": null,
+  "pressure": 3,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 360
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "upper-arm"
+  ],
+  "tags": [
+    "kneading",
+    "upper-arm"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

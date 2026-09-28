@@ -1,0 +1,34 @@
+{
+  "title": "Feedback During Massage",
+  "shortTitle": "Feedback",
+  "summary": "Comfort is best checked with brief questions and observation throughout the session.",
+  "goal": "Make feedback a continuous part of safe practice.",
+  "startingPosition": "Agree beforehand that pain, numbness, dizziness, or discomfort should be reported.",
+  "instructions": [
+    "Ask about pressure after the first passes.",
+    "Check comfort when changing areas.",
+    "Reduce intensity if the person tenses.",
+    "Stop with pain, numbness, or dizziness.",
+    "Do not encourage someone to tolerate pain."
+  ],
+  "direction": "This rule applies throughout the session.",
+  "pressureText": "Not applicable",
+  "tempoText": "Throughout the session",
+  "durationText": "Continuous",
+  "repetitionsText": "As needed",
+  "areasText": [
+    "all areas"
+  ],
+  "tips": [
+    "Uncertainty is enough reason to reduce intensity or postpone massage.",
+    "Safety takes priority over completing a plan."
+  ],
+  "mistakes": [
+    "Ignoring symptoms.",
+    "Trying to continue at any cost.",
+    "Making overly confident conclusions without professional assessment."
+  ],
+  "warning": "This guide is educational and does not replace medical diagnosis or individualized professional advice.",
+  "imageAlt": "Educational diagram: feedback during massage, without text labels.",
+  "telegramCaption": "Comfort is best checked with brief questions and observation throughout the session."
+}

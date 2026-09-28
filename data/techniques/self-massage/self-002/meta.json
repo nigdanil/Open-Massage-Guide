@@ -1,0 +1,30 @@
+{
+  "id": "self-002",
+  "slug": "self-shoulder-kneading",
+  "category": "self-massage",
+  "order": 1020,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "upper-trapezius"
+  ],
+  "tags": [
+    "self-massage",
+    "shoulders"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

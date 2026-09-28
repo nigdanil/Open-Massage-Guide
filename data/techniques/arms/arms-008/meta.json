@@ -1,0 +1,30 @@
+{
+  "id": "arms-008",
+  "slug": "dorsal-hand-stroking",
+  "category": "arms",
+  "order": 580,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "dorsal-hand"
+  ],
+  "tags": [
+    "hand",
+    "stroking"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

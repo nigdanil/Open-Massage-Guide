@@ -1,0 +1,30 @@
+{
+  "id": "legs-008",
+  "slug": "shin-gentle-stroking",
+  "category": "legs",
+  "order": 680,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 240
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "shin"
+  ],
+  "tags": [
+    "stroking",
+    "shin"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

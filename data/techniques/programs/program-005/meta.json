@@ -1,0 +1,44 @@
+{
+  "id": "program-005",
+  "slug": "general-relax-30",
+  "category": "programs",
+  "order": 1150,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "seconds": 1800
+  },
+  "repetitions": {
+    "count": 1
+  },
+  "areas": [
+    "back",
+    "neck",
+    "arms",
+    "legs"
+  ],
+  "tags": [
+    "program",
+    "general",
+    "30-min"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1,
+  "sequence": [
+    "back-001",
+    "back-004",
+    "back-012",
+    "neck-001",
+    "neck-012",
+    "arms-001",
+    "arms-010",
+    "legs-001",
+    "legs-006",
+    "legs-014"
+  ]
+}

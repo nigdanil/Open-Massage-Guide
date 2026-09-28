@@ -1,0 +1,30 @@
+{
+  "id": "face-001",
+  "slug": "forehead-stroking",
+  "category": "face-head",
+  "order": 910,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "forehead"
+  ],
+  "tags": [
+    "face",
+    "stroking"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

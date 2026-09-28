@@ -1,0 +1,30 @@
+{
+  "id": "arms-003",
+  "slug": "forearm-circular-rubbing",
+  "category": "arms",
+  "order": 530,
+  "image": null,
+  "pressure": 2,
+  "tempo": "moderate",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 8,
+    "max": 12
+  },
+  "areas": [
+    "forearm"
+  ],
+  "tags": [
+    "rubbing",
+    "circular"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

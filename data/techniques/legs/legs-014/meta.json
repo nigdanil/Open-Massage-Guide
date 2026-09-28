@@ -1,0 +1,30 @@
+{
+  "id": "legs-014",
+  "slug": "finishing-leg-stroking",
+  "category": "legs",
+  "order": 740,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 5,
+    "max": 8
+  },
+  "areas": [
+    "leg"
+  ],
+  "tags": [
+    "finishing",
+    "stroking"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

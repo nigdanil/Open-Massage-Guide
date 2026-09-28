@@ -1,0 +1,30 @@
+{
+  "id": "self-004",
+  "slug": "self-hand",
+  "category": "self-massage",
+  "order": 1040,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "hand"
+  ],
+  "tags": [
+    "self-massage",
+    "hand"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

@@ -1,0 +1,30 @@
+{
+  "id": "self-008",
+  "slug": "self-scalp",
+  "category": "self-massage",
+  "order": 1080,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 8,
+    "max": 12
+  },
+  "areas": [
+    "scalp"
+  ],
+  "tags": [
+    "self-massage",
+    "scalp"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

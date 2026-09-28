@@ -1,0 +1,30 @@
+{
+  "id": "self-010",
+  "slug": "finishing-self-massage",
+  "category": "self-massage",
+  "order": 1100,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 4,
+    "max": 8
+  },
+  "areas": [
+    "general"
+  ],
+  "tags": [
+    "self-massage",
+    "finishing"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

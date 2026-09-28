@@ -1,0 +1,30 @@
+{
+  "id": "face-003",
+  "slug": "jaw-gentle-work",
+  "category": "face-head",
+  "order": 930,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 4,
+    "max": 8
+  },
+  "areas": [
+    "jaw"
+  ],
+  "tags": [
+    "face",
+    "jaw"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

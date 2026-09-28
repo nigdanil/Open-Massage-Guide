@@ -1,0 +1,30 @@
+{
+  "id": "feet-010",
+  "slug": "finishing-foot-stroking",
+  "category": "feet",
+  "order": 900,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 90,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 5,
+    "max": 8
+  },
+  "areas": [
+    "foot"
+  ],
+  "tags": [
+    "finishing",
+    "stroking"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

@@ -1,0 +1,30 @@
+{
+  "id": "feet-004",
+  "slug": "arch-gentle-work",
+  "category": "feet",
+  "order": 840,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "arch"
+  ],
+  "tags": [
+    "arch",
+    "foot"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

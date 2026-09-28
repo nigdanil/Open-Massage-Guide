@@ -1,0 +1,30 @@
+{
+  "id": "self-003",
+  "slug": "self-forearm",
+  "category": "self-massage",
+  "order": 1030,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "forearm"
+  ],
+  "tags": [
+    "self-massage",
+    "forearm"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

@@ -1,0 +1,35 @@
+{
+  "title": "Finishing Leg Stroking",
+  "shortTitle": "Finishing Leg Stroking",
+  "summary": "Very light long passes over the leg gradually reduce contact intensity.",
+  "goal": "Finish the leg massage calmly.",
+  "startingPosition": "The leg is relaxed and supported.",
+  "instructions": [
+    "Use long light passes.",
+    "Avoid joints and the back of the knee.",
+    "Reduce pressure with each pass.",
+    "Maintain a slow pace.",
+    "Finish with gentle contact."
+  ],
+  "direction": "Over the leg soft tissues with decreasing pressure.",
+  "pressureText": "Very light",
+  "tempoText": "Slow",
+  "durationText": "2–5 min",
+  "repetitionsText": "5–8 passes",
+  "areasText": [
+    "lower leg",
+    "thigh"
+  ],
+  "tips": [
+    "Keep pressure comfortable.",
+    "Work smoothly without jerky movements."
+  ],
+  "mistakes": [
+    "Using excessive pressure.",
+    "Working through pain.",
+    "Jerky movements."
+  ],
+  "warning": "Do not massage with acute pain, recent injury, marked swelling, or inflammation. One-sided swelling, redness, warmth, or calf pain should be medically assessed before massage.",
+  "imageAlt": "Educational diagram: finishing leg stroking, without text labels.",
+  "telegramCaption": "Very light long passes over the leg gradually reduce contact intensity."
+}

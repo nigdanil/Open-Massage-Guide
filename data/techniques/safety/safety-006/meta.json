@@ -1,0 +1,30 @@
+{
+  "id": "safety-006",
+  "slug": "leg-swelling-red-flag",
+  "category": "safety",
+  "order": 1260,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 120
+  },
+  "repetitions": {
+    "count": 1
+  },
+  "areas": [
+    "safety",
+    "legs"
+  ],
+  "tags": [
+    "safety",
+    "red-flags"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

@@ -1,0 +1,29 @@
+{
+  "id": "safety-007",
+  "slug": "feedback-during-massage",
+  "category": "safety",
+  "order": 1270,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "count": 1
+  },
+  "areas": [
+    "safety"
+  ],
+  "tags": [
+    "safety",
+    "feedback"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

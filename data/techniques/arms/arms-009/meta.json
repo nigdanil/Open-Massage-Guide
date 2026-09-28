@@ -1,0 +1,30 @@
+{
+  "id": "arms-009",
+  "slug": "finger-massage",
+  "category": "arms",
+  "order": 590,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 3,
+    "max": 5
+  },
+  "areas": [
+    "fingers"
+  ],
+  "tags": [
+    "hand",
+    "fingers"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

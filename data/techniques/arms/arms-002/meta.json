@@ -1,0 +1,30 @@
+{
+  "id": "arms-002",
+  "slug": "upper-arm-stroking",
+  "category": "arms",
+  "order": 520,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "upper-arm"
+  ],
+  "tags": [
+    "stroking",
+    "upper-arm"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

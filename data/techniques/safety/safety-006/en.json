@@ -1,0 +1,35 @@
+{
+  "title": "One-Sided Leg Swelling and Pain",
+  "shortTitle": "Leg Stop Sign",
+  "summary": "One-sided swelling, redness, warmth, and calf pain are reasons not to massage the leg until medically assessed.",
+  "goal": "Help recognize an important stop sign before leg massage.",
+  "startingPosition": "Compare both legs and notice new asymmetry.",
+  "instructions": [
+    "Do not massage a painful or noticeably swollen leg.",
+    "Do not deeply knead a painful calf.",
+    "Seek medical care if symptoms are sudden or pronounced.",
+    "Avoid massage until assessed.",
+    "Follow medical advice."
+  ],
+  "direction": "Massage is not performed.",
+  "pressureText": "Not applicable",
+  "tempoText": "Stop immediately",
+  "durationText": "Until medically assessed",
+  "repetitionsText": "1 decision",
+  "areasText": [
+    "calf",
+    "leg"
+  ],
+  "tips": [
+    "Uncertainty is enough reason to reduce intensity or postpone massage.",
+    "Safety takes priority over completing a plan."
+  ],
+  "mistakes": [
+    "Ignoring symptoms.",
+    "Trying to continue at any cost.",
+    "Making overly confident conclusions without professional assessment."
+  ],
+  "warning": "This guide is educational and does not replace medical diagnosis or individualized professional advice.",
+  "imageAlt": "Educational diagram: one-sided leg swelling and pain, without text labels.",
+  "telegramCaption": "One-sided swelling, redness, warmth, and calf pain are reasons not to massage the leg until medically assessed."
+}

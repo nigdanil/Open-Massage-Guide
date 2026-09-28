@@ -1,0 +1,30 @@
+{
+  "id": "face-007",
+  "slug": "around-ear-stroking",
+  "category": "face-head",
+  "order": 970,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 120
+  },
+  "repetitions": {
+    "min": 4,
+    "max": 8
+  },
+  "areas": [
+    "around-ear"
+  ],
+  "tags": [
+    "head",
+    "gentle"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

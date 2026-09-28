@@ -1,0 +1,30 @@
+{
+  "id": "legs-001",
+  "slug": "anterior-thigh-stroking",
+  "category": "legs",
+  "order": 610,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "anterior-thigh"
+  ],
+  "tags": [
+    "stroking",
+    "thigh"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

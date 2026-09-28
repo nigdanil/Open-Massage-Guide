@@ -1,0 +1,34 @@
+{
+  "title": "Hand Foot Self-Massage",
+  "shortTitle": "Foot Self-Massage",
+  "summary": "The thumb and palm gently work the sole and heel.",
+  "goal": "Relax the foot gently after walking or standing.",
+  "startingPosition": "Sit comfortably and support the foot.",
+  "instructions": [
+    "Stroke the sole from heel to toes.",
+    "Add small circles over the arch.",
+    "Lightly stroke the heel.",
+    "Stroke the toes.",
+    "Switch feet."
+  ],
+  "direction": "From heel to toes and over soft areas of the sole.",
+  "pressureText": "Light to moderate",
+  "tempoText": "Slow",
+  "durationText": "3–6 min",
+  "repetitionsText": "6–10 movements",
+  "areasText": [
+    "foot"
+  ],
+  "tips": [
+    "Keep pressure comfortable.",
+    "Work smoothly without jerky movements."
+  ],
+  "mistakes": [
+    "Using excessive pressure.",
+    "Working through pain.",
+    "Jerky movements."
+  ],
+  "warning": "Stop self-massage with pain, numbness, weakness, dizziness, radiating sensations, or other unusual symptoms.",
+  "imageAlt": "Educational diagram: hand foot self-massage, without text labels.",
+  "telegramCaption": "The thumb and palm gently work the sole and heel."
+}

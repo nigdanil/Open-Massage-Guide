@@ -1,0 +1,30 @@
+{
+  "id": "legs-012",
+  "slug": "lower-leg-finishing-stroking",
+  "category": "legs",
+  "order": 720,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "lower-leg"
+  ],
+  "tags": [
+    "finishing",
+    "stroking"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

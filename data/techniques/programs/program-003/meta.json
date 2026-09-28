@@ -1,0 +1,37 @@
+{
+  "id": "program-003",
+  "slug": "neck-shoulders-15",
+  "category": "programs",
+  "order": 1130,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "seconds": 900
+  },
+  "repetitions": {
+    "count": 1
+  },
+  "areas": [
+    "neck",
+    "shoulders"
+  ],
+  "tags": [
+    "program",
+    "neck",
+    "15-min"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1,
+  "sequence": [
+    "neck-001",
+    "neck-003",
+    "neck-004",
+    "neck-005",
+    "neck-012"
+  ]
+}

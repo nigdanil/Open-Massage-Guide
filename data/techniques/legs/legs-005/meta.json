@@ -1,0 +1,30 @@
+{
+  "id": "legs-005",
+  "slug": "thigh-kneading",
+  "category": "legs",
+  "order": 650,
+  "image": null,
+  "pressure": 3,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 240,
+    "maxSeconds": 480
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "thigh"
+  ],
+  "tags": [
+    "kneading",
+    "thigh"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

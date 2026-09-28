@@ -1,0 +1,35 @@
+{
+  "title": "Whole-Leg Long Stroking",
+  "shortTitle": "Whole-Leg Stroking",
+  "summary": "Long continuous passes connect the lower leg and thigh while avoiding joints and the back of the knee.",
+  "goal": "Connect separate leg regions into one sequence.",
+  "startingPosition": "The entire leg rests stably and relaxed.",
+  "instructions": [
+    "Begin over lower-leg soft tissue.",
+    "Move upward, reducing pressure near the knee.",
+    "Continue over the thigh.",
+    "Do not press behind the knee.",
+    "Return without pressure."
+  ],
+  "direction": "Upward over the soft tissues of the leg.",
+  "pressureText": "Light",
+  "tempoText": "Slow",
+  "durationText": "3–6 min",
+  "repetitionsText": "5–8 passes",
+  "areasText": [
+    "lower leg",
+    "thigh"
+  ],
+  "tips": [
+    "Keep pressure comfortable.",
+    "Work smoothly without jerky movements."
+  ],
+  "mistakes": [
+    "Using excessive pressure.",
+    "Working through pain.",
+    "Jerky movements."
+  ],
+  "warning": "Do not massage with acute pain, recent injury, marked swelling, or inflammation. One-sided swelling, redness, warmth, or calf pain should be medically assessed before massage.",
+  "imageAlt": "Educational diagram: whole-leg long stroking, without text labels.",
+  "telegramCaption": "Long continuous passes connect the lower leg and thigh while avoiding joints and the back of the knee."
+}

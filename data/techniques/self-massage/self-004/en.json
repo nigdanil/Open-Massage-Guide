@@ -1,0 +1,35 @@
+{
+  "title": "Hand Self-Massage",
+  "shortTitle": "Hand Self-Massage",
+  "summary": "The thumb of the free hand gently works the palm, then the fingers are lightly stroked.",
+  "goal": "Relax the hands after repetitive activity.",
+  "startingPosition": "Rest the hand comfortably in front of you.",
+  "instructions": [
+    "Stroke the palm.",
+    "Make small circles over the fleshy area.",
+    "Lightly stroke the back of the hand.",
+    "Stroke each finger from base to tip.",
+    "Switch hands."
+  ],
+  "direction": "Over the palm, back of the hand, and fingers.",
+  "pressureText": "Light",
+  "tempoText": "Slow",
+  "durationText": "2–5 min",
+  "repetitionsText": "6–10 movements",
+  "areasText": [
+    "hand",
+    "fingers"
+  ],
+  "tips": [
+    "Keep pressure comfortable.",
+    "Work smoothly without jerky movements."
+  ],
+  "mistakes": [
+    "Using excessive pressure.",
+    "Working through pain.",
+    "Jerky movements."
+  ],
+  "warning": "Stop self-massage with pain, numbness, weakness, dizziness, radiating sensations, or other unusual symptoms.",
+  "imageAlt": "Educational diagram: hand self-massage, without text labels.",
+  "telegramCaption": "The thumb of the free hand gently works the palm, then the fingers are lightly stroked."
+}

@@ -1,0 +1,29 @@
+{
+  "id": "safety-002",
+  "slug": "pressure-scale",
+  "category": "safety",
+  "order": 1220,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 120
+  },
+  "repetitions": {
+    "count": 1
+  },
+  "areas": [
+    "safety"
+  ],
+  "tags": [
+    "safety",
+    "pressure"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

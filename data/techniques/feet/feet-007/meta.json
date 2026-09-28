@@ -1,0 +1,30 @@
+{
+  "id": "feet-007",
+  "slug": "dorsal-foot-stroking",
+  "category": "feet",
+  "order": 870,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 90,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "dorsal-foot"
+  ],
+  "tags": [
+    "foot",
+    "stroking"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

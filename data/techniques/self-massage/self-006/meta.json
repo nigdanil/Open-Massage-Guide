@@ -1,0 +1,30 @@
+{
+  "id": "self-006",
+  "slug": "self-calf",
+  "category": "self-massage",
+  "order": 1060,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "calf"
+  ],
+  "tags": [
+    "self-massage",
+    "calf"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

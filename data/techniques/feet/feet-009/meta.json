@@ -1,0 +1,31 @@
+{
+  "id": "feet-009",
+  "slug": "foot-ankle-transition",
+  "category": "feet",
+  "order": 890,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 90,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 4,
+    "max": 8
+  },
+  "areas": [
+    "foot",
+    "ankle"
+  ],
+  "tags": [
+    "transition",
+    "stroking"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

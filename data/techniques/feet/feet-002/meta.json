@@ -1,0 +1,30 @@
+{
+  "id": "feet-002",
+  "slug": "sole-longitudinal-gliding",
+  "category": "feet",
+  "order": 820,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "sole"
+  ],
+  "tags": [
+    "sole",
+    "gliding"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

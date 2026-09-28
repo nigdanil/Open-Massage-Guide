@@ -1,0 +1,30 @@
+{
+  "id": "face-004",
+  "slug": "scalp-circular-massage",
+  "category": "face-head",
+  "order": 940,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 8,
+    "max": 12
+  },
+  "areas": [
+    "scalp"
+  ],
+  "tags": [
+    "head",
+    "scalp"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

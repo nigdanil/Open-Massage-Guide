@@ -1,0 +1,32 @@
+{
+  "id": "face-008",
+  "slug": "finishing-head-face",
+  "category": "face-head",
+  "order": 980,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 5,
+    "max": 8
+  },
+  "areas": [
+    "face",
+    "scalp"
+  ],
+  "tags": [
+    "finishing",
+    "head",
+    "face"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

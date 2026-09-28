@@ -1,0 +1,31 @@
+{
+  "id": "legs-004",
+  "slug": "thigh-circular-rubbing",
+  "category": "legs",
+  "order": 640,
+  "image": null,
+  "pressure": 3,
+  "tempo": "moderate",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 360
+  },
+  "repetitions": {
+    "min": 8,
+    "max": 12
+  },
+  "areas": [
+    "thigh"
+  ],
+  "tags": [
+    "rubbing",
+    "circular",
+    "thigh"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

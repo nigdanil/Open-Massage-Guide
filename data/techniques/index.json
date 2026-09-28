@@ -148,5 +148,401 @@
     "path": "./data/techniques/neck-shoulders/neck-012",
     "category": "neck-shoulders",
     "order": 420
+  },
+  {
+    "id": "arms-001",
+    "path": "./data/techniques/arms/arms-001",
+    "category": "arms",
+    "order": 510
+  },
+  {
+    "id": "arms-002",
+    "path": "./data/techniques/arms/arms-002",
+    "category": "arms",
+    "order": 520
+  },
+  {
+    "id": "arms-003",
+    "path": "./data/techniques/arms/arms-003",
+    "category": "arms",
+    "order": 530
+  },
+  {
+    "id": "arms-004",
+    "path": "./data/techniques/arms/arms-004",
+    "category": "arms",
+    "order": 540
+  },
+  {
+    "id": "arms-005",
+    "path": "./data/techniques/arms/arms-005",
+    "category": "arms",
+    "order": 550
+  },
+  {
+    "id": "arms-006",
+    "path": "./data/techniques/arms/arms-006",
+    "category": "arms",
+    "order": 560
+  },
+  {
+    "id": "arms-007",
+    "path": "./data/techniques/arms/arms-007",
+    "category": "arms",
+    "order": 570
+  },
+  {
+    "id": "arms-008",
+    "path": "./data/techniques/arms/arms-008",
+    "category": "arms",
+    "order": 580
+  },
+  {
+    "id": "arms-009",
+    "path": "./data/techniques/arms/arms-009",
+    "category": "arms",
+    "order": 590
+  },
+  {
+    "id": "arms-010",
+    "path": "./data/techniques/arms/arms-010",
+    "category": "arms",
+    "order": 600
+  },
+  {
+    "id": "legs-001",
+    "path": "./data/techniques/legs/legs-001",
+    "category": "legs",
+    "order": 610
+  },
+  {
+    "id": "legs-002",
+    "path": "./data/techniques/legs/legs-002",
+    "category": "legs",
+    "order": 620
+  },
+  {
+    "id": "legs-003",
+    "path": "./data/techniques/legs/legs-003",
+    "category": "legs",
+    "order": 630
+  },
+  {
+    "id": "legs-004",
+    "path": "./data/techniques/legs/legs-004",
+    "category": "legs",
+    "order": 640
+  },
+  {
+    "id": "legs-005",
+    "path": "./data/techniques/legs/legs-005",
+    "category": "legs",
+    "order": 650
+  },
+  {
+    "id": "legs-006",
+    "path": "./data/techniques/legs/legs-006",
+    "category": "legs",
+    "order": 660
+  },
+  {
+    "id": "legs-007",
+    "path": "./data/techniques/legs/legs-007",
+    "category": "legs",
+    "order": 670
+  },
+  {
+    "id": "legs-008",
+    "path": "./data/techniques/legs/legs-008",
+    "category": "legs",
+    "order": 680
+  },
+  {
+    "id": "legs-009",
+    "path": "./data/techniques/legs/legs-009",
+    "category": "legs",
+    "order": 690
+  },
+  {
+    "id": "legs-010",
+    "path": "./data/techniques/legs/legs-010",
+    "category": "legs",
+    "order": 700
+  },
+  {
+    "id": "legs-011",
+    "path": "./data/techniques/legs/legs-011",
+    "category": "legs",
+    "order": 710
+  },
+  {
+    "id": "legs-012",
+    "path": "./data/techniques/legs/legs-012",
+    "category": "legs",
+    "order": 720
+  },
+  {
+    "id": "legs-013",
+    "path": "./data/techniques/legs/legs-013",
+    "category": "legs",
+    "order": 730
+  },
+  {
+    "id": "legs-014",
+    "path": "./data/techniques/legs/legs-014",
+    "category": "legs",
+    "order": 740
+  },
+  {
+    "id": "feet-001",
+    "path": "./data/techniques/feet/feet-001",
+    "category": "feet",
+    "order": 810
+  },
+  {
+    "id": "feet-002",
+    "path": "./data/techniques/feet/feet-002",
+    "category": "feet",
+    "order": 820
+  },
+  {
+    "id": "feet-003",
+    "path": "./data/techniques/feet/feet-003",
+    "category": "feet",
+    "order": 830
+  },
+  {
+    "id": "feet-004",
+    "path": "./data/techniques/feet/feet-004",
+    "category": "feet",
+    "order": 840
+  },
+  {
+    "id": "feet-005",
+    "path": "./data/techniques/feet/feet-005",
+    "category": "feet",
+    "order": 850
+  },
+  {
+    "id": "feet-006",
+    "path": "./data/techniques/feet/feet-006",
+    "category": "feet",
+    "order": 860
+  },
+  {
+    "id": "feet-007",
+    "path": "./data/techniques/feet/feet-007",
+    "category": "feet",
+    "order": 870
+  },
+  {
+    "id": "feet-008",
+    "path": "./data/techniques/feet/feet-008",
+    "category": "feet",
+    "order": 880
+  },
+  {
+    "id": "feet-009",
+    "path": "./data/techniques/feet/feet-009",
+    "category": "feet",
+    "order": 890
+  },
+  {
+    "id": "feet-010",
+    "path": "./data/techniques/feet/feet-010",
+    "category": "feet",
+    "order": 900
+  },
+  {
+    "id": "face-001",
+    "path": "./data/techniques/face-head/face-001",
+    "category": "face-head",
+    "order": 910
+  },
+  {
+    "id": "face-002",
+    "path": "./data/techniques/face-head/face-002",
+    "category": "face-head",
+    "order": 920
+  },
+  {
+    "id": "face-003",
+    "path": "./data/techniques/face-head/face-003",
+    "category": "face-head",
+    "order": 930
+  },
+  {
+    "id": "face-004",
+    "path": "./data/techniques/face-head/face-004",
+    "category": "face-head",
+    "order": 940
+  },
+  {
+    "id": "face-005",
+    "path": "./data/techniques/face-head/face-005",
+    "category": "face-head",
+    "order": 950
+  },
+  {
+    "id": "face-006",
+    "path": "./data/techniques/face-head/face-006",
+    "category": "face-head",
+    "order": 960
+  },
+  {
+    "id": "face-007",
+    "path": "./data/techniques/face-head/face-007",
+    "category": "face-head",
+    "order": 970
+  },
+  {
+    "id": "face-008",
+    "path": "./data/techniques/face-head/face-008",
+    "category": "face-head",
+    "order": 980
+  },
+  {
+    "id": "self-001",
+    "path": "./data/techniques/self-massage/self-001",
+    "category": "self-massage",
+    "order": 1010
+  },
+  {
+    "id": "self-002",
+    "path": "./data/techniques/self-massage/self-002",
+    "category": "self-massage",
+    "order": 1020
+  },
+  {
+    "id": "self-003",
+    "path": "./data/techniques/self-massage/self-003",
+    "category": "self-massage",
+    "order": 1030
+  },
+  {
+    "id": "self-004",
+    "path": "./data/techniques/self-massage/self-004",
+    "category": "self-massage",
+    "order": 1040
+  },
+  {
+    "id": "self-005",
+    "path": "./data/techniques/self-massage/self-005",
+    "category": "self-massage",
+    "order": 1050
+  },
+  {
+    "id": "self-006",
+    "path": "./data/techniques/self-massage/self-006",
+    "category": "self-massage",
+    "order": 1060
+  },
+  {
+    "id": "self-007",
+    "path": "./data/techniques/self-massage/self-007",
+    "category": "self-massage",
+    "order": 1070
+  },
+  {
+    "id": "self-008",
+    "path": "./data/techniques/self-massage/self-008",
+    "category": "self-massage",
+    "order": 1080
+  },
+  {
+    "id": "self-009",
+    "path": "./data/techniques/self-massage/self-009",
+    "category": "self-massage",
+    "order": 1090
+  },
+  {
+    "id": "self-010",
+    "path": "./data/techniques/self-massage/self-010",
+    "category": "self-massage",
+    "order": 1100
+  },
+  {
+    "id": "program-001",
+    "path": "./data/techniques/programs/program-001",
+    "category": "programs",
+    "order": 1110
+  },
+  {
+    "id": "program-002",
+    "path": "./data/techniques/programs/program-002",
+    "category": "programs",
+    "order": 1120
+  },
+  {
+    "id": "program-003",
+    "path": "./data/techniques/programs/program-003",
+    "category": "programs",
+    "order": 1130
+  },
+  {
+    "id": "program-004",
+    "path": "./data/techniques/programs/program-004",
+    "category": "programs",
+    "order": 1140
+  },
+  {
+    "id": "program-005",
+    "path": "./data/techniques/programs/program-005",
+    "category": "programs",
+    "order": 1150
+  },
+  {
+    "id": "program-006",
+    "path": "./data/techniques/programs/program-006",
+    "category": "programs",
+    "order": 1160
+  },
+  {
+    "id": "safety-001",
+    "path": "./data/techniques/safety/safety-001",
+    "category": "safety",
+    "order": 1210
+  },
+  {
+    "id": "safety-002",
+    "path": "./data/techniques/safety/safety-002",
+    "category": "safety",
+    "order": 1220
+  },
+  {
+    "id": "safety-003",
+    "path": "./data/techniques/safety/safety-003",
+    "category": "safety",
+    "order": 1230
+  },
+  {
+    "id": "safety-004",
+    "path": "./data/techniques/safety/safety-004",
+    "category": "safety",
+    "order": 1240
+  },
+  {
+    "id": "safety-005",
+    "path": "./data/techniques/safety/safety-005",
+    "category": "safety",
+    "order": 1250
+  },
+  {
+    "id": "safety-006",
+    "path": "./data/techniques/safety/safety-006",
+    "category": "safety",
+    "order": 1260
+  },
+  {
+    "id": "safety-007",
+    "path": "./data/techniques/safety/safety-007",
+    "category": "safety",
+    "order": 1270
+  },
+  {
+    "id": "safety-008",
+    "path": "./data/techniques/safety/safety-008",
+    "category": "safety",
+    "order": 1280
   }
 ]

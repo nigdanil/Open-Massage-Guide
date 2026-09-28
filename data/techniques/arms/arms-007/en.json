@@ -1,0 +1,34 @@
+{
+  "title": "Palm Massage",
+  "shortTitle": "Palm",
+  "summary": "The thumb or finger pads gently work the muscular palm.",
+  "goal": "Relax the soft tissues of the hand after activity.",
+  "startingPosition": "The hand rests palm-up.",
+  "instructions": [
+    "Support the hand.",
+    "Begin with stroking.",
+    "Make small circles over the fleshy palm.",
+    "Avoid painful areas.",
+    "Finish with stroking."
+  ],
+  "direction": "Over the soft areas of the palm.",
+  "pressureText": "Light to moderate",
+  "tempoText": "Slow",
+  "durationText": "2–5 min",
+  "repetitionsText": "6–10 movements",
+  "areasText": [
+    "palm"
+  ],
+  "tips": [
+    "Support the hand with the other hand.",
+    "Do not press with the nail."
+  ],
+  "mistakes": [
+    "Strong focal pressure.",
+    "Digging into a painful point.",
+    "Abrupt finger movement."
+  ],
+  "warning": "Do not massage with acute pain, recent injury, marked swelling, inflammation, or impaired sensation.",
+  "imageAlt": "Educational diagram: palm massage, without text labels.",
+  "telegramCaption": "The thumb or finger pads gently work the muscular palm."
+}

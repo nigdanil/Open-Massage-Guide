@@ -1,0 +1,34 @@
+{
+  "title": "Gentle Foot Compression",
+  "shortTitle": "Foot Compression",
+  "summary": "The hands gently enclose the foot and apply brief even compression.",
+  "goal": "Provide calm, even pressure to the foot.",
+  "startingPosition": "The foot is fully supported between the hands.",
+  "instructions": [
+    "Place the hands on both sides of the foot.",
+    "Increase pressure gradually.",
+    "Hold briefly.",
+    "Release smoothly.",
+    "Repeat."
+  ],
+  "direction": "Even compression through the palms.",
+  "pressureText": "Light to moderate",
+  "tempoText": "Slow",
+  "durationText": "1.5–3 min",
+  "repetitionsText": "4–8 compressions",
+  "areasText": [
+    "foot"
+  ],
+  "tips": [
+    "Keep pressure comfortable.",
+    "Work smoothly without jerky movements."
+  ],
+  "mistakes": [
+    "Using excessive pressure.",
+    "Working through pain.",
+    "Jerky movements."
+  ],
+  "warning": "Do not massage with recent injury, marked swelling, ulcers, infection, severe pain, or impaired sensation unless medically advised.",
+  "imageAlt": "Educational diagram: gentle foot compression, without text labels.",
+  "telegramCaption": "The hands gently enclose the foot and apply brief even compression."
+}

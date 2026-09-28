@@ -1,0 +1,35 @@
+{
+  "title": "Back Massage — 30 Minutes",
+  "shortTitle": "Back · 30 Minutes",
+  "summary": "An extended calm sequence of core back techniques.",
+  "goal": "Combine the basic techniques into a longer educational routine.",
+  "startingPosition": "The person lies comfortably face down.",
+  "instructions": [
+    "4 min — stroking.",
+    "5 min — rubbing.",
+    "8 min — longitudinal and transverse kneading.",
+    "5 min — work around the shoulder blades.",
+    "4 min — trapezius and lower-back areas.",
+    "4 min — gentle vibration and finishing."
+  ],
+  "direction": "Gradually increase intensity in the middle, then finish gently.",
+  "pressureText": "Light to moderate",
+  "tempoText": "Calm",
+  "durationText": "30 min",
+  "repetitionsText": "1 sequence",
+  "areasText": [
+    "back"
+  ],
+  "tips": [
+    "Keep transitions smooth.",
+    "Reduce pressure with tenderness."
+  ],
+  "mistakes": [
+    "Using excessive intensity.",
+    "Rushing transitions.",
+    "Working through pain."
+  ],
+  "warning": "This educational routine is not treatment. Do not perform it with contraindications, acute pain, recent injury, inflammation, or worsening wellbeing.",
+  "imageAlt": "Educational diagram: back massage — 30 minutes, without text labels.",
+  "telegramCaption": "An extended calm sequence of core back techniques."
+}

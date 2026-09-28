@@ -1,0 +1,37 @@
+{
+  "id": "program-004",
+  "slug": "legs-20",
+  "category": "programs",
+  "order": 1140,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "seconds": 1200
+  },
+  "repetitions": {
+    "count": 1
+  },
+  "areas": [
+    "legs"
+  ],
+  "tags": [
+    "program",
+    "legs",
+    "20-min"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1,
+  "sequence": [
+    "legs-001",
+    "legs-004",
+    "legs-005",
+    "legs-006",
+    "legs-007",
+    "legs-014"
+  ]
+}

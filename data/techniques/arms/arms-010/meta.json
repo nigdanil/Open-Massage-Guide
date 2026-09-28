@@ -1,0 +1,30 @@
+{
+  "id": "arms-010",
+  "slug": "finishing-arm-stroking",
+  "category": "arms",
+  "order": 600,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 240
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "arm"
+  ],
+  "tags": [
+    "finishing",
+    "stroking"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

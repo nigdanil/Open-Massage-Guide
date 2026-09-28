@@ -1,0 +1,29 @@
+{
+  "id": "safety-001",
+  "slug": "when-not-to-massage",
+  "category": "safety",
+  "order": 1210,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 120
+  },
+  "repetitions": {
+    "count": 1
+  },
+  "areas": [
+    "safety"
+  ],
+  "tags": [
+    "safety",
+    "contraindications"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

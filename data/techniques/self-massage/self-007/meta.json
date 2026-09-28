@@ -1,0 +1,30 @@
+{
+  "id": "self-007",
+  "slug": "self-foot",
+  "category": "self-massage",
+  "order": 1070,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 360
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "foot"
+  ],
+  "tags": [
+    "self-massage",
+    "foot"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

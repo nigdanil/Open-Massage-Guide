@@ -1,0 +1,29 @@
+{
+  "id": "safety-008",
+  "slug": "after-massage",
+  "category": "safety",
+  "order": 1280,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "count": 1
+  },
+  "areas": [
+    "safety"
+  ],
+  "tags": [
+    "safety",
+    "aftercare"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

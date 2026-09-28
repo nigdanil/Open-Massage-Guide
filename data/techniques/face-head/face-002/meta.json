@@ -1,0 +1,30 @@
+{
+  "id": "face-002",
+  "slug": "temple-circles",
+  "category": "face-head",
+  "order": 920,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 120
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "temples"
+  ],
+  "tags": [
+    "face",
+    "temples"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

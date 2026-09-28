@@ -1,0 +1,34 @@
+{
+  "title": "Circular Scalp Massage",
+  "shortTitle": "Scalp",
+  "summary": "The finger pads gently move the scalp in small circles.",
+  "goal": "Gently relax the scalp tissues.",
+  "startingPosition": "The head is stably supported.",
+  "instructions": [
+    "Place the finger pads on the scalp.",
+    "Make small circles that move with the skin.",
+    "Do not scratch with the nails.",
+    "Progress gradually.",
+    "Keep pressure comfortable."
+  ],
+  "direction": "Small circles over the scalp.",
+  "pressureText": "Light",
+  "tempoText": "Slow",
+  "durationText": "2–5 min",
+  "repetitionsText": "8–12 circles",
+  "areasText": [
+    "scalp"
+  ],
+  "tips": [
+    "Keep pressure comfortable.",
+    "Work smoothly without jerky movements."
+  ],
+  "mistakes": [
+    "Using excessive pressure.",
+    "Working through pain.",
+    "Jerky movements."
+  ],
+  "warning": "Do not massage damaged or inflamed skin. Stop with dizziness, worsening headache, pain, or other unusual symptoms.",
+  "imageAlt": "Educational diagram: circular scalp massage, without text labels.",
+  "telegramCaption": "The finger pads gently move the scalp in small circles."
+}

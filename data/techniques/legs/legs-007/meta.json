@@ -1,0 +1,30 @@
+{
+  "id": "legs-007",
+  "slug": "calf-kneading",
+  "category": "legs",
+  "order": 670,
+  "image": null,
+  "pressure": 3,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 360
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "calf"
+  ],
+  "tags": [
+    "kneading",
+    "calf"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

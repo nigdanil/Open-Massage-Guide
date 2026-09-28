@@ -1,0 +1,30 @@
+{
+  "id": "feet-008",
+  "slug": "foot-compression",
+  "category": "feet",
+  "order": 880,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 90,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 4,
+    "max": 8
+  },
+  "areas": [
+    "foot"
+  ],
+  "tags": [
+    "compression",
+    "foot"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}
