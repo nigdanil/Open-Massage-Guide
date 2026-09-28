@@ -1,0 +1,12 @@
+[
+  { "id": "basics", "title": "Основные приёмы", "order": 10 },
+  { "id": "back", "title": "Спина", "order": 20 },
+  { "id": "neck-shoulders", "title": "Шея и плечи", "order": 30 },
+  { "id": "arms", "title": "Руки", "order": 40 },
+  { "id": "legs", "title": "Ноги", "order": 50 },
+  { "id": "feet", "title": "Стопы", "order": 60 },
+  { "id": "face-head", "title": "Голова и лицо", "order": 70 },
+  { "id": "self-massage", "title": "Самомассаж", "order": 80 },
+  { "id": "programs", "title": "Программы", "order": 90 },
+  { "id": "safety", "title": "Безопасность", "order": 100 }
+]

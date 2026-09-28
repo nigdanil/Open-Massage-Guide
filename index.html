@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f766e" />
+  <meta name="description" content="Открытый визуальный справочник массажных техник." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Массаж" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
+  <link rel="icon" href="./assets/icons/icon-192.png" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <title>Открытый справочник массажа</title>
+</head>
+<body>
+  <header class="app-header">
+    <div class="shell header-row">
+      <div>
+        <p class="eyebrow">OPEN MASSAGE GUIDE</p>
+        <h1>Справочник массажа</h1>
+        <p class="subtitle">Открытая библиотека техник, схем и программ.</p>
+      </div>
+      <button id="installButton" class="button button-primary" hidden>Установить</button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div>
+        <h2 id="heroTitle">Массаж — понятно и визуально</h2>
+        <p>Карточки работают онлайн и офлайн. Проект рассчитан на телефон, планшет и desktop.</p>
+      </div>
+      <div class="hero-stats" aria-label="Статистика каталога">
+        <div><strong id="techniqueCount">0</strong><span>техник</span></div>
+        <div><strong id="categoryCount">0</strong><span>разделов</span></div>
+        <div><strong>100%</strong><span>бесплатно</span></div>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="Фильтры каталога">
+      <label class="search-field">
+        <span class="sr-only">Поиск</span>
+        <input id="searchInput" type="search" placeholder="Найти технику…" autocomplete="off" />
+      </label>
+      <select id="categorySelect" aria-label="Категория">
+        <option value="all">Все зоны</option>
+      </select>
+      <button id="favoritesButton" class="button button-secondary" type="button" aria-pressed="false">☆ Избранное</button>
+    </section>
+
+    <section id="offlineNotice" class="notice" hidden>
+      Вы офлайн. Доступны ранее загруженные карточки.
+    </section>
+
+    <section>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">КАТАЛОГ</p>
+          <h2>Техники</h2>
+        </div>
+        <span id="resultCount" class="muted"></span>
+      </div>
+      <div id="cardsGrid" class="cards-grid" aria-live="polite"></div>
+      <p id="emptyState" class="empty-state" hidden>Ничего не найдено.</p>
+    </section>
+
+    <section class="project-note">
+      <div>
+        <p class="eyebrow">OPEN SOURCE</p>
+        <h2>Код, данные и изображения — в одном репозитории</h2>
+        <p>JSON-файлы являются источником данных для PWA. На следующем этапе эти же записи можно использовать для генерации Telegram-публикаций.</p>
+      </div>
+      <a class="button button-secondary" href="./docs/TELEGRAM.md">Как подключим Telegram</a>
+    </section>
+
+    <section class="safety-note">
+      <strong>Важно.</strong> Это образовательный справочник, а не медицинская диагностика или индивидуальное назначение лечения. При заболеваниях, травмах, острой боли и сомнениях нужна консультация квалифицированного специалиста.
+    </section>
+  </main>
+
+  <dialog id="techniqueDialog" class="technique-dialog">
+    <button id="closeDialog" class="dialog-close" type="button" aria-label="Закрыть">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+
+  <template id="cardTemplate">
+    <article class="technique-card">
+      <button class="favorite-control" type="button" aria-label="Добавить в избранное">☆</button>
+      <button class="card-open" type="button">
+        <div class="card-image-wrap"><img class="card-image" alt="" loading="lazy" /></div>
+        <div class="card-body">
+          <span class="card-category"></span>
+          <h3 class="card-title"></h3>
+          <p class="card-summary"></p>
+          <div class="card-meta"></div>
+        </div>
+      </button>
+    </article>
+  </template>
+
+  <script type="module" src="./assets/js/app.js"></script>
+</body>
+</html>
