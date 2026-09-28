@@ -1,0 +1,32 @@
+{
+  "id": "neck-009",
+  "slug": "occipital-circular-movements",
+  "category": "neck-shoulders",
+  "order": 390,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "suboccipital",
+    "base-of-skull"
+  ],
+  "tags": [
+    "circular",
+    "suboccipital",
+    "gentle"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

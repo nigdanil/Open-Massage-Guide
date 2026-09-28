@@ -1,0 +1,32 @@
+{
+  "id": "neck-006",
+  "slug": "gentle-shoulder-compression",
+  "category": "neck-shoulders",
+  "order": 360,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 240
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "upper-trapezius",
+    "shoulders"
+  ],
+  "tags": [
+    "compression",
+    "shoulders",
+    "relaxation"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

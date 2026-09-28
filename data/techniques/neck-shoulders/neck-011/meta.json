@@ -1,0 +1,32 @@
+{
+  "id": "neck-011",
+  "slug": "gentle-shoulder-vibration",
+  "category": "neck-shoulders",
+  "order": 410,
+  "image": null,
+  "pressure": 1,
+  "tempo": "rhythmic",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 30,
+    "maxSeconds": 90
+  },
+  "repetitions": {
+    "min": 3,
+    "max": 6
+  },
+  "areas": [
+    "upper-trapezius",
+    "shoulders"
+  ],
+  "tags": [
+    "vibration",
+    "shoulders",
+    "finishing"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

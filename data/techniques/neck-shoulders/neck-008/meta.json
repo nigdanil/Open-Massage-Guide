@@ -1,0 +1,32 @@
+{
+  "id": "neck-008",
+  "slug": "gentle-suboccipital-contact",
+  "category": "neck-shoulders",
+  "order": 380,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 4,
+    "max": 8
+  },
+  "areas": [
+    "suboccipital",
+    "base-of-skull"
+  ],
+  "tags": [
+    "suboccipital",
+    "gentle",
+    "relaxation"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

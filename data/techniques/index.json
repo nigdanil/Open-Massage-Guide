@@ -76,5 +76,77 @@
     "path": "./data/techniques/back/back-012",
     "category": "back",
     "order": 220
+  },
+  {
+    "id": "neck-001",
+    "path": "./data/techniques/neck-shoulders/neck-001",
+    "category": "neck-shoulders",
+    "order": 310
+  },
+  {
+    "id": "neck-002",
+    "path": "./data/techniques/neck-shoulders/neck-002",
+    "category": "neck-shoulders",
+    "order": 320
+  },
+  {
+    "id": "neck-003",
+    "path": "./data/techniques/neck-shoulders/neck-003",
+    "category": "neck-shoulders",
+    "order": 330
+  },
+  {
+    "id": "neck-004",
+    "path": "./data/techniques/neck-shoulders/neck-004",
+    "category": "neck-shoulders",
+    "order": 340
+  },
+  {
+    "id": "neck-005",
+    "path": "./data/techniques/neck-shoulders/neck-005",
+    "category": "neck-shoulders",
+    "order": 350
+  },
+  {
+    "id": "neck-006",
+    "path": "./data/techniques/neck-shoulders/neck-006",
+    "category": "neck-shoulders",
+    "order": 360
+  },
+  {
+    "id": "neck-007",
+    "path": "./data/techniques/neck-shoulders/neck-007",
+    "category": "neck-shoulders",
+    "order": 370
+  },
+  {
+    "id": "neck-008",
+    "path": "./data/techniques/neck-shoulders/neck-008",
+    "category": "neck-shoulders",
+    "order": 380
+  },
+  {
+    "id": "neck-009",
+    "path": "./data/techniques/neck-shoulders/neck-009",
+    "category": "neck-shoulders",
+    "order": 390
+  },
+  {
+    "id": "neck-010",
+    "path": "./data/techniques/neck-shoulders/neck-010",
+    "category": "neck-shoulders",
+    "order": 400
+  },
+  {
+    "id": "neck-011",
+    "path": "./data/techniques/neck-shoulders/neck-011",
+    "category": "neck-shoulders",
+    "order": 410
+  },
+  {
+    "id": "neck-012",
+    "path": "./data/techniques/neck-shoulders/neck-012",
+    "category": "neck-shoulders",
+    "order": 420
   }
 ]

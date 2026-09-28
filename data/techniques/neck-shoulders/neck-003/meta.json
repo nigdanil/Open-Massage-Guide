@@ -1,0 +1,33 @@
+{
+  "id": "neck-003",
+  "slug": "neck-to-shoulder-stroking",
+  "category": "neck-shoulders",
+  "order": 330,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "posterior-neck",
+    "upper-trapezius",
+    "shoulders"
+  ],
+  "tags": [
+    "stroking",
+    "transition",
+    "relaxation"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

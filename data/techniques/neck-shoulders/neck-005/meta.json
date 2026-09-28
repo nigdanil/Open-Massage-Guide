@@ -1,0 +1,31 @@
+{
+  "id": "neck-005",
+  "slug": "upper-trapezius-kneading",
+  "category": "neck-shoulders",
+  "order": 350,
+  "image": null,
+  "pressure": 3,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 360
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "upper-trapezius"
+  ],
+  "tags": [
+    "kneading",
+    "trapezius",
+    "shoulders"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

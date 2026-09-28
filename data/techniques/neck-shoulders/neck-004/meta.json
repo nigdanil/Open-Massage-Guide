@@ -1,0 +1,32 @@
+{
+  "id": "neck-004",
+  "slug": "circular-shoulder-rubbing",
+  "category": "neck-shoulders",
+  "order": 340,
+  "image": null,
+  "pressure": 2,
+  "tempo": "moderate",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 8,
+    "max": 12
+  },
+  "areas": [
+    "upper-trapezius",
+    "shoulders"
+  ],
+  "tags": [
+    "rubbing",
+    "circular",
+    "warming-up"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

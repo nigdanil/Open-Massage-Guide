@@ -1,0 +1,33 @@
+{
+  "id": "neck-012",
+  "slug": "finishing-neck-shoulder-stroking",
+  "category": "neck-shoulders",
+  "order": 420,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 240
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "posterior-neck",
+    "upper-trapezius",
+    "shoulders"
+  ],
+  "tags": [
+    "stroking",
+    "finishing",
+    "relaxation"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

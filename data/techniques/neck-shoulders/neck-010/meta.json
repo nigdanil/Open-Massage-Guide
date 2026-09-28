@@ -1,0 +1,32 @@
+{
+  "id": "neck-010",
+  "slug": "bilateral-shoulder-kneading",
+  "category": "neck-shoulders",
+  "order": 400,
+  "image": null,
+  "pressure": 3,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 360
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "upper-trapezius",
+    "shoulders"
+  ],
+  "tags": [
+    "kneading",
+    "bilateral",
+    "shoulders"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}
