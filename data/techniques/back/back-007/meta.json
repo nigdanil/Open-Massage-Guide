@@ -1,0 +1,32 @@
+{
+  "id": "back-007",
+  "slug": "transverse-kneading",
+  "category": "back",
+  "order": 170,
+  "image": null,
+  "pressure": 3,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 360
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 12
+  },
+  "areas": [
+    "latissimus-dorsi",
+    "upper-back"
+  ],
+  "tags": [
+    "kneading",
+    "transverse",
+    "intermediate"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

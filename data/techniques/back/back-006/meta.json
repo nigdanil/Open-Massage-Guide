@@ -1,0 +1,33 @@
+{
+  "id": "back-006",
+  "slug": "longitudinal-kneading",
+  "category": "back",
+  "order": 160,
+  "image": null,
+  "pressure": 3,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 180,
+    "maxSeconds": 360
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 12
+  },
+  "areas": [
+    "latissimus-dorsi",
+    "trapezius",
+    "back-muscles"
+  ],
+  "tags": [
+    "kneading",
+    "longitudinal",
+    "intermediate"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

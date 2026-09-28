@@ -1,0 +1,36 @@
+{
+  "title": "Circular Palm Rubbing",
+  "shortTitle": "Circular Palm Rubbing",
+  "summary": "The palms make small, controlled circular movements over the soft tissues of the back.",
+  "goal": "Increase local warmth and prepare the tissues for kneading without deep pressure.",
+  "imageAlt": "Educational diagram of circular palm rubbing without text labels.",
+  "startingPosition": "The person lies face down. Keep the full palm in contact with the selected soft-tissue area.",
+  "instructions": [
+    "Place the palm on the soft tissue of the back.",
+    "Make small circular movements without working directly over bony prominences.",
+    "Gradually move the circles to the neighboring area.",
+    "Maintain moderate, even pressure.",
+    "Avoid direct pressure on the spine and ribs."
+  ],
+  "direction": "Small circles that gradually travel across the selected area.",
+  "pressureText": "Moderate",
+  "tempoText": "Moderate and controlled",
+  "durationText": "2–5 min",
+  "repetitionsText": "8–16 repetitions",
+  "areasText": [
+    "back-muscles",
+    "interscapular-area",
+    "latissimus-dorsi"
+  ],
+  "tips": [
+    "Keep the circles small and controlled.",
+    "Start lighter and increase pressure only when comfortable."
+  ],
+  "mistakes": [
+    "Large, fast circles.",
+    "Rubbing across the bony edge of the scapula.",
+    "Painful pressure."
+  ],
+  "warning": "Do not perform this technique over acute pain, recent injury, significant inflammation, damaged skin, or when touch increases symptoms. Seek qualified professional advice when uncertain.",
+  "telegramCaption": "The palms make small, controlled circular movements over the soft tissues of the back."
+}

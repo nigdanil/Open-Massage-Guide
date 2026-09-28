@@ -1,0 +1,32 @@
+{
+  "id": "back-008",
+  "slug": "trapezius-work",
+  "category": "back",
+  "order": 180,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 12
+  },
+  "areas": [
+    "upper-trapezius",
+    "shoulder-girdle"
+  ],
+  "tags": [
+    "trapezius",
+    "shoulders",
+    "relaxation"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

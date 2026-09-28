@@ -1,0 +1,56 @@
+
+/* Modular technique cards */
+.card-image-wrap {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+.card-image-placeholder,
+.dialog-image-placeholder {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 42%),
+    var(--image-bg);
+  color: var(--muted);
+  text-align: center;
+}
+.card-image-placeholder span,
+.dialog-image-placeholder span {
+  color: var(--accent-text);
+  font-size: 30px;
+}
+.card-image-placeholder strong,
+.dialog-image-placeholder strong {
+  font-size: 13px;
+  font-weight: 700;
+}
+.dialog-image-placeholder {
+  min-height: 280px;
+  background:
+    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 42%),
+    var(--dialog-image-bg);
+}
+.dialog-section {
+  margin-top: 22px;
+}
+.dialog-section h3 {
+  margin-bottom: 8px;
+}
+.dialog-section p,
+.dialog-section ul,
+.dialog-section ol {
+  margin-bottom: 0;
+}
+.dialog-section li + li {
+  margin-top: 6px;
+}
+.technique-card[data-status="draft"] .card-image-wrap {
+  border-bottom: 1px dashed var(--border);
+}

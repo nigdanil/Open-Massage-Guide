@@ -11,44 +11,41 @@ if (!supportedLanguages.has(language)) {
   process.exit(1);
 }
 
-const techniques = JSON.parse(fs.readFileSync(path.join(root, 'data/techniques.json'), 'utf8'));
-const locale = JSON.parse(fs.readFileSync(path.join(root, `data/locales/${language}.json`), 'utf8'));
-
-function formatDuration(item) {
-  const duration = item.duration;
-  if (!duration) return '';
-  if (duration.key) return locale.duration?.[duration.key] || duration.key;
-  if (Number.isFinite(duration.seconds)) return `${Math.round(duration.seconds / 60)} ${locale.ui.minutesShort}`;
-  if (Number.isFinite(duration.minSeconds) && Number.isFinite(duration.maxSeconds)) {
-    return `${Math.round(duration.minSeconds / 60)}–${Math.round(duration.maxSeconds / 60)} ${locale.ui.minutesShort}`;
-  }
-  return '';
+function readJson(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
 
+const index = readJson(path.join(root, 'data/techniques/index.json'));
+const locale = readJson(path.join(root, `data/locales/${language}.json`));
 const hashtags = language === 'ru' ? '#массаж #справочник' : '#massage #massageguide';
 
-const feed = techniques
-  .filter((item) => item.status === 'published' && item.telegram?.publish)
-  .map((item) => {
-    const text = locale.techniques[item.id];
-    return {
-      id: item.id,
-      language,
-      image: item.image,
-      text: [
-        `👐 ${text.title}`,
-        `📍 ${locale.categories[item.category] || item.category}`,
-        '',
-        text.telegramCaption || text.summary,
-        '',
-        `${locale.ui.pressure}: ${'●'.repeat(item.pressure)}${'○'.repeat(5 - item.pressure)}`,
-        `${locale.ui.tempo}: ${locale.tempo[item.tempo] || item.tempo}`,
-        `${locale.ui.time}: ${formatDuration(item)}`,
-        '',
-        hashtags,
-      ].join('\n'),
-    };
+const feed = [];
+
+for (const entry of index) {
+  const moduleDir = path.join(root, entry.path.replace(/^\.\//, ''));
+  const meta = readJson(path.join(moduleDir, 'meta.json'));
+
+  if (meta.status !== 'published' || !meta.telegram?.publish || !meta.image) continue;
+
+  const text = readJson(path.join(moduleDir, `${language}.json`));
+  feed.push({
+    id: meta.id,
+    language,
+    image: meta.image,
+    text: [
+      `👐 ${text.title}`,
+      `📍 ${locale.categories[meta.category] || meta.category}`,
+      '',
+      text.telegramCaption || text.summary,
+      '',
+      `${locale.ui.pressure}: ${'●'.repeat(meta.pressure)}${'○'.repeat(5 - meta.pressure)} · ${text.pressureText}`,
+      `${locale.ui.tempo}: ${text.tempoText}`,
+      `${locale.ui.time}: ${text.durationText}`,
+      '',
+      hashtags,
+    ].join('\n'),
   });
+}
 
 const outDir = path.join(root, 'dist');
 fs.mkdirSync(outDir, { recursive: true });

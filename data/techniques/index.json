@@ -1,0 +1,80 @@
+[
+  {
+    "id": "overview-001",
+    "path": "./data/techniques/basics/overview-001",
+    "category": "basics",
+    "order": 10
+  },
+  {
+    "id": "back-001",
+    "path": "./data/techniques/back/back-001",
+    "category": "back",
+    "order": 110
+  },
+  {
+    "id": "back-002",
+    "path": "./data/techniques/back/back-002",
+    "category": "back",
+    "order": 120
+  },
+  {
+    "id": "back-003",
+    "path": "./data/techniques/back/back-003",
+    "category": "back",
+    "order": 130
+  },
+  {
+    "id": "back-004",
+    "path": "./data/techniques/back/back-004",
+    "category": "back",
+    "order": 140
+  },
+  {
+    "id": "back-005",
+    "path": "./data/techniques/back/back-005",
+    "category": "back",
+    "order": 150
+  },
+  {
+    "id": "back-006",
+    "path": "./data/techniques/back/back-006",
+    "category": "back",
+    "order": 160
+  },
+  {
+    "id": "back-007",
+    "path": "./data/techniques/back/back-007",
+    "category": "back",
+    "order": 170
+  },
+  {
+    "id": "back-008",
+    "path": "./data/techniques/back/back-008",
+    "category": "back",
+    "order": 180
+  },
+  {
+    "id": "back-009",
+    "path": "./data/techniques/back/back-009",
+    "category": "back",
+    "order": 190
+  },
+  {
+    "id": "back-010",
+    "path": "./data/techniques/back/back-010",
+    "category": "back",
+    "order": 200
+  },
+  {
+    "id": "back-011",
+    "path": "./data/techniques/back/back-011",
+    "category": "back",
+    "order": 210
+  },
+  {
+    "id": "back-012",
+    "path": "./data/techniques/back/back-012",
+    "category": "back",
+    "order": 220
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "title": "Transverse Back Kneading",
+  "shortTitle": "Transverse Kneading",
+  "summary": "Both hands gently displace the muscle mass in opposite directions across its long axis.",
+  "goal": "Vary the kneading pattern and gently mobilize larger areas of muscle tissue.",
+  "imageAlt": "Educational diagram of transverse back kneading without text labels.",
+  "startingPosition": "The person lies face down. Warm the area first and place both hands over the muscle mass.",
+  "instructions": [
+    "Place the hands on opposite sides of the selected muscular area.",
+    "Gently shift the tissue toward you with one hand and away with the other.",
+    "Release pressure without abruptly losing contact.",
+    "Move to the neighboring area and repeat.",
+    "Do not perform the movement directly over the spine or bony borders."
+  ],
+  "direction": "Alternating displacement of soft tissue across the muscle mass.",
+  "pressureText": "Moderate",
+  "tempoText": "Slow and smooth",
+  "durationText": "3–6 min",
+  "repetitionsText": "6–12 repetitions",
+  "areasText": [
+    "latissimus-dorsi",
+    "upper-back"
+  ],
+  "tips": [
+    "Use the palm and fingers together.",
+    "Keep the movement small and comfortable."
+  ],
+  "mistakes": [
+    "Twisting only the skin instead of soft tissue.",
+    "Excessive movement amplitude.",
+    "Painful compression."
+  ],
+  "warning": "Do not perform this technique over acute pain, recent injury, significant inflammation, damaged skin, or when touch increases symptoms. Seek qualified professional advice when uncertain.",
+  "telegramCaption": "Both hands gently displace the muscle mass in opposite directions across its long axis."
+}

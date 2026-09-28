@@ -1,0 +1,36 @@
+{
+  "title": "Gentle Back Vibration",
+  "shortTitle": "Gentle Vibration",
+  "summary": "The palms create light rhythmic oscillations over soft tissue without striking or abrupt movement.",
+  "goal": "Add a brief, rhythmic relaxation technique near the end of the massage.",
+  "imageAlt": "Educational diagram of gentle back vibration without text labels.",
+  "startingPosition": "The person lies face down. Keep the palm fully in contact with a soft muscular area.",
+  "instructions": [
+    "Place the palm on a soft area of the back.",
+    "Relax the hand and forearm.",
+    "Create small, quick oscillations without striking.",
+    "Continue for a few seconds, then move gently to the next area.",
+    "Alternate vibration with calm stroking."
+  ],
+  "direction": "Small oscillations in place, gradually moving across soft tissue.",
+  "pressureText": "Very light",
+  "tempoText": "Light and rhythmic",
+  "durationText": "30–90 sec",
+  "repetitionsText": "3–6 repetitions",
+  "areasText": [
+    "back-muscles",
+    "upper-back",
+    "mid-back"
+  ],
+  "tips": [
+    "Keep the amplitude small.",
+    "Avoid tensing the practitioner's wrist and shoulder."
+  ],
+  "mistakes": [
+    "Shaking the whole body strongly.",
+    "Turning vibration into percussion.",
+    "Prolonged vibration over one sensitive spot."
+  ],
+  "warning": "Do not perform this technique over acute pain, recent injury, significant inflammation, damaged skin, or when touch increases symptoms. Seek qualified professional advice when uncertain.",
+  "telegramCaption": "The palms create light rhythmic oscillations over soft tissue without striking or abrupt movement."
+}

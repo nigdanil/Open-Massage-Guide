@@ -1,0 +1,32 @@
+{
+  "id": "back-010",
+  "slug": "gentle-lumbar-work",
+  "category": "back",
+  "order": 200,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "lumbar-area",
+    "lower-back-muscles"
+  ],
+  "tags": [
+    "lower-back",
+    "gentle",
+    "relaxation"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

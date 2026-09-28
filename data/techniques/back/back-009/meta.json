@@ -1,0 +1,33 @@
+{
+  "id": "back-009",
+  "slug": "scapular-area-work",
+  "category": "back",
+  "order": 190,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "intermediate",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 12
+  },
+  "areas": [
+    "scapular-area",
+    "upper-back",
+    "mid-back"
+  ],
+  "tags": [
+    "scapular-area",
+    "upper-back",
+    "focused"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

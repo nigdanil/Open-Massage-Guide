@@ -1,0 +1,31 @@
+{
+  "id": "back-012",
+  "slug": "finishing-back-stroking",
+  "category": "back",
+  "order": 220,
+  "image": null,
+  "pressure": 1,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 60,
+    "maxSeconds": 180
+  },
+  "repetitions": {
+    "min": 4,
+    "max": 8
+  },
+  "areas": [
+    "back"
+  ],
+  "tags": [
+    "stroking",
+    "finishing",
+    "relaxation"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

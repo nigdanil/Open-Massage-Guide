@@ -1,0 +1,33 @@
+{
+  "id": "back-004",
+  "slug": "circular-palm-rubbing",
+  "category": "back",
+  "order": 140,
+  "image": null,
+  "pressure": 3,
+  "tempo": "moderate",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 300
+  },
+  "repetitions": {
+    "min": 8,
+    "max": 16
+  },
+  "areas": [
+    "back-muscles",
+    "interscapular-area",
+    "latissimus-dorsi"
+  ],
+  "tags": [
+    "rubbing",
+    "circular",
+    "warming-up"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

@@ -1,0 +1,33 @@
+{
+  "id": "back-011",
+  "slug": "gentle-vibration",
+  "category": "back",
+  "order": 210,
+  "image": null,
+  "pressure": 1,
+  "tempo": "rhythmic",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 30,
+    "maxSeconds": 90
+  },
+  "repetitions": {
+    "min": 3,
+    "max": 6
+  },
+  "areas": [
+    "back-muscles",
+    "upper-back",
+    "mid-back"
+  ],
+  "tags": [
+    "vibration",
+    "finishing",
+    "relaxation"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

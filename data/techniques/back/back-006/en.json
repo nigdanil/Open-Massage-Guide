@@ -1,0 +1,36 @@
+{
+  "title": "Longitudinal Back Kneading",
+  "shortTitle": "Longitudinal Kneading",
+  "summary": "Soft tissue is gently gathered and worked along the muscle mass without sharp pinching.",
+  "goal": "Gently work larger muscle areas after the tissues have been warmed up.",
+  "imageAlt": "Educational diagram of longitudinal back kneading without text labels.",
+  "startingPosition": "The person lies face down. Warm the tissues first with stroking or rubbing.",
+  "instructions": [
+    "Place both hands over a soft muscular area.",
+    "Gently gather the tissue between the palms and fingers without pinching the skin.",
+    "Apply a smooth compress-and-release motion.",
+    "Move slightly higher along the muscle and repeat.",
+    "Keep a slow rhythm and avoid working directly on the spine."
+  ],
+  "direction": "Progress gradually along the long axis of the muscle mass.",
+  "pressureText": "Moderate",
+  "tempoText": "Slow and smooth",
+  "durationText": "3–6 min",
+  "repetitionsText": "6–12 repetitions",
+  "areasText": [
+    "latissimus-dorsi",
+    "trapezius",
+    "back-muscles"
+  ],
+  "tips": [
+    "Warm the tissue first.",
+    "Gather soft tissue rather than pinching only the skin."
+  ],
+  "mistakes": [
+    "Pinching the skin.",
+    "Jerky or rapid squeezing.",
+    "Deep work without warming the tissue first."
+  ],
+  "warning": "Do not perform this technique over acute pain, recent injury, significant inflammation, damaged skin, or when touch increases symptoms. Seek qualified professional advice when uncertain.",
+  "telegramCaption": "Soft tissue is gently gathered and worked along the muscle mass without sharp pinching."
+}

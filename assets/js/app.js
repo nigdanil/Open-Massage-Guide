@@ -1,5 +1,4 @@
 const SUPPORTED_LANGUAGES = ['ru', 'en'];
-const DEFAULT_LANGUAGE = 'ru';
 const SUPPORTED_THEMES = ['system', 'light', 'dark'];
 const THEME_STORAGE_KEY = 'massage-theme';
 const systemThemeMedia = window.matchMedia('(prefers-color-scheme: dark)');
@@ -15,7 +14,7 @@ function resolveInitialThemePreference() {
   try {
     const saved = localStorage.getItem(THEME_STORAGE_KEY);
     if (SUPPORTED_THEMES.includes(saved)) return saved;
-  } catch (_) { }
+  } catch (_) {}
   return 'system';
 }
 
@@ -62,12 +61,31 @@ async function loadJson(path) {
 }
 
 async function loadLocale(language) {
-  const locale = await loadJson(`./data/locales/${language}.json`);
-  state.locale = locale;
+  state.locale = await loadJson(`./data/locales/${language}.json`);
   state.language = language;
   localStorage.setItem('massage-language', language);
   document.documentElement.lang = language;
   els.languageSelect.value = language;
+}
+
+async function loadTechniqueModules(language) {
+  const index = await loadJson('./data/techniques/index.json');
+  return Promise.all(index
+    .sort((a, b) => a.order - b.order)
+    .map(async (entry) => {
+      const [meta, text] = await Promise.all([
+        loadJson(`${entry.path}/meta.json`),
+        loadJson(`${entry.path}/${language}.json`),
+      ]);
+      return { ...meta, modulePath: entry.path, text };
+    }));
+}
+
+async function reloadTechniqueTexts(language) {
+  state.techniques = await Promise.all(state.techniques.map(async (item) => ({
+    ...item,
+    text: await loadJson(`${item.modulePath}/${language}.json`),
+  })));
 }
 
 function ui(key, fallback = '') {
@@ -75,15 +93,11 @@ function ui(key, fallback = '') {
 }
 
 function techniqueText(item, key, fallback = '') {
-  return state.locale?.techniques?.[item.id]?.[key] ?? fallback;
+  return item.text?.[key] ?? fallback;
 }
 
 function categoryTitle(id) {
   return state.locale?.categories?.[id] ?? id;
-}
-
-function areaTitle(id) {
-  return state.locale?.areas?.[id] ?? id;
 }
 
 function formatTemplate(template, values) {
@@ -91,30 +105,6 @@ function formatTemplate(template, values) {
     (result, [key, value]) => result.replaceAll(`{${key}}`, String(value)),
     template,
   );
-}
-
-function formatTempo(item) {
-  return state.locale?.tempo?.[item.tempo] ?? item.tempo ?? '';
-}
-
-function formatDuration(item) {
-  const duration = item.duration;
-  if (!duration) return '';
-  if (duration.key) return state.locale?.duration?.[duration.key] ?? duration.key;
-  if (Number.isFinite(duration.seconds)) return `${Math.round(duration.seconds / 60)} ${ui('minutesShort', 'min')}`;
-  if (Number.isFinite(duration.minSeconds) && Number.isFinite(duration.maxSeconds)) {
-    return `${Math.round(duration.minSeconds / 60)}–${Math.round(duration.maxSeconds / 60)} ${ui('minutesShort', 'min')}`;
-  }
-  return '';
-}
-
-function formatRepetitions(item) {
-  const repetitions = item.repetitions;
-  if (!repetitions) return '';
-  if (repetitions.key) return state.locale?.repetitions?.[repetitions.key] ?? repetitions.key;
-  if (Number.isFinite(repetitions.min) && Number.isFinite(repetitions.max)) return `${repetitions.min}–${repetitions.max}`;
-  if (Number.isFinite(repetitions.count)) return String(repetitions.count);
-  return '';
 }
 
 function pressureDots(item) {
@@ -126,9 +116,7 @@ function applyTheme(preference, persist = true) {
   state.themePreference = safePreference;
 
   if (persist) {
-    try {
-      localStorage.setItem(THEME_STORAGE_KEY, safePreference);
-    } catch (_) { }
+    try { localStorage.setItem(THEME_STORAGE_KEY, safePreference); } catch (_) {}
   }
 
   const theme = resolvedTheme(safePreference);
@@ -184,13 +172,10 @@ function renderStaticUi() {
 
 async function init() {
   try {
-    const [categories, techniques] = await Promise.all([
-      loadJson('./data/categories.json'),
-      loadJson('./data/techniques.json'),
-    ]);
+    const [categories] = await Promise.all([loadJson('./data/categories.json')]);
     state.categories = categories.sort((a, b) => a.order - b.order);
-    state.techniques = techniques;
     await loadLocale(state.language);
+    state.techniques = await loadTechniqueModules(state.language);
     applyTheme(state.themePreference, false);
     renderStaticUi();
     renderCategories();
@@ -231,12 +216,13 @@ function getFilteredTechniques() {
   const category = els.categorySelect.value;
 
   return state.techniques.filter((item) => {
-    const text = state.locale?.techniques?.[item.id] || {};
     const haystack = [
-      text.title,
-      text.summary,
+      techniqueText(item, 'title'),
+      techniqueText(item, 'summary'),
+      techniqueText(item, 'goal'),
       categoryTitle(item.category),
-      ...(item.areas || []).map(areaTitle),
+      ...(techniqueText(item, 'areasText', [])),
+      ...(item.tags || []),
     ].filter(Boolean).join(' ').toLocaleLowerCase(localeName);
 
     const queryMatch = !query || haystack.includes(query);
@@ -244,6 +230,19 @@ function getFilteredTechniques() {
     const favoriteMatch = !state.favoritesOnly || state.favorites.has(item.id);
     return queryMatch && categoryMatch && favoriteMatch;
   });
+}
+
+function mediaHtml(item, dialog = false) {
+  if (item.image) {
+    const className = dialog ? 'dialog-image' : 'card-image';
+    return `<img class="${className}" src="${escapeHtml(item.image)}" alt="${escapeHtml(techniqueText(item, 'imageAlt', techniqueText(item, 'title', item.id)))}" ${dialog ? '' : 'loading="lazy"'} />`;
+  }
+
+  const className = dialog ? 'dialog-image-placeholder' : 'card-image-placeholder';
+  return `<div class="${className}" role="img" aria-label="${escapeHtml(ui('imagePending'))}">
+    <span aria-hidden="true">✦</span>
+    <strong>${escapeHtml(ui('imagePending'))}</strong>
+  </div>`;
 }
 
 function render() {
@@ -260,20 +259,24 @@ function render() {
     const article = node.querySelector('.technique-card');
     const open = node.querySelector('.card-open');
     const favorite = node.querySelector('.favorite-control');
-    const image = node.querySelector('.card-image');
-    const title = techniqueText(item, 'title', item.id);
-    const summary = techniqueText(item, 'summary');
+    const imageWrap = node.querySelector('.card-image-wrap');
 
-    image.src = item.image;
-    image.alt = techniqueText(item, 'imageAlt', title);
+    imageWrap.innerHTML = mediaHtml(item);
     node.querySelector('.card-category').textContent = categoryTitle(item.category);
-    node.querySelector('.card-title').textContent = title;
-    node.querySelector('.card-summary').textContent = summary;
-    node.querySelector('.card-meta').innerHTML = [
+    node.querySelector('.card-title').textContent = techniqueText(item, 'title', item.id);
+    node.querySelector('.card-summary').textContent = techniqueText(item, 'summary');
+
+    const meta = [
       `${ui('pressure')} ${pressureDots(item)}`,
-      formatTempo(item),
-      formatDuration(item),
-    ].filter(Boolean).map((value) => `<span>${escapeHtml(value)}</span>`).join('');
+      techniqueText(item, 'tempoText'),
+      techniqueText(item, 'durationText'),
+    ];
+    if (item.status === 'draft') meta.push(ui('draft'));
+
+    node.querySelector('.card-meta').innerHTML = meta
+      .filter(Boolean)
+      .map((value) => `<span>${escapeHtml(value)}</span>`)
+      .join('');
 
     const isFavorite = state.favorites.has(item.id);
     favorite.textContent = isFavorite ? '★' : '☆';
@@ -283,6 +286,7 @@ function render() {
     favorite.addEventListener('click', () => toggleFavorite(item.id));
     open.addEventListener('click', () => openTechnique(item));
     article.dataset.id = item.id;
+    article.dataset.status = item.status;
     els.cardsGrid.append(node);
   }
 }
@@ -295,34 +299,46 @@ function toggleFavorite(id) {
   render();
 }
 
+function listHtml(items) {
+  if (!Array.isArray(items) || items.length === 0) return '';
+  return `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+}
+
+function sectionHtml(title, body) {
+  if (!body || (Array.isArray(body) && body.length === 0)) return '';
+  const content = Array.isArray(body) ? listHtml(body) : `<p>${escapeHtml(body)}</p>`;
+  return `<section class="dialog-section"><h3>${escapeHtml(title)}</h3>${content}</section>`;
+}
+
 function openTechnique(item) {
-  const title = techniqueText(item, 'title', item.id);
-  const summary = techniqueText(item, 'summary');
   const instructions = techniqueText(item, 'instructions', []);
-  const warning = techniqueText(item, 'warning');
-  const areas = (item.areas || []).map(areaTitle).join(', ');
-  const instructionHtml = Array.isArray(instructions)
-    ? `<ol>${instructions.map((step) => `<li>${escapeHtml(step)}</li>`).join('')}</ol>`
-    : `<p>${escapeHtml(instructions)}</p>`;
+  const instructionHtml = `<ol>${instructions.map((step) => `<li>${escapeHtml(step)}</li>`).join('')}</ol>`;
 
   els.dialogContent.innerHTML = `
-    <img class="dialog-image" src="${escapeHtml(item.image)}" alt="${escapeHtml(techniqueText(item, 'imageAlt', title))}" />
+    ${mediaHtml(item, true)}
     <div class="dialog-body">
       <p class="eyebrow">${escapeHtml(categoryTitle(item.category))}</p>
-      <h2>${escapeHtml(title)}</h2>
-      <p>${escapeHtml(summary)}</p>
+      <h2>${escapeHtml(techniqueText(item, 'title', item.id))}</h2>
+      <p>${escapeHtml(techniqueText(item, 'summary'))}</p>
+
       <div class="dialog-grid">
-        <div class="dialog-fact"><small>${escapeHtml(ui('pressure'))}</small><strong>${pressureDots(item)}</strong></div>
-        <div class="dialog-fact"><small>${escapeHtml(ui('tempo'))}</small><strong>${escapeHtml(formatTempo(item))}</strong></div>
-        <div class="dialog-fact"><small>${escapeHtml(ui('time'))}</small><strong>${escapeHtml(formatDuration(item))}</strong></div>
-        <div class="dialog-fact"><small>${escapeHtml(ui('repetitions'))}</small><strong>${escapeHtml(formatRepetitions(item))}</strong></div>
+        <div class="dialog-fact"><small>${escapeHtml(ui('pressure'))}</small><strong>${pressureDots(item)} · ${escapeHtml(techniqueText(item, 'pressureText'))}</strong></div>
+        <div class="dialog-fact"><small>${escapeHtml(ui('tempo'))}</small><strong>${escapeHtml(techniqueText(item, 'tempoText'))}</strong></div>
+        <div class="dialog-fact"><small>${escapeHtml(ui('time'))}</small><strong>${escapeHtml(techniqueText(item, 'durationText'))}</strong></div>
+        <div class="dialog-fact"><small>${escapeHtml(ui('repetitions'))}</small><strong>${escapeHtml(techniqueText(item, 'repetitionsText'))}</strong></div>
       </div>
-      <h3>${escapeHtml(ui('howTo'))}</h3>
-      ${instructionHtml}
-      <h3>${escapeHtml(ui('areas'))}</h3>
-      <p>${escapeHtml(areas)}</p>
-      <div class="dialog-warning"><strong>${escapeHtml(ui('caution'))}</strong> ${escapeHtml(warning)}</div>
+
+      ${sectionHtml(ui('goal'), techniqueText(item, 'goal'))}
+      ${sectionHtml(ui('startingPosition'), techniqueText(item, 'startingPosition'))}
+      <section class="dialog-section"><h3>${escapeHtml(ui('howTo'))}</h3>${instructionHtml}</section>
+      ${sectionHtml(ui('direction'), techniqueText(item, 'direction'))}
+      ${sectionHtml(ui('areas'), techniqueText(item, 'areasText', []))}
+      ${sectionHtml(ui('tips'), techniqueText(item, 'tips', []))}
+      ${sectionHtml(ui('commonMistakes'), techniqueText(item, 'mistakes', []))}
+
+      <div class="dialog-warning"><strong>${escapeHtml(ui('caution'))}</strong> ${escapeHtml(techniqueText(item, 'warning'))}</div>
     </div>`;
+
   els.dialog.showModal();
 }
 
@@ -331,6 +347,7 @@ async function switchLanguage(language) {
   els.languageSelect.disabled = true;
   try {
     await loadLocale(language);
+    await reloadTechniqueTexts(language);
     renderStaticUi();
     renderCategories();
     render();
@@ -341,7 +358,7 @@ async function switchLanguage(language) {
 
 function escapeHtml(value = '') {
   return String(value).replace(/[&<>'"]/g, (char) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;',
   })[char]);
 }
 

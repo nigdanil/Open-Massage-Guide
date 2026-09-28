@@ -1,0 +1,33 @@
+{
+  "id": "overview-001",
+  "slug": "full-massage-overview",
+  "category": "basics",
+  "order": 10,
+  "image": "./assets/images/cards/overview-v1.png",
+  "pressure": 2,
+  "tempo": "varies",
+  "difficulty": "beginner",
+  "duration": {
+    "key": "overview"
+  },
+  "repetitions": {
+    "key": "by-technique"
+  },
+  "areas": [
+    "back",
+    "neck",
+    "shoulders",
+    "arms",
+    "legs",
+    "feet"
+  ],
+  "tags": [
+    "overview",
+    "navigation"
+  ],
+  "telegram": {
+    "publish": true
+  },
+  "status": "published",
+  "version": 3
+}

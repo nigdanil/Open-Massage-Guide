@@ -1,0 +1,32 @@
+{
+  "id": "back-003",
+  "slug": "transverse-back-stroking",
+  "category": "back",
+  "order": 130,
+  "image": null,
+  "pressure": 2,
+  "tempo": "slow",
+  "difficulty": "beginner",
+  "duration": {
+    "minSeconds": 120,
+    "maxSeconds": 240
+  },
+  "repetitions": {
+    "min": 6,
+    "max": 10
+  },
+  "areas": [
+    "mid-back",
+    "lateral-back"
+  ],
+  "tags": [
+    "stroking",
+    "transverse",
+    "warming-up"
+  ],
+  "telegram": {
+    "publish": false
+  },
+  "status": "draft",
+  "version": 1
+}

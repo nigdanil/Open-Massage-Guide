@@ -1,0 +1,36 @@
+{
+  "title": "Complete Massage Overview",
+  "shortTitle": "Massage Overview",
+  "summary": "An overview of basic movement directions, body areas, and the sequence of a general massage.",
+  "goal": "Use this card as a navigation map for the guide's sections and individual techniques.",
+  "imageAlt": "Infographic showing basic massage techniques and body areas.",
+  "startingPosition": "Open an individual technique for the body area you want to work on and follow its instructions.",
+  "instructions": [
+    "Use this card as a general navigation overview.",
+    "Open individual techniques by body area for practical guidance.",
+    "Follow the pressure and safety notes provided for each technique."
+  ],
+  "direction": "Movement direction depends on the selected technique and body area.",
+  "pressureText": "Depends on technique",
+  "tempoText": "Depends on technique",
+  "durationText": "Overview",
+  "repetitionsText": "Depends on technique",
+  "areasText": [
+    "back",
+    "neck",
+    "shoulders",
+    "arms",
+    "legs",
+    "feet"
+  ],
+  "tips": [
+    "Start with gentle techniques and progress gradually.",
+    "Use the receiver's comfort as the primary guide."
+  ],
+  "mistakes": [
+    "Using the overview instead of the instructions for a specific technique.",
+    "Ignoring pain, inflammation, or damaged skin."
+  ],
+  "warning": "This overview is not individualized medical advice.",
+  "telegramCaption": "A basic map of massage areas and techniques. Detailed techniques are available in the PWA."
+}
