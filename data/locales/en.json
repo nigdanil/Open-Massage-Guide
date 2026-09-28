@@ -37,6 +37,8 @@
     "removeFavorite": "Remove from favorites",
     "close": "Close",
     "language": "Language",
+    "switchToDarkTheme": "Switch to dark theme",
+    "switchToLightTheme": "Switch to light theme",
     "minutesShort": "min"
   },
   "categories": {

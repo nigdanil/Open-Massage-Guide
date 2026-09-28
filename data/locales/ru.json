@@ -37,6 +37,8 @@
     "removeFavorite": "Удалить из избранного",
     "close": "Закрыть",
     "language": "Язык",
+    "switchToDarkTheme": "Включить тёмную тему",
+    "switchToLightTheme": "Включить светлую тему",
     "minutesShort": "мин"
   },
   "categories": {

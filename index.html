@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0f766e" />
+  <meta id="themeColor" name="theme-color" content="#0f766e" />
   <meta id="metaDescription" name="description" content="Открытый визуальный справочник массажных техник." />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -11,6 +11,19 @@
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
   <link rel="icon" href="./assets/icons/icon-192.png" />
+  <script>
+    (() => {
+      const key = 'massage-theme';
+      let preference = 'system';
+      try {
+        const saved = localStorage.getItem(key);
+        if (['system', 'light', 'dark'].includes(saved)) preference = saved;
+      } catch (_) {}
+      const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const resolved = preference === 'system' ? (systemDark ? 'dark' : 'light') : preference;
+      document.documentElement.dataset.theme = resolved;
+    })();
+  </script>
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <title>Открытый справочник массажа</title>
 </head>
@@ -22,7 +35,10 @@
         <h1 id="appTitle">Справочник массажа</h1>
         <p id="appSubtitle" class="subtitle">Открытая библиотека техник, схем и программ.</p>
       </div>
-      <div>
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle button button-secondary" type="button" aria-label="Переключить тему" title="Переключить тему">
+          <span id="themeToggleIcon" aria-hidden="true">☾</span>
+        </button>
         <select id="languageSelect" class="button button-secondary" aria-label="Язык">
           <option value="ru">RU</option>
           <option value="en">EN</option>

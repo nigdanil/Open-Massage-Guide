@@ -1,5 +1,8 @@
 const SUPPORTED_LANGUAGES = ['ru', 'en'];
 const DEFAULT_LANGUAGE = 'ru';
+const SUPPORTED_THEMES = ['system', 'light', 'dark'];
+const THEME_STORAGE_KEY = 'massage-theme';
+const systemThemeMedia = window.matchMedia('(prefers-color-scheme: dark)');
 
 function resolveInitialLanguage() {
   const saved = localStorage.getItem('massage-language');
@@ -8,11 +11,25 @@ function resolveInitialLanguage() {
   return browserLanguage.startsWith('ru') ? 'ru' : 'en';
 }
 
+function resolveInitialThemePreference() {
+  try {
+    const saved = localStorage.getItem(THEME_STORAGE_KEY);
+    if (SUPPORTED_THEMES.includes(saved)) return saved;
+  } catch (_) { }
+  return 'system';
+}
+
+function resolvedTheme(preference) {
+  if (preference === 'system') return systemThemeMedia.matches ? 'dark' : 'light';
+  return preference;
+}
+
 const state = {
   techniques: [],
   categories: [],
   locale: null,
   language: resolveInitialLanguage(),
+  themePreference: resolveInitialThemePreference(),
   favoritesOnly: false,
   favorites: new Set(JSON.parse(localStorage.getItem('massage-favorites') || '[]')),
   deferredPrompt: null,
@@ -30,6 +47,8 @@ const els = {
   categoryCount: document.querySelector('#categoryCount'),
   offlineNotice: document.querySelector('#offlineNotice'),
   installButton: document.querySelector('#installButton'),
+  themeToggle: document.querySelector('#themeToggle'),
+  themeToggleIcon: document.querySelector('#themeToggleIcon'),
   languageSelect: document.querySelector('#languageSelect'),
   dialog: document.querySelector('#techniqueDialog'),
   dialogContent: document.querySelector('#dialogContent'),
@@ -102,6 +121,39 @@ function pressureDots(item) {
   return `${'●'.repeat(item.pressure)}${'○'.repeat(Math.max(0, 5 - item.pressure))}`;
 }
 
+function applyTheme(preference, persist = true) {
+  const safePreference = SUPPORTED_THEMES.includes(preference) ? preference : 'system';
+  state.themePreference = safePreference;
+
+  if (persist) {
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, safePreference);
+    } catch (_) { }
+  }
+
+  const theme = resolvedTheme(safePreference);
+  document.documentElement.dataset.theme = theme;
+  updateThemeToggle(theme);
+
+  const themeColor = document.querySelector('#themeColor');
+  if (themeColor) themeColor.content = theme === 'dark' ? '#101514' : '#0f766e';
+}
+
+function handleSystemThemeChange() {
+  if (state.themePreference === 'system') applyTheme('system', false);
+}
+
+function updateThemeToggle(theme = resolvedTheme(state.themePreference)) {
+  const switchToDark = theme === 'light';
+  const label = switchToDark
+    ? ui('switchToDarkTheme', 'Switch to dark theme')
+    : ui('switchToLightTheme', 'Switch to light theme');
+
+  els.themeToggleIcon.textContent = switchToDark ? '☾' : '☀';
+  els.themeToggle.setAttribute('aria-label', label);
+  els.themeToggle.title = label;
+}
+
 function renderStaticUi() {
   document.title = ui('documentTitle', 'Open Massage Guide');
   document.querySelector('#metaDescription').content = ui('metaDescription', 'Open Massage Guide');
@@ -125,6 +177,7 @@ function renderStaticUi() {
   els.offlineNotice.textContent = ui('offlineNotice');
   els.installButton.textContent = ui('install');
   els.languageSelect.setAttribute('aria-label', ui('language'));
+  updateThemeToggle();
   els.closeDialog.setAttribute('aria-label', ui('close'));
   els.favoritesButton.textContent = state.favoritesOnly ? ui('favoritesOnly') : ui('favorites');
 }
@@ -138,6 +191,7 @@ async function init() {
     state.categories = categories.sort((a, b) => a.order - b.order);
     state.techniques = techniques;
     await loadLocale(state.language);
+    applyTheme(state.themePreference, false);
     renderStaticUi();
     renderCategories();
     render();
@@ -327,6 +381,15 @@ window.addEventListener('offline', updateNetworkStatus);
 els.searchInput.addEventListener('input', render);
 els.categorySelect.addEventListener('change', render);
 els.languageSelect.addEventListener('change', (event) => switchLanguage(event.target.value));
+els.themeToggle.addEventListener('click', () => {
+  const nextTheme = resolvedTheme(state.themePreference) === 'dark' ? 'light' : 'dark';
+  applyTheme(nextTheme);
+});
+if (typeof systemThemeMedia.addEventListener === 'function') {
+  systemThemeMedia.addEventListener('change', handleSystemThemeChange);
+} else {
+  systemThemeMedia.addListener?.(handleSystemThemeChange);
+}
 els.favoritesButton.addEventListener('click', () => {
   state.favoritesOnly = !state.favoritesOnly;
   els.favoritesButton.setAttribute('aria-pressed', String(state.favoritesOnly));
