@@ -1,0 +1,77 @@
+{
+  "meta": { "languageName": "English" },
+  "ui": {
+    "documentTitle": "Open Massage Guide",
+    "metaDescription": "Open visual guide to massage techniques.",
+    "appTitle": "Massage Guide",
+    "appSubtitle": "An open library of techniques, visual guides and programs.",
+    "install": "Install",
+    "heroTitle": "Massage — clear and visual",
+    "heroDescription": "The guide works online and offline on phones, tablets and desktop computers.",
+    "techniquesLabel": "techniques",
+    "sectionsLabel": "sections",
+    "freeLabel": "free",
+    "search": "Search",
+    "searchPlaceholder": "Find a technique…",
+    "allZones": "All areas",
+    "favorites": "☆ Favorites",
+    "favoritesOnly": "★ Favorites only",
+    "offlineNotice": "You are offline. Previously loaded content is still available.",
+    "catalog": "Techniques",
+    "noResults": "Nothing found.",
+    "openSourceTitle": "Code, data and images in one repository",
+    "openSourceText": "JSON files are the source of truth for the PWA. The same records can also power Telegram publications.",
+    "telegramGuide": "Telegram integration",
+    "safetyTitle": "Important.",
+    "safetyText": "This is an educational guide, not medical diagnosis or individualized treatment. Seek advice from a qualified professional for illness, injury, acute pain or uncertainty.",
+    "resultCount": "{shown} of {total}",
+    "pressure": "Pressure",
+    "tempo": "Tempo",
+    "time": "Time",
+    "repetitions": "Repetitions",
+    "howTo": "How to perform",
+    "areas": "Areas",
+    "caution": "Caution:",
+    "addFavorite": "Add to favorites",
+    "removeFavorite": "Remove from favorites",
+    "close": "Close",
+    "language": "Language",
+    "minutesShort": "min"
+  },
+  "categories": {
+    "basics": "Basic techniques",
+    "back": "Back",
+    "neck-shoulders": "Neck and shoulders",
+    "arms": "Arms",
+    "legs": "Legs",
+    "feet": "Feet",
+    "face-head": "Head and face",
+    "self-massage": "Self-massage",
+    "programs": "Programs",
+    "safety": "Safety"
+  },
+  "tempo": { "smooth": "Smooth" },
+  "duration": { "overview": "Overview" },
+  "repetitions": { "by-technique": "Depends on technique" },
+  "areas": {
+    "back": "back",
+    "neck": "neck",
+    "shoulders": "shoulders",
+    "arms": "arms",
+    "legs": "legs",
+    "feet": "feet"
+  },
+  "techniques": {
+    "overview-001": {
+      "title": "Complete Massage Overview",
+      "summary": "An overview of basic movement directions, body areas and the sequence of a general massage.",
+      "imageAlt": "Infographic showing basic massage techniques and body areas",
+      "instructions": [
+        "Use this card as a navigation overview.",
+        "Open individual techniques by body area for practical guidance."
+      ],
+      "warning": "Do not use the overview card as individualized medical advice.",
+      "telegramCaption": "A basic map of massage areas and techniques. The full version is available in the PWA."
+    }
+  }
+}

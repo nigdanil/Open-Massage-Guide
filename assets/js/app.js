@@ -1,6 +1,18 @@
+const SUPPORTED_LANGUAGES = ['ru', 'en'];
+const DEFAULT_LANGUAGE = 'ru';
+
+function resolveInitialLanguage() {
+  const saved = localStorage.getItem('massage-language');
+  if (SUPPORTED_LANGUAGES.includes(saved)) return saved;
+  const browserLanguage = (navigator.language || '').toLowerCase();
+  return browserLanguage.startsWith('ru') ? 'ru' : 'en';
+}
+
 const state = {
   techniques: [],
   categories: [],
+  locale: null,
+  language: resolveInitialLanguage(),
   favoritesOnly: false,
   favorites: new Set(JSON.parse(localStorage.getItem('massage-favorites') || '[]')),
   deferredPrompt: null,
@@ -18,6 +30,7 @@ const els = {
   categoryCount: document.querySelector('#categoryCount'),
   offlineNotice: document.querySelector('#offlineNotice'),
   installButton: document.querySelector('#installButton'),
+  languageSelect: document.querySelector('#languageSelect'),
   dialog: document.querySelector('#techniqueDialog'),
   dialogContent: document.querySelector('#dialogContent'),
   closeDialog: document.querySelector('#closeDialog'),
@@ -25,8 +38,94 @@ const els = {
 
 async function loadJson(path) {
   const response = await fetch(path);
-  if (!response.ok) throw new Error(`Не удалось загрузить ${path}`);
+  if (!response.ok) throw new Error(`Failed to load ${path}`);
   return response.json();
+}
+
+async function loadLocale(language) {
+  const locale = await loadJson(`./data/locales/${language}.json`);
+  state.locale = locale;
+  state.language = language;
+  localStorage.setItem('massage-language', language);
+  document.documentElement.lang = language;
+  els.languageSelect.value = language;
+}
+
+function ui(key, fallback = '') {
+  return state.locale?.ui?.[key] ?? fallback;
+}
+
+function techniqueText(item, key, fallback = '') {
+  return state.locale?.techniques?.[item.id]?.[key] ?? fallback;
+}
+
+function categoryTitle(id) {
+  return state.locale?.categories?.[id] ?? id;
+}
+
+function areaTitle(id) {
+  return state.locale?.areas?.[id] ?? id;
+}
+
+function formatTemplate(template, values) {
+  return Object.entries(values).reduce(
+    (result, [key, value]) => result.replaceAll(`{${key}}`, String(value)),
+    template,
+  );
+}
+
+function formatTempo(item) {
+  return state.locale?.tempo?.[item.tempo] ?? item.tempo ?? '';
+}
+
+function formatDuration(item) {
+  const duration = item.duration;
+  if (!duration) return '';
+  if (duration.key) return state.locale?.duration?.[duration.key] ?? duration.key;
+  if (Number.isFinite(duration.seconds)) return `${Math.round(duration.seconds / 60)} ${ui('minutesShort', 'min')}`;
+  if (Number.isFinite(duration.minSeconds) && Number.isFinite(duration.maxSeconds)) {
+    return `${Math.round(duration.minSeconds / 60)}–${Math.round(duration.maxSeconds / 60)} ${ui('minutesShort', 'min')}`;
+  }
+  return '';
+}
+
+function formatRepetitions(item) {
+  const repetitions = item.repetitions;
+  if (!repetitions) return '';
+  if (repetitions.key) return state.locale?.repetitions?.[repetitions.key] ?? repetitions.key;
+  if (Number.isFinite(repetitions.min) && Number.isFinite(repetitions.max)) return `${repetitions.min}–${repetitions.max}`;
+  if (Number.isFinite(repetitions.count)) return String(repetitions.count);
+  return '';
+}
+
+function pressureDots(item) {
+  return `${'●'.repeat(item.pressure)}${'○'.repeat(Math.max(0, 5 - item.pressure))}`;
+}
+
+function renderStaticUi() {
+  document.title = ui('documentTitle', 'Open Massage Guide');
+  document.querySelector('#metaDescription').content = ui('metaDescription', 'Open Massage Guide');
+  document.querySelector('#appTitle').textContent = ui('appTitle');
+  document.querySelector('#appSubtitle').textContent = ui('appSubtitle');
+  document.querySelector('#heroTitle').textContent = ui('heroTitle');
+  document.querySelector('#heroDescription').textContent = ui('heroDescription');
+  document.querySelector('#techniqueCountLabel').textContent = ui('techniquesLabel');
+  document.querySelector('#categoryCountLabel').textContent = ui('sectionsLabel');
+  document.querySelector('#freeLabel').textContent = ui('freeLabel');
+  document.querySelector('#searchLabel').textContent = ui('search');
+  document.querySelector('#catalogTitle').textContent = ui('catalog');
+  document.querySelector('#openSourceTitle').textContent = ui('openSourceTitle');
+  document.querySelector('#openSourceText').textContent = ui('openSourceText');
+  document.querySelector('#telegramGuideLink').textContent = ui('telegramGuide');
+  document.querySelector('#safetyTitle').textContent = ui('safetyTitle');
+  document.querySelector('#safetyText').textContent = ui('safetyText');
+  els.searchInput.placeholder = ui('searchPlaceholder');
+  els.emptyState.textContent = ui('noResults');
+  els.offlineNotice.textContent = ui('offlineNotice');
+  els.installButton.textContent = ui('install');
+  els.languageSelect.setAttribute('aria-label', ui('language'));
+  els.closeDialog.setAttribute('aria-label', ui('close'));
+  els.favoritesButton.textContent = state.favoritesOnly ? ui('favoritesOnly') : ui('favorites');
 }
 
 async function init() {
@@ -35,33 +134,56 @@ async function init() {
       loadJson('./data/categories.json'),
       loadJson('./data/techniques.json'),
     ]);
-    state.categories = categories;
+    state.categories = categories.sort((a, b) => a.order - b.order);
     state.techniques = techniques;
+    await loadLocale(state.language);
+    renderStaticUi();
     renderCategories();
     render();
   } catch (error) {
-    els.cardsGrid.innerHTML = `<div class="notice">${escapeHtml(error.message)}. Если приложение открыто впервые — подключитесь к интернету.</div>`;
+    els.cardsGrid.innerHTML = `<div class="notice">${escapeHtml(error.message)}</div>`;
   }
   updateNetworkStatus();
   registerServiceWorker();
 }
 
 function renderCategories() {
+  const selected = els.categorySelect.value || 'all';
+  els.categorySelect.replaceChildren();
+
+  const allOption = document.createElement('option');
+  allOption.value = 'all';
+  allOption.textContent = ui('allZones');
+  els.categorySelect.append(allOption);
+
   for (const category of state.categories) {
     const option = document.createElement('option');
     option.value = category.id;
-    option.textContent = category.title;
+    option.textContent = categoryTitle(category.id);
     els.categorySelect.append(option);
+  }
+
+  if ([...els.categorySelect.options].some((option) => option.value === selected)) {
+    els.categorySelect.value = selected;
   }
   els.techniqueCount.textContent = state.techniques.length;
   els.categoryCount.textContent = state.categories.length;
 }
 
 function getFilteredTechniques() {
-  const query = els.searchInput.value.trim().toLocaleLowerCase('ru');
+  const localeName = state.language === 'ru' ? 'ru' : 'en';
+  const query = els.searchInput.value.trim().toLocaleLowerCase(localeName);
   const category = els.categorySelect.value;
+
   return state.techniques.filter((item) => {
-    const haystack = [item.title, item.summary, item.category, ...(item.muscles || [])].join(' ').toLocaleLowerCase('ru');
+    const text = state.locale?.techniques?.[item.id] || {};
+    const haystack = [
+      text.title,
+      text.summary,
+      categoryTitle(item.category),
+      ...(item.areas || []).map(areaTitle),
+    ].filter(Boolean).join(' ').toLocaleLowerCase(localeName);
+
     const queryMatch = !query || haystack.includes(query);
     const categoryMatch = category === 'all' || item.category === category;
     const favoriteMatch = !state.favoritesOnly || state.favorites.has(item.id);
@@ -72,7 +194,10 @@ function getFilteredTechniques() {
 function render() {
   const items = getFilteredTechniques();
   els.cardsGrid.replaceChildren();
-  els.resultCount.textContent = `${items.length} из ${state.techniques.length}`;
+  els.resultCount.textContent = formatTemplate(ui('resultCount', '{shown} / {total}'), {
+    shown: items.length,
+    total: state.techniques.length,
+  });
   els.emptyState.hidden = items.length !== 0;
 
   for (const item of items) {
@@ -81,23 +206,24 @@ function render() {
     const open = node.querySelector('.card-open');
     const favorite = node.querySelector('.favorite-control');
     const image = node.querySelector('.card-image');
-    const category = state.categories.find((entry) => entry.id === item.category);
+    const title = techniqueText(item, 'title', item.id);
+    const summary = techniqueText(item, 'summary');
 
     image.src = item.image;
-    image.alt = item.imageAlt || item.title;
-    node.querySelector('.card-category').textContent = category?.title || item.category;
-    node.querySelector('.card-title').textContent = item.title;
-    node.querySelector('.card-summary').textContent = item.summary;
+    image.alt = techniqueText(item, 'imageAlt', title);
+    node.querySelector('.card-category').textContent = categoryTitle(item.category);
+    node.querySelector('.card-title').textContent = title;
+    node.querySelector('.card-summary').textContent = summary;
     node.querySelector('.card-meta').innerHTML = [
-      `Давление ${'●'.repeat(item.pressure)}${'○'.repeat(Math.max(0, 5 - item.pressure))}`,
-      item.tempo,
-      item.duration,
-    ].map((value) => `<span>${escapeHtml(value)}</span>`).join('');
+      `${ui('pressure')} ${pressureDots(item)}`,
+      formatTempo(item),
+      formatDuration(item),
+    ].filter(Boolean).map((value) => `<span>${escapeHtml(value)}</span>`).join('');
 
     const isFavorite = state.favorites.has(item.id);
     favorite.textContent = isFavorite ? '★' : '☆';
     favorite.classList.toggle('active', isFavorite);
-    favorite.setAttribute('aria-label', isFavorite ? 'Удалить из избранного' : 'Добавить в избранное');
+    favorite.setAttribute('aria-label', isFavorite ? ui('removeFavorite') : ui('addFavorite'));
 
     favorite.addEventListener('click', () => toggleFavorite(item.id));
     open.addEventListener('click', () => openTechnique(item));
@@ -110,30 +236,52 @@ function toggleFavorite(id) {
   if (state.favorites.has(id)) state.favorites.delete(id);
   else state.favorites.add(id);
   localStorage.setItem('massage-favorites', JSON.stringify([...state.favorites]));
+  renderStaticUi();
   render();
 }
 
 function openTechnique(item) {
-  const category = state.categories.find((entry) => entry.id === item.category);
+  const title = techniqueText(item, 'title', item.id);
+  const summary = techniqueText(item, 'summary');
+  const instructions = techniqueText(item, 'instructions', []);
+  const warning = techniqueText(item, 'warning');
+  const areas = (item.areas || []).map(areaTitle).join(', ');
+  const instructionHtml = Array.isArray(instructions)
+    ? `<ol>${instructions.map((step) => `<li>${escapeHtml(step)}</li>`).join('')}</ol>`
+    : `<p>${escapeHtml(instructions)}</p>`;
+
   els.dialogContent.innerHTML = `
-    <img class="dialog-image" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.imageAlt || item.title)}" />
+    <img class="dialog-image" src="${escapeHtml(item.image)}" alt="${escapeHtml(techniqueText(item, 'imageAlt', title))}" />
     <div class="dialog-body">
-      <p class="eyebrow">${escapeHtml(category?.title || item.category)}</p>
-      <h2>${escapeHtml(item.title)}</h2>
-      <p>${escapeHtml(item.summary)}</p>
+      <p class="eyebrow">${escapeHtml(categoryTitle(item.category))}</p>
+      <h2>${escapeHtml(title)}</h2>
+      <p>${escapeHtml(summary)}</p>
       <div class="dialog-grid">
-        <div class="dialog-fact"><small>Давление</small><strong>${'●'.repeat(item.pressure)}${'○'.repeat(Math.max(0, 5 - item.pressure))}</strong></div>
-        <div class="dialog-fact"><small>Темп</small><strong>${escapeHtml(item.tempo)}</strong></div>
-        <div class="dialog-fact"><small>Время</small><strong>${escapeHtml(item.duration)}</strong></div>
-        <div class="dialog-fact"><small>Повторы</small><strong>${escapeHtml(item.repetitions)}</strong></div>
+        <div class="dialog-fact"><small>${escapeHtml(ui('pressure'))}</small><strong>${pressureDots(item)}</strong></div>
+        <div class="dialog-fact"><small>${escapeHtml(ui('tempo'))}</small><strong>${escapeHtml(formatTempo(item))}</strong></div>
+        <div class="dialog-fact"><small>${escapeHtml(ui('time'))}</small><strong>${escapeHtml(formatDuration(item))}</strong></div>
+        <div class="dialog-fact"><small>${escapeHtml(ui('repetitions'))}</small><strong>${escapeHtml(formatRepetitions(item))}</strong></div>
       </div>
-      <h3>Как выполнять</h3>
-      <p>${escapeHtml(item.instructions)}</p>
-      <h3>Зоны и мышцы</h3>
-      <p>${escapeHtml((item.muscles || []).join(', '))}</p>
-      <div class="dialog-warning"><strong>Осторожно:</strong> ${escapeHtml(item.warning)}</div>
+      <h3>${escapeHtml(ui('howTo'))}</h3>
+      ${instructionHtml}
+      <h3>${escapeHtml(ui('areas'))}</h3>
+      <p>${escapeHtml(areas)}</p>
+      <div class="dialog-warning"><strong>${escapeHtml(ui('caution'))}</strong> ${escapeHtml(warning)}</div>
     </div>`;
   els.dialog.showModal();
+}
+
+async function switchLanguage(language) {
+  if (!SUPPORTED_LANGUAGES.includes(language) || language === state.language) return;
+  els.languageSelect.disabled = true;
+  try {
+    await loadLocale(language);
+    renderStaticUi();
+    renderCategories();
+    render();
+  } finally {
+    els.languageSelect.disabled = false;
+  }
 }
 
 function escapeHtml(value = '') {
@@ -177,10 +325,11 @@ window.addEventListener('online', updateNetworkStatus);
 window.addEventListener('offline', updateNetworkStatus);
 els.searchInput.addEventListener('input', render);
 els.categorySelect.addEventListener('change', render);
+els.languageSelect.addEventListener('change', (event) => switchLanguage(event.target.value));
 els.favoritesButton.addEventListener('click', () => {
   state.favoritesOnly = !state.favoritesOnly;
   els.favoritesButton.setAttribute('aria-pressed', String(state.favoritesOnly));
-  els.favoritesButton.textContent = state.favoritesOnly ? '★ Только избранное' : '☆ Избранное';
+  renderStaticUi();
   render();
 });
 els.closeDialog.addEventListener('click', () => els.dialog.close());

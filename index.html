@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0f766e" />
-  <meta name="description" content="Открытый визуальный справочник массажных техник." />
+  <meta id="metaDescription" name="description" content="Открытый визуальный справочник массажных техник." />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="Массаж" />
+  <meta name="apple-mobile-web-app-title" content="Massage Guide" />
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
   <link rel="icon" href="./assets/icons/icon-192.png" />
@@ -19,10 +19,16 @@
     <div class="shell header-row">
       <div>
         <p class="eyebrow">OPEN MASSAGE GUIDE</p>
-        <h1>Справочник массажа</h1>
-        <p class="subtitle">Открытая библиотека техник, схем и программ.</p>
+        <h1 id="appTitle">Справочник массажа</h1>
+        <p id="appSubtitle" class="subtitle">Открытая библиотека техник, схем и программ.</p>
       </div>
-      <button id="installButton" class="button button-primary" hidden>Установить</button>
+      <div>
+        <select id="languageSelect" class="button button-secondary" aria-label="Язык">
+          <option value="ru">RU</option>
+          <option value="en">EN</option>
+        </select>
+        <button id="installButton" class="button button-primary" hidden>Установить</button>
+      </div>
     </div>
   </header>
 
@@ -30,23 +36,21 @@
     <section class="hero" aria-labelledby="heroTitle">
       <div>
         <h2 id="heroTitle">Массаж — понятно и визуально</h2>
-        <p>Карточки работают онлайн и офлайн. Проект рассчитан на телефон, планшет и desktop.</p>
+        <p id="heroDescription">Карточки работают онлайн и офлайн. Проект рассчитан на телефон, планшет и desktop.</p>
       </div>
       <div class="hero-stats" aria-label="Статистика каталога">
-        <div><strong id="techniqueCount">0</strong><span>техник</span></div>
-        <div><strong id="categoryCount">0</strong><span>разделов</span></div>
-        <div><strong>100%</strong><span>бесплатно</span></div>
+        <div><strong id="techniqueCount">0</strong><span id="techniqueCountLabel">техник</span></div>
+        <div><strong id="categoryCount">0</strong><span id="categoryCountLabel">разделов</span></div>
+        <div><strong>100%</strong><span id="freeLabel">бесплатно</span></div>
       </div>
     </section>
 
     <section class="toolbar" aria-label="Фильтры каталога">
       <label class="search-field">
-        <span class="sr-only">Поиск</span>
+        <span id="searchLabel" class="sr-only">Поиск</span>
         <input id="searchInput" type="search" placeholder="Найти технику…" autocomplete="off" />
       </label>
-      <select id="categorySelect" aria-label="Категория">
-        <option value="all">Все зоны</option>
-      </select>
+      <select id="categorySelect" aria-label="Категория"></select>
       <button id="favoritesButton" class="button button-secondary" type="button" aria-pressed="false">☆ Избранное</button>
     </section>
 
@@ -58,7 +62,7 @@
       <div class="section-heading">
         <div>
           <p class="eyebrow">КАТАЛОГ</p>
-          <h2>Техники</h2>
+          <h2 id="catalogTitle">Техники</h2>
         </div>
         <span id="resultCount" class="muted"></span>
       </div>
@@ -69,14 +73,15 @@
     <section class="project-note">
       <div>
         <p class="eyebrow">OPEN SOURCE</p>
-        <h2>Код, данные и изображения — в одном репозитории</h2>
-        <p>JSON-файлы являются источником данных для PWA. На следующем этапе эти же записи можно использовать для генерации Telegram-публикаций.</p>
+        <h2 id="openSourceTitle">Код, данные и изображения — в одном репозитории</h2>
+        <p id="openSourceText">JSON-файлы являются источником данных для PWA. Эти же записи можно использовать для Telegram-публикаций.</p>
       </div>
-      <a class="button button-secondary" href="./docs/TELEGRAM.md">Как подключим Telegram</a>
+      <a id="telegramGuideLink" class="button button-secondary" href="./docs/TELEGRAM.md">Как подключим Telegram</a>
     </section>
 
     <section class="safety-note">
-      <strong>Важно.</strong> Это образовательный справочник, а не медицинская диагностика или индивидуальное назначение лечения. При заболеваниях, травмах, острой боли и сомнениях нужна консультация квалифицированного специалиста.
+      <strong id="safetyTitle">Важно.</strong>
+      <span id="safetyText">Это образовательный справочник, а не медицинская диагностика или индивидуальное назначение лечения. При заболеваниях, травмах, острой боли и сомнениях нужна консультация квалифицированного специалиста.</span>
     </section>
   </main>
 

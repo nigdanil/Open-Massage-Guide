@@ -2,23 +2,15 @@
   {
     "id": "overview-001",
     "slug": "full-massage-overview",
-    "title": "Общий справочник массажа",
     "category": "basics",
-    "summary": "Обзор базовых направлений движения, зон тела и последовательности общего массажа.",
     "image": "./assets/images/cards/overview-v1.png",
-    "imageAlt": "Инфографика с основными массажными техниками и зонами тела",
     "pressure": 2,
-    "tempo": "Плавный",
-    "duration": "Обзор",
-    "repetitions": "По технике",
-    "instructions": "Используйте эту карточку как навигационную схему. Для практики открывайте отдельные техники по зонам тела.",
-    "muscles": ["спина", "шея", "плечи", "руки", "ноги", "стопы"],
-    "warning": "Не используйте обзорную карточку как индивидуальное медицинское назначение.",
-    "telegram": {
-      "publish": true,
-      "caption": "Базовая карта массажных зон и приёмов. Полная версия доступна в PWA."
-    },
+    "tempo": "smooth",
+    "duration": { "key": "overview" },
+    "repetitions": { "key": "by-technique" },
+    "areas": ["back", "neck", "shoulders", "arms", "legs", "feet"],
+    "telegram": { "publish": true },
     "status": "published",
-    "version": 1
+    "version": 2
   }
 ]

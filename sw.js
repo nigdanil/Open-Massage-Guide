@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'massage-guide-v1';
+const CACHE_VERSION = 'massage-guide-v2-i18n';
 const APP_SHELL = [
   './',
   './index.html',
@@ -9,7 +9,9 @@ const APP_SHELL = [
   './assets/icons/icon-512.png',
   './assets/icons/apple-touch-icon.png',
   './data/categories.json',
-  './data/techniques.json'
+  './data/techniques.json',
+  './data/locales/ru.json',
+  './data/locales/en.json'
 ];
 
 self.addEventListener('install', (event) => {
@@ -35,7 +37,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  if (url.pathname.endsWith('/data/categories.json') || url.pathname.endsWith('/data/techniques.json')) {
+  if (url.pathname.includes('/data/')) {
     event.respondWith(networkFirst(request));
     return;
   }
