@@ -113,6 +113,7 @@ function renderStaticUi() {
   document.querySelector('#categoryCountLabel').textContent = ui('sectionsLabel');
   document.querySelector('#freeLabel').textContent = ui('freeLabel');
   document.querySelector('#searchLabel').textContent = ui('search');
+  document.querySelector('#catalogEyebrow').textContent = ui('catalogEyebrow');
   document.querySelector('#catalogTitle').textContent = ui('catalog');
   document.querySelector('#openSourceTitle').textContent = ui('openSourceTitle');
   document.querySelector('#openSourceText').textContent = ui('openSourceText');

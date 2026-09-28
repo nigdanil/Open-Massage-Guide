@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'massage-guide-v2-i18n';
+const CACHE_VERSION = 'massage-guide-v3-ui-i18n';
 const APP_SHELL = [
   './',
   './index.html',
