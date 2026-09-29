@@ -3,7 +3,7 @@
   "slug": "forehead-stroking",
   "category": "face-head",
   "order": 910,
-  "image": null,
+  "image": "./assets/images/techniques/face-head/face-001.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "beginner",

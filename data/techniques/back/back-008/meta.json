@@ -3,7 +3,7 @@
   "slug": "trapezius-work",
   "category": "back",
   "order": 180,
-  "image": null,
+  "image": "./assets/images/techniques/back/back-008.webp",
   "pressure": 2,
   "tempo": "slow",
   "difficulty": "intermediate",

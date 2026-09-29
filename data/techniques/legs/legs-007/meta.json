@@ -3,7 +3,7 @@
   "slug": "calf-kneading",
   "category": "legs",
   "order": 670,
-  "image": null,
+  "image": "./assets/images/techniques/legs/legs-007.webp",
   "pressure": 3,
   "tempo": "slow",
   "difficulty": "intermediate",

@@ -3,7 +3,7 @@
   "slug": "foot-ankle-transition",
   "category": "feet",
   "order": 890,
-  "image": null,
+  "image": "./assets/images/techniques/feet/feet-009.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "beginner",

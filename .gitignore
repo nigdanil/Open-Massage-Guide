@@ -3,3 +3,6 @@ dist/
 Thumbs.db
 dialogs.md
 errors.md
+
+# Local image conversion sources
+convert/

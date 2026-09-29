@@ -3,7 +3,7 @@
   "slug": "pressure-scale",
   "category": "safety",
   "order": 1220,
-  "image": null,
+  "image": "./assets/images/techniques/safety/safety-002.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "beginner",

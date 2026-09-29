@@ -3,7 +3,7 @@
   "slug": "temple-circles",
   "category": "face-head",
   "order": 920,
-  "image": null,
+  "image": "./assets/images/techniques/face-head/face-002.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "beginner",

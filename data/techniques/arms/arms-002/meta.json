@@ -3,7 +3,7 @@
   "slug": "upper-arm-stroking",
   "category": "arms",
   "order": 520,
-  "image": null,
+  "image": "./assets/images/techniques/arms/arms-002.webp",
   "pressure": 2,
   "tempo": "slow",
   "difficulty": "beginner",

@@ -3,7 +3,7 @@
   "slug": "foot-compression",
   "category": "feet",
   "order": 880,
-  "image": null,
+  "image": "./assets/images/techniques/feet/feet-008.webp",
   "pressure": 2,
   "tempo": "slow",
   "difficulty": "beginner",

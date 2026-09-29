@@ -3,7 +3,7 @@
   "slug": "self-hand",
   "category": "self-massage",
   "order": 1040,
-  "image": null,
+  "image": "./assets/images/techniques/self-massage/self-004.webp",
   "pressure": 2,
   "tempo": "slow",
   "difficulty": "beginner",

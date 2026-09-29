@@ -3,7 +3,11 @@
   "slug": "full-massage-overview",
   "category": "basics",
   "order": 10,
-  "image": "./assets/images/cards/overview-v1.png",
+  "image": "./assets/images/cards/overview-001.webp",
+  "images": [
+    "./assets/images/cards/overview-001.webp",
+    "./assets/images/cards/overview-002.webp"
+  ],
   "pressure": 2,
   "tempo": "varies",
   "difficulty": "beginner",

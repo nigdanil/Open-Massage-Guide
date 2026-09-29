@@ -3,7 +3,7 @@
   "slug": "self-scalp",
   "category": "self-massage",
   "order": 1080,
-  "image": null,
+  "image": "./assets/images/techniques/self-massage/self-008.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "beginner",

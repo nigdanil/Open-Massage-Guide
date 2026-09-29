@@ -3,7 +3,7 @@
   "slug": "skin-and-lubricant",
   "category": "safety",
   "order": 1250,
-  "image": null,
+  "image": "./assets/images/techniques/safety/safety-005.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "beginner",

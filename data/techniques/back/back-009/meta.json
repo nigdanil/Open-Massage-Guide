@@ -3,7 +3,7 @@
   "slug": "scapular-area-work",
   "category": "back",
   "order": 190,
-  "image": null,
+  "image": "./assets/images/techniques/back/back-009.webp",
   "pressure": 2,
   "tempo": "slow",
   "difficulty": "intermediate",

@@ -3,7 +3,7 @@
   "slug": "gentle-vibration",
   "category": "back",
   "order": 210,
-  "image": null,
+  "image": "./assets/images/techniques/back/back-011.webp",
   "pressure": 1,
   "tempo": "rhythmic",
   "difficulty": "beginner",

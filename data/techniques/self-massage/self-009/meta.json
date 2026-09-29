@@ -3,7 +3,7 @@
   "slug": "desk-break",
   "category": "self-massage",
   "order": 1090,
-  "image": null,
+  "image": "./assets/images/techniques/self-massage/self-009.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "beginner",

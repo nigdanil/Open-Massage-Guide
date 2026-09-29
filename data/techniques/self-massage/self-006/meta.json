@@ -3,7 +3,7 @@
   "slug": "self-calf",
   "category": "self-massage",
   "order": 1060,
-  "image": null,
+  "image": "./assets/images/techniques/self-massage/self-006.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "beginner",

@@ -3,7 +3,7 @@
   "slug": "self-forearm",
   "category": "self-massage",
   "order": 1030,
-  "image": null,
+  "image": "./assets/images/techniques/self-massage/self-003.webp",
   "pressure": 2,
   "tempo": "slow",
   "difficulty": "beginner",

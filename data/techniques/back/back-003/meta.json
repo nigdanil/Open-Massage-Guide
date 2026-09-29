@@ -3,7 +3,7 @@
   "slug": "transverse-back-stroking",
   "category": "back",
   "order": 130,
-  "image": null,
+  "image": "./assets/images/techniques/back/back-003.webp",
   "pressure": 2,
   "tempo": "slow",
   "difficulty": "beginner",

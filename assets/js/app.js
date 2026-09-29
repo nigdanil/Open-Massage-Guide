@@ -14,7 +14,7 @@ function resolveInitialThemePreference() {
   try {
     const saved = localStorage.getItem(THEME_STORAGE_KEY);
     if (SUPPORTED_THEMES.includes(saved)) return saved;
-  } catch (_) {}
+  } catch (_) { }
   return 'system';
 }
 
@@ -116,7 +116,7 @@ function applyTheme(preference, persist = true) {
   state.themePreference = safePreference;
 
   if (persist) {
-    try { localStorage.setItem(THEME_STORAGE_KEY, safePreference); } catch (_) {}
+    try { localStorage.setItem(THEME_STORAGE_KEY, safePreference); } catch (_) { }
   }
 
   const theme = resolvedTheme(safePreference);
@@ -233,6 +233,30 @@ function getFilteredTechniques() {
 }
 
 function mediaHtml(item, dialog = false) {
+  if (dialog && Array.isArray(item.images) && item.images.length > 0) {
+    const alt = escapeHtml(
+      techniqueText(
+        item,
+        'imageAlt',
+        techniqueText(item, 'title', item.id),
+      ),
+    );
+    return `
+    <div class="dialog-gallery">
+      ${item.images
+        .map(
+          (image, index) => `
+            <img
+              class="dialog-image"
+              src="${escapeHtml(image)}"
+              alt="${alt}${item.images.length > 1 ? ` — ${index + 1}` : ''}"
+            />
+          `,
+        )
+        .join('')}
+    </div>
+  `;
+  }
   if (item.image) {
     const className = dialog ? 'dialog-image' : 'card-image';
     return `<img class="${className}" src="${escapeHtml(item.image)}" alt="${escapeHtml(techniqueText(item, 'imageAlt', techniqueText(item, 'title', item.id)))}" ${dialog ? '' : 'loading="lazy"'} />`;

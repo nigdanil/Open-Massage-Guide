@@ -3,7 +3,7 @@
   "slug": "palm-massage",
   "category": "arms",
   "order": 570,
-  "image": null,
+  "image": "./assets/images/techniques/arms/arms-007.webp",
   "pressure": 2,
   "tempo": "slow",
   "difficulty": "beginner",

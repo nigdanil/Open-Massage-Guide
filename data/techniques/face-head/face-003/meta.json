@@ -3,7 +3,7 @@
   "slug": "jaw-gentle-work",
   "category": "face-head",
   "order": 930,
-  "image": null,
+  "image": "./assets/images/techniques/face-head/face-003.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "intermediate",

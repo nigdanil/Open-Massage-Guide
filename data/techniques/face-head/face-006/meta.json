@@ -3,7 +3,7 @@
   "slug": "cheek-stroking",
   "category": "face-head",
   "order": 960,
-  "image": null,
+  "image": "./assets/images/techniques/face-head/face-006.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "beginner",

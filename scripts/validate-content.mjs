@@ -66,6 +66,23 @@ for (const entry of index) {
     fail(`[${entry.id}] published technique must have an image`);
   }
 
+  if (meta.images !== undefined) {
+    if (!Array.isArray(meta.images)) {
+      fail(`[${entry.id}] images must be an array`);
+    } else {
+      for (const image of meta.images) {
+        if (typeof image !== 'string' || !image.trim()) {
+          fail(`[${entry.id}] images must contain non-empty strings`);
+          continue;
+        }
+
+        const imagePath = path.resolve(root, image.replace(/^\.?\//, ''));
+        if (!fs.existsSync(imagePath)) {
+          fail(`[${entry.id}] gallery image not found: ${image}`);
+        }
+      }
+    }
+  }
   for (const localeId of localeIds) {
     const text = readJson(path.join(moduleDir, `${localeId}.json`), `[${localeId}:${entry.id}] text`);
     if (!text) continue;

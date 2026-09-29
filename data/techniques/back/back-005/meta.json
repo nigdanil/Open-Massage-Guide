@@ -3,7 +3,7 @@
   "slug": "heel-of-hand-rubbing",
   "category": "back",
   "order": 150,
-  "image": null,
+  "image": "./assets/images/techniques/back/back-005.webp",
   "pressure": 3,
   "tempo": "moderate",
   "difficulty": "intermediate",

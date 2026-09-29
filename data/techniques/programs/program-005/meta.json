@@ -3,7 +3,7 @@
   "slug": "general-relax-30",
   "category": "programs",
   "order": 1150,
-  "image": null,
+  "image": "./assets/images/techniques/programs/program-005.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "beginner",

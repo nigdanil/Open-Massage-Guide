@@ -3,7 +3,7 @@
   "slug": "foot-general-stroking",
   "category": "feet",
   "order": 810,
-  "image": null,
+  "image": "./assets/images/techniques/feet/feet-001.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "beginner",

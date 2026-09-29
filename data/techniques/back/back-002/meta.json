@@ -3,7 +3,7 @@
   "slug": "fan-back-stroking",
   "category": "back",
   "order": 120,
-  "image": null,
+  "image": "./assets/images/techniques/back/back-002.webp",
   "pressure": 2,
   "tempo": "slow",
   "difficulty": "beginner",

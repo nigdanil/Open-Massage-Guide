@@ -3,7 +3,7 @@
   "slug": "after-massage",
   "category": "safety",
   "order": 1280,
-  "image": null,
+  "image": "./assets/images/techniques/safety/safety-008.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "beginner",

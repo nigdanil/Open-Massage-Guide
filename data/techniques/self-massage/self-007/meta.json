@@ -3,7 +3,7 @@
   "slug": "self-foot",
   "category": "self-massage",
   "order": 1070,
-  "image": null,
+  "image": "./assets/images/techniques/self-massage/self-007.webp",
   "pressure": 2,
   "tempo": "slow",
   "difficulty": "beginner",

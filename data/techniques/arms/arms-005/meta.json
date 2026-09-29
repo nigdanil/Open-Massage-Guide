@@ -3,7 +3,7 @@
   "slug": "upper-arm-kneading",
   "category": "arms",
   "order": 550,
-  "image": null,
+  "image": "./assets/images/techniques/arms/arms-005.webp",
   "pressure": 3,
   "tempo": "slow",
   "difficulty": "intermediate",
