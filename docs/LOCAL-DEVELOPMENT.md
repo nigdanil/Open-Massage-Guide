@@ -383,7 +383,13 @@ data/techniques/.../meta.json
 
 ### 6.3. После конвертации
 
-Выполнить:
+Сначала обновить thumbnail для каталога:
+
+```bash
+python scripts/generate_thumbnails.py
+```
+
+Затем выполнить:
 
 ```bash
 node scripts/validate-content.mjs
@@ -392,6 +398,49 @@ node scripts/build-catalogs.mjs
 ```
 
 После этого проверить сайт локально.
+
+### 6.4. Thumbnails для каталога
+
+Полноразмерный файл хранится в поле:
+
+```json
+"image": "./assets/images/techniques/.../technique-id.webp"
+```
+
+Облегчённая версия для сетки карточек хранится в:
+
+```json
+"thumbnail": "./assets/images/techniques/.../technique-id-thumb.webp"
+```
+
+Предпросмотр генерации:
+
+```bash
+python scripts/generate_thumbnails.py --dry-run
+```
+
+Генерация:
+
+```bash
+python scripts/generate_thumbnails.py
+```
+
+По умолчанию:
+
+```text
+максимальная ширина: 640 px
+WebP quality:        82
+```
+
+Карточка каталога использует `thumbnail`, а открытая техника — полноразмерный `image`/gallery.
+
+После генерации обязательно выполнить:
+
+```bash
+node scripts/validate-content.mjs
+python scripts/check_image_links.py
+node scripts/build-catalogs.mjs
+```
 
 ### Важно
 
@@ -1286,6 +1335,8 @@ git status --short
 python scripts/convert_images_to_webp.py --dry-run
 
 python scripts/convert_images_to_webp.py --quality 90
+
+python scripts/generate_thumbnails.py
 
 node scripts/validate-content.mjs
 

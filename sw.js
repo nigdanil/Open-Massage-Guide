@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'massage-guide-v8-generated-catalogs';
+const CACHE_VERSION = 'massage-guide-v9-card-thumbnails';
 const APP_SHELL = [
   './',
   './index.html',

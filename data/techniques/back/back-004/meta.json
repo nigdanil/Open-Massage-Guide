@@ -29,5 +29,6 @@
     "publish": false
   },
   "status": "published",
-  "version": 1
+  "version": 1,
+  "thumbnail": "./assets/images/techniques/back/back-004-thumb.webp"
 }

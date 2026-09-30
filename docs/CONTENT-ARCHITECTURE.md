@@ -140,6 +140,42 @@ python scripts/convert_images_to_webp.py --quality 90
 python scripts/check_image_links.py
 ```
 
+### Thumbnail и full-size
+
+Для опубликованной техники используются два изображения:
+
+```text
+image      — полноразмерное изображение для открытой карточки;
+thumbnail  — облегчённое изображение для каталога.
+```
+
+Пример:
+
+```json
+{
+  "image": "./assets/images/techniques/back/back-001.webp",
+  "thumbnail": "./assets/images/techniques/back/back-001-thumb.webp"
+}
+```
+
+Thumbnails генерируются из `image` автоматически:
+
+```bash
+python scripts/generate_thumbnails.py --dry-run
+python scripts/generate_thumbnails.py
+```
+
+Текущий стандарт Stage 6:
+
+```text
+максимальная ширина: 640 px
+WebP quality:        82
+```
+
+Маленькие изображения не увеличиваются. Пропорции исходного изображения сохраняются.
+
+Каталог использует `thumbnail`, а открытая техника — полноразмерный `image` или `images` gallery.
+
 ## Generated browser catalogs
 
 Исходным источником истины остаются модульные файлы в `data/techniques/`.

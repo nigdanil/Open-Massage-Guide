@@ -25,5 +25,6 @@
     "publish": false
   },
   "status": "published",
-  "version": 1
+  "version": 1,
+  "thumbnail": "./assets/images/techniques/safety/safety-004-thumb.webp"
 }

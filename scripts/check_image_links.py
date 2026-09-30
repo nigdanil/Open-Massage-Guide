@@ -1,120 +1,207 @@
 #!/usr/bin/env python3
-import json, sys
+import json
 from pathlib import Path
+
 from PIL import Image, UnidentifiedImageError
 
-def norm(s):
-    s = str(s).replace("\\", "/")
-    while s.startswith("./"):
-        s = s[2:]
-    return s.lstrip("/")
+
+def norm(value):
+    value = str(value).replace("\\", "/")
+    while value.startswith("./"):
+        value = value[2:]
+    return value.lstrip("/")
+
+
+def verify_image(repo, technique_id, kind, image_ref, referenced, broken, invalid):
+    rel = norm(image_ref)
+    referenced.add(rel)
+    path = repo / rel
+
+    if not path.exists():
+        broken.append((technique_id, kind, rel))
+        return
+
+    try:
+        with Image.open(path) as image:
+            image.verify()
+    except (OSError, UnidentifiedImageError) as error:
+        invalid.append((technique_id, kind, rel, str(error)))
+
 
 def main():
     repo = Path(__file__).resolve().parent.parent
-    index = json.loads((repo / "data/techniques/index.json").read_text(encoding="utf-8"))
+    index = json.loads(
+        (repo / "data/techniques/index.json").read_text(encoding="utf-8")
+    )
 
+    full_referenced = set()
+    thumbnail_referenced = set()
     referenced = set()
-    missing_field = []
+
+    missing_image = []
+    missing_thumbnail = []
     broken = []
     invalid = []
 
     for entry in index:
-        tid = entry["id"]
-        meta = json.loads((repo / norm(entry["path"]) / "meta.json").read_text(encoding="utf-8"))
+        technique_id = entry["id"]
+        meta = json.loads(
+            (repo / norm(entry["path"]) / "meta.json").read_text(encoding="utf-8")
+        )
+
         image = meta.get("image")
+        thumbnail = meta.get("thumbnail")
         images = meta.get("images", [])
+        status = meta.get("status")
 
         if images is None:
             images = []
 
         if not isinstance(images, list):
-            print(f"Invalid images field in {tid}: expected array")
-            invalid.append((tid, "images", "images must be an array"))
+            print(f"Invalid images field in {technique_id}: expected array")
+            invalid.append(
+                (technique_id, "images", "images", "images must be an array")
+            )
             images = []
 
-        image_refs = []
-
-        if image:
-            image_refs.append(image)
+        if not image:
+            missing_image.append(technique_id)
+        else:
+            verify_image(
+                repo,
+                technique_id,
+                "image",
+                image,
+                full_referenced,
+                broken,
+                invalid,
+            )
 
         for extra_image in images:
-            if extra_image and extra_image not in image_refs:
-                image_refs.append(extra_image)
+            if extra_image and extra_image != image:
+                verify_image(
+                    repo,
+                    technique_id,
+                    "gallery",
+                    extra_image,
+                    full_referenced,
+                    broken,
+                    invalid,
+                )
 
-        if not image_refs:
+        if thumbnail:
+            if thumbnail == image:
+                invalid.append(
+                    (
+                        technique_id,
+                        "thumbnail",
+                        norm(thumbnail),
+                        "thumbnail must differ from full image",
+                    )
+                )
+            verify_image(
+                repo,
+                technique_id,
+                "thumbnail",
+                thumbnail,
+                thumbnail_referenced,
+                broken,
+                invalid,
+            )
+        elif status == "published":
+            missing_thumbnail.append(technique_id)
 
-            missing_field.append(tid)
-            continue
-        for image_ref in image_refs:
-            rel = norm(image_ref)
-            referenced.add(rel)
-            p = repo / rel
+    referenced = full_referenced | thumbnail_referenced
 
-            if not p.exists():
-                broken.append((tid, rel))
-                continue
-
-            try:
-                with Image.open(p) as im:
-                    im.verify()
-            except (OSError, UnidentifiedImageError) as e:
-                invalid.append((tid, rel, str(e)))
-
-    roots = [repo / "assets/images/techniques", repo / "assets/images/cards"]
-    webps = {p.relative_to(repo).as_posix() for r in roots if r.exists() for p in r.rglob("*.webp")}
+    roots = [
+        repo / "assets/images/techniques",
+        repo / "assets/images/cards",
+    ]
+    webps = {
+        path.relative_to(repo).as_posix()
+        for root in roots
+        if root.exists()
+        for path in root.rglob("*.webp")
+    }
     orphans = sorted(webps - referenced)
 
     gitkeeps = []
     tech_root = repo / "assets/images/techniques"
     if tech_root.exists():
-        for g in tech_root.rglob(".gitkeep"):
-            if any(x.name != ".gitkeep" for x in g.parent.iterdir()):
-                gitkeeps.append(g.relative_to(repo).as_posix())
+        for gitkeep in tech_root.rglob(".gitkeep"):
+            if any(item.name != ".gitkeep" for item in gitkeep.parent.iterdir()):
+                gitkeeps.append(gitkeep.relative_to(repo).as_posix())
 
-    print(f"Indexed techniques: {len(index)}")
-    print(f"Referenced images:  {len(referenced)}")
-    print(f"WebP files:         {len(webps)}")
-    print(f"No image in meta:   {len(missing_field)}")
-    print(f"Broken paths:       {len(broken)}")
-    print(f"Invalid images:     {len(invalid)}")
-    print(f"Orphan WebP:        {len(orphans)}")
+    print(f"Indexed techniques:   {len(index)}")
+    print(f"Full/gallery refs:    {len(full_referenced)}")
+    print(f"Thumbnail refs:       {len(thumbnail_referenced)}")
+    print(f"Referenced WebP:      {len(referenced)}")
+    print(f"WebP files:           {len(webps)}")
+    print(f"No image in meta:     {len(missing_image)}")
+    print(f"No thumbnail in meta: {len(missing_thumbnail)}")
+    print(f"Broken paths:         {len(broken)}")
+    print(f"Invalid images:       {len(invalid)}")
+    print(f"Orphan WebP:          {len(orphans)}")
 
-    if missing_field:
+    if missing_image:
         print("\nTechniques without image:")
-        for x in missing_field: print("  -", x)
+        for technique_id in missing_image:
+            print("  -", technique_id)
+
+    if missing_thumbnail:
+        print("\nPublished techniques without thumbnail:")
+        for technique_id in missing_thumbnail:
+            print("  -", technique_id)
 
     if broken:
         print("\nBroken image paths:")
-        for tid, rel in broken: print(f"  - {tid}: {rel}")
+        for technique_id, kind, rel in broken:
+            print(f"  - {technique_id} [{kind}]: {rel}")
 
     if invalid:
         print("\nInvalid images:")
-        for tid, rel, err in invalid: print(f"  - {tid}: {rel}: {err}")
+        for technique_id, kind, rel, error in invalid:
+            print(f"  - {technique_id} [{kind}]: {rel}: {error}")
 
     if orphans:
         print("\nUnreferenced WebP files:")
-        for x in orphans: print("  -", x)
+        for rel in orphans:
+            print("  -", rel)
 
     if gitkeeps:
         print("\nRedundant .gitkeep files:")
-        for x in gitkeeps: print("  -", x)
+        for rel in gitkeeps:
+            print("  -", rel)
 
     convert = repo / "convert"
     if convert.exists():
-        src = [p for p in convert.iterdir() if p.is_file() and p.suffix.lower() in {".png",".jpg",".jpeg"}]
-        if src:
-            size = sum(p.stat().st_size for p in src) / 1024 / 1024
-            print(f"\nconvert/: {len(src)} source images, {size:.1f} MB — do not commit this folder.")
+        sources = [
+            path
+            for path in convert.iterdir()
+            if path.is_file()
+            and path.suffix.lower() in {".png", ".jpg", ".jpeg"}
+        ]
+        if sources:
+            size = sum(path.stat().st_size for path in sources) / 1024 / 1024
+            print(
+                f"\nconvert/: {len(sources)} source images, "
+                f"{size:.1f} MB — do not commit this folder."
+            )
 
-    if broken or invalid:
+    if broken or invalid or missing_thumbnail:
         print("\nRESULT: FAIL")
         return 1
 
-    if missing_field:
-        print("\nRESULT: references are valid, but missing-image techniques will show placeholders.")
+    if missing_image:
+        print(
+            "\nRESULT: references are valid, but missing-image techniques "
+            "will show placeholders."
+        )
     else:
         print("\nRESULT: OK")
+
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

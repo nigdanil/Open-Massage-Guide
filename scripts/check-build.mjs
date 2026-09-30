@@ -80,6 +80,17 @@ for (const language of ['ru', 'en']) {
         fail(`${relativePath}: image missing from production build for ${item.id}: ${item.image}`);
       }
     }
+
+    if (item.status === 'published' && !item.thumbnail) {
+      fail(`${relativePath}: published technique missing thumbnail for ${item.id}`);
+    }
+
+    if (item.thumbnail) {
+      const thumbnailPath = item.thumbnail.replace(/^\.\//, '');
+      if (!fs.existsSync(path.join(output, thumbnailPath))) {
+        fail(`${relativePath}: thumbnail missing from production build for ${item.id}: ${item.thumbnail}`);
+      }
+    }
   }
 
   console.log(`${relativePath}: ${catalog.length} techniques — OK`);

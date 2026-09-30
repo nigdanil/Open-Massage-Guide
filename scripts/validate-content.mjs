@@ -289,6 +289,23 @@ for (const entry of entries) {
     fail(`[${entry.id}] published technique must have an image`);
   }
 
+  if (meta.thumbnail !== undefined && meta.thumbnail !== null && meta.thumbnail !== '') {
+    if (!isNonEmptyString(meta.thumbnail)) {
+      fail(`[${entry.id}] thumbnail must be a non-empty string`);
+    } else {
+      if (meta.thumbnail === meta.image) {
+        fail(`[${entry.id}] thumbnail must be different from the full image`);
+      }
+
+      const thumbnailPath = path.resolve(root, meta.thumbnail.replace(/^\.\//, ''));
+      if (!fs.existsSync(thumbnailPath)) {
+        fail(`[${entry.id}] thumbnail not found: ${meta.thumbnail}`);
+      }
+    }
+  } else if (meta.status === 'published') {
+    fail(`[${entry.id}] published technique must have a thumbnail`);
+  }
+
   if (meta.images !== undefined) {
     validateStringArray(meta.images, `[${entry.id}] images`);
 

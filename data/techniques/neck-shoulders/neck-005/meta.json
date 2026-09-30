@@ -27,5 +27,6 @@
     "publish": false
   },
   "status": "published",
-  "version": 1
+  "version": 1,
+  "thumbnail": "./assets/images/techniques/neck-shoulders/neck-005-thumb.webp"
 }

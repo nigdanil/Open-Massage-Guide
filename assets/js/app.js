@@ -251,9 +251,10 @@ function mediaHtml(item, dialog = false) {
     </div>
   `;
   }
-  if (item.image) {
+  const image = dialog ? item.image : (item.thumbnail || item.image);
+  if (image) {
     const className = dialog ? 'dialog-image' : 'card-image';
-    return `<img class="${className}" src="${escapeHtml(item.image)}" alt="${escapeHtml(techniqueText(item, 'imageAlt', techniqueText(item, 'title', item.id)))}" ${dialog ? '' : 'loading="lazy"'} />`;
+    return `<img class="${className}" src="${escapeHtml(image)}" alt="${escapeHtml(techniqueText(item, 'imageAlt', techniqueText(item, 'title', item.id)))}" ${dialog ? '' : 'loading="lazy"'} />`;
   }
 
   const className = dialog ? 'dialog-image-placeholder' : 'card-image-placeholder';

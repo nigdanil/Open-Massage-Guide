@@ -35,6 +35,7 @@
     },
     "status": "published",
     "version": 3,
+    "thumbnail": "./assets/images/cards/overview-001-thumb.webp",
     "modulePath": "./data/techniques/basics/overview-001",
     "text": {
       "title": "Общий справочник массажа",
@@ -105,6 +106,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/back/back-001-thumb.webp",
     "modulePath": "./data/techniques/back/back-001",
     "text": {
       "title": "Продольное поглаживание спины",
@@ -176,6 +178,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/back/back-002-thumb.webp",
     "modulePath": "./data/techniques/back/back-002",
     "text": {
       "title": "Веерное поглаживание спины",
@@ -245,6 +248,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/back/back-003-thumb.webp",
     "modulePath": "./data/techniques/back/back-003",
     "text": {
       "title": "Поперечное поглаживание спины",
@@ -314,6 +318,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/back/back-004-thumb.webp",
     "modulePath": "./data/techniques/back/back-004",
     "text": {
       "title": "Круговое растирание ладонями",
@@ -383,6 +388,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/back/back-005-thumb.webp",
     "modulePath": "./data/techniques/back/back-005",
     "text": {
       "title": "Растирание основанием ладони",
@@ -452,6 +458,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/back/back-006-thumb.webp",
     "modulePath": "./data/techniques/back/back-006",
     "text": {
       "title": "Продольное разминание спины",
@@ -521,6 +528,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/back/back-007-thumb.webp",
     "modulePath": "./data/techniques/back/back-007",
     "text": {
       "title": "Поперечное разминание спины",
@@ -589,6 +597,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/back/back-008-thumb.webp",
     "modulePath": "./data/techniques/back/back-008",
     "text": {
       "title": "Работа с трапециевидной мышцей",
@@ -658,6 +667,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/back/back-009-thumb.webp",
     "modulePath": "./data/techniques/back/back-009",
     "text": {
       "title": "Работа вокруг лопаток",
@@ -726,6 +736,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/back/back-010-thumb.webp",
     "modulePath": "./data/techniques/back/back-010",
     "text": {
       "title": "Мягкая работа с поясничной областью",
@@ -795,6 +806,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/back/back-011-thumb.webp",
     "modulePath": "./data/techniques/back/back-011",
     "text": {
       "title": "Мягкая вибрация спины",
@@ -862,6 +874,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/back/back-012-thumb.webp",
     "modulePath": "./data/techniques/back/back-012",
     "text": {
       "title": "Завершающее поглаживание спины",
@@ -930,6 +943,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/neck-shoulders/neck-001-thumb.webp",
     "modulePath": "./data/techniques/neck-shoulders/neck-001",
     "text": {
       "title": "Мягкое поглаживание задней поверхности шеи",
@@ -998,6 +1012,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/neck-shoulders/neck-002-thumb.webp",
     "modulePath": "./data/techniques/neck-shoulders/neck-002",
     "text": {
       "title": "Продольное поглаживание шеи",
@@ -1067,6 +1082,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/neck-shoulders/neck-003-thumb.webp",
     "modulePath": "./data/techniques/neck-shoulders/neck-003",
     "text": {
       "title": "Поглаживание от шеи к плечам",
@@ -1136,6 +1152,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/neck-shoulders/neck-004-thumb.webp",
     "modulePath": "./data/techniques/neck-shoulders/neck-004",
     "text": {
       "title": "Круговое растирание плечевой зоны",
@@ -1203,6 +1220,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/neck-shoulders/neck-005-thumb.webp",
     "modulePath": "./data/techniques/neck-shoulders/neck-005",
     "text": {
       "title": "Разминание верхней части трапециевидной мышцы",
@@ -1270,6 +1288,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/neck-shoulders/neck-006-thumb.webp",
     "modulePath": "./data/techniques/neck-shoulders/neck-006",
     "text": {
       "title": "Мягкое сжатие плеч",
@@ -1338,6 +1357,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/neck-shoulders/neck-007-thumb.webp",
     "modulePath": "./data/techniques/neck-shoulders/neck-007",
     "text": {
       "title": "Работа вдоль верхнего края плеч",
@@ -1406,6 +1426,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/neck-shoulders/neck-008-thumb.webp",
     "modulePath": "./data/techniques/neck-shoulders/neck-008",
     "text": {
       "title": "Мягкая работа у основания черепа",
@@ -1474,6 +1495,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/neck-shoulders/neck-009-thumb.webp",
     "modulePath": "./data/techniques/neck-shoulders/neck-009",
     "text": {
       "title": "Круговые движения в затылочной зоне",
@@ -1542,6 +1564,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/neck-shoulders/neck-010-thumb.webp",
     "modulePath": "./data/techniques/neck-shoulders/neck-010",
     "text": {
       "title": "Симметричное разминание плеч",
@@ -1610,6 +1633,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/neck-shoulders/neck-011-thumb.webp",
     "modulePath": "./data/techniques/neck-shoulders/neck-011",
     "text": {
       "title": "Мягкая вибрация плечевой зоны",
@@ -1679,6 +1703,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/neck-shoulders/neck-012-thumb.webp",
     "modulePath": "./data/techniques/neck-shoulders/neck-012",
     "text": {
       "title": "Завершающее поглаживание шеи и плеч",
@@ -1746,6 +1771,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/arms/arms-001-thumb.webp",
     "modulePath": "./data/techniques/arms/arms-001",
     "text": {
       "title": "Поглаживание предплечья",
@@ -1811,6 +1837,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/arms/arms-002-thumb.webp",
     "modulePath": "./data/techniques/arms/arms-002",
     "text": {
       "title": "Продольное поглаживание плеча",
@@ -1876,6 +1903,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/arms/arms-003-thumb.webp",
     "modulePath": "./data/techniques/arms/arms-003",
     "text": {
       "title": "Круговое растирание предплечья",
@@ -1941,6 +1969,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/arms/arms-004-thumb.webp",
     "modulePath": "./data/techniques/arms/arms-004",
     "text": {
       "title": "Разминание мышц предплечья",
@@ -2006,6 +2035,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/arms/arms-005-thumb.webp",
     "modulePath": "./data/techniques/arms/arms-005",
     "text": {
       "title": "Разминание мышц плеча",
@@ -2071,6 +2101,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/arms/arms-006-thumb.webp",
     "modulePath": "./data/techniques/arms/arms-006",
     "text": {
       "title": "Мягкая работа вокруг локтя",
@@ -2136,6 +2167,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/arms/arms-007-thumb.webp",
     "modulePath": "./data/techniques/arms/arms-007",
     "text": {
       "title": "Массаж ладони",
@@ -2201,6 +2233,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/arms/arms-008-thumb.webp",
     "modulePath": "./data/techniques/arms/arms-008",
     "text": {
       "title": "Поглаживание тыльной стороны кисти",
@@ -2266,6 +2299,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/arms/arms-009-thumb.webp",
     "modulePath": "./data/techniques/arms/arms-009",
     "text": {
       "title": "Массаж пальцев кисти",
@@ -2331,6 +2365,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/arms/arms-010-thumb.webp",
     "modulePath": "./data/techniques/arms/arms-010",
     "text": {
       "title": "Завершающее поглаживание руки",
@@ -2398,6 +2433,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-001-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-001",
     "text": {
       "title": "Поглаживание передней поверхности бедра",
@@ -2463,6 +2499,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-002-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-002",
     "text": {
       "title": "Поглаживание задней поверхности бедра",
@@ -2528,6 +2565,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-003-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-003",
     "text": {
       "title": "Плавная работа по наружной поверхности бедра",
@@ -2594,6 +2632,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-004-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-004",
     "text": {
       "title": "Круговое растирание бедра",
@@ -2659,6 +2698,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-005-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-005",
     "text": {
       "title": "Разминание мышц бедра",
@@ -2724,6 +2764,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-006-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-006",
     "text": {
       "title": "Поглаживание икроножной мышцы",
@@ -2789,6 +2830,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-007-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-007",
     "text": {
       "title": "Разминание икроножной мышцы",
@@ -2854,6 +2896,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-008-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-008",
     "text": {
       "title": "Мягкое поглаживание голени",
@@ -2919,6 +2962,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-009-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-009",
     "text": {
       "title": "Мягкая работа вокруг голеностопа",
@@ -2985,6 +3029,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-010-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-010",
     "text": {
       "title": "Поверхностное поглаживание ягодичной области",
@@ -3051,6 +3096,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-011-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-011",
     "text": {
       "title": "Круговое растирание ягодичной области",
@@ -3116,6 +3162,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-012-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-012",
     "text": {
       "title": "Завершающее поглаживание голени",
@@ -3181,6 +3228,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-013-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-013",
     "text": {
       "title": "Длинное поглаживание всей ноги",
@@ -3247,6 +3295,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/legs/legs-014-thumb.webp",
     "modulePath": "./data/techniques/legs/legs-014",
     "text": {
       "title": "Завершающее поглаживание ноги",
@@ -3313,6 +3362,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/feet/feet-001-thumb.webp",
     "modulePath": "./data/techniques/feet/feet-001",
     "text": {
       "title": "Общее поглаживание стопы",
@@ -3379,6 +3429,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/feet/feet-002-thumb.webp",
     "modulePath": "./data/techniques/feet/feet-002",
     "text": {
       "title": "Продольное поглаживание подошвы",
@@ -3444,6 +3495,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/feet/feet-003-thumb.webp",
     "modulePath": "./data/techniques/feet/feet-003",
     "text": {
       "title": "Круговое растирание пятки",
@@ -3509,6 +3561,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/feet/feet-004-thumb.webp",
     "modulePath": "./data/techniques/feet/feet-004",
     "text": {
       "title": "Мягкая работа по своду стопы",
@@ -3574,6 +3627,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/feet/feet-005-thumb.webp",
     "modulePath": "./data/techniques/feet/feet-005",
     "text": {
       "title": "Круговое растирание передней части стопы",
@@ -3639,6 +3693,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/feet/feet-006-thumb.webp",
     "modulePath": "./data/techniques/feet/feet-006",
     "text": {
       "title": "Мягкая работа с пальцами стопы",
@@ -3704,6 +3759,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/feet/feet-007-thumb.webp",
     "modulePath": "./data/techniques/feet/feet-007",
     "text": {
       "title": "Поглаживание тыльной поверхности стопы",
@@ -3769,6 +3825,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/feet/feet-008-thumb.webp",
     "modulePath": "./data/techniques/feet/feet-008",
     "text": {
       "title": "Мягкая компрессия стопы",
@@ -3835,6 +3892,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/feet/feet-009-thumb.webp",
     "modulePath": "./data/techniques/feet/feet-009",
     "text": {
       "title": "Переход от стопы к голеностопу",
@@ -3901,6 +3959,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/feet/feet-010-thumb.webp",
     "modulePath": "./data/techniques/feet/feet-010",
     "text": {
       "title": "Завершающее поглаживание стопы",
@@ -3966,6 +4025,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/face-head/face-001-thumb.webp",
     "modulePath": "./data/techniques/face-head/face-001",
     "text": {
       "title": "Поглаживание лба",
@@ -4031,6 +4091,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/face-head/face-002-thumb.webp",
     "modulePath": "./data/techniques/face-head/face-002",
     "text": {
       "title": "Круговые движения в области висков",
@@ -4096,6 +4157,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/face-head/face-003-thumb.webp",
     "modulePath": "./data/techniques/face-head/face-003",
     "text": {
       "title": "Мягкая работа с жевательной областью",
@@ -4161,6 +4223,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/face-head/face-004-thumb.webp",
     "modulePath": "./data/techniques/face-head/face-004",
     "text": {
       "title": "Круговые движения по коже головы",
@@ -4226,6 +4289,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/face-head/face-005-thumb.webp",
     "modulePath": "./data/techniques/face-head/face-005",
     "text": {
       "title": "Мягкая компрессия головы",
@@ -4291,6 +4355,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/face-head/face-006-thumb.webp",
     "modulePath": "./data/techniques/face-head/face-006",
     "text": {
       "title": "Лёгкое поглаживание щёк",
@@ -4356,6 +4421,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/face-head/face-007-thumb.webp",
     "modulePath": "./data/techniques/face-head/face-007",
     "text": {
       "title": "Мягкое поглаживание вокруг ушей",
@@ -4423,6 +4489,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/face-head/face-008-thumb.webp",
     "modulePath": "./data/techniques/face-head/face-008",
     "text": {
       "title": "Завершающее поглаживание головы и лица",
@@ -4490,6 +4557,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/self-massage/self-001-thumb.webp",
     "modulePath": "./data/techniques/self-massage/self-001",
     "text": {
       "title": "Самомассаж задней поверхности шеи",
@@ -4555,6 +4623,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/self-massage/self-002-thumb.webp",
     "modulePath": "./data/techniques/self-massage/self-002",
     "text": {
       "title": "Самомассаж плеч",
@@ -4620,6 +4689,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/self-massage/self-003-thumb.webp",
     "modulePath": "./data/techniques/self-massage/self-003",
     "text": {
       "title": "Самомассаж предплечья",
@@ -4685,6 +4755,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/self-massage/self-004-thumb.webp",
     "modulePath": "./data/techniques/self-massage/self-004",
     "text": {
       "title": "Самомассаж кисти",
@@ -4751,6 +4822,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/self-massage/self-005-thumb.webp",
     "modulePath": "./data/techniques/self-massage/self-005",
     "text": {
       "title": "Самомассаж бедра",
@@ -4816,6 +4888,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/self-massage/self-006-thumb.webp",
     "modulePath": "./data/techniques/self-massage/self-006",
     "text": {
       "title": "Самомассаж икроножной мышцы",
@@ -4881,6 +4954,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/self-massage/self-007-thumb.webp",
     "modulePath": "./data/techniques/self-massage/self-007",
     "text": {
       "title": "Самомассаж стопы руками",
@@ -4946,6 +5020,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/self-massage/self-008-thumb.webp",
     "modulePath": "./data/techniques/self-massage/self-008",
     "text": {
       "title": "Самомассаж кожи головы",
@@ -5013,6 +5088,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/self-massage/self-009-thumb.webp",
     "modulePath": "./data/techniques/self-massage/self-009",
     "text": {
       "title": "Пауза для шеи, плеч и предплечий",
@@ -5080,6 +5156,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/self-massage/self-010-thumb.webp",
     "modulePath": "./data/techniques/self-massage/self-010",
     "text": {
       "title": "Завершение самомассажа",
@@ -5152,6 +5229,7 @@
       "back-008",
       "back-012"
     ],
+    "thumbnail": "./assets/images/techniques/programs/program-001-thumb.webp",
     "modulePath": "./data/techniques/programs/program-001",
     "text": {
       "title": "Массаж спины — 15 минут",
@@ -5229,6 +5307,7 @@
       "back-011",
       "back-012"
     ],
+    "thumbnail": "./assets/images/techniques/programs/program-002-thumb.webp",
     "modulePath": "./data/techniques/programs/program-002",
     "text": {
       "title": "Массаж спины — 30 минут",
@@ -5302,6 +5381,7 @@
       "neck-005",
       "neck-012"
     ],
+    "thumbnail": "./assets/images/techniques/programs/program-003-thumb.webp",
     "modulePath": "./data/techniques/programs/program-003",
     "text": {
       "title": "Шея и плечи — 15 минут",
@@ -5375,6 +5455,7 @@
       "legs-007",
       "legs-014"
     ],
+    "thumbnail": "./assets/images/techniques/programs/program-004-thumb.webp",
     "modulePath": "./data/techniques/programs/program-004",
     "text": {
       "title": "Ноги — 20 минут",
@@ -5455,6 +5536,7 @@
       "legs-006",
       "legs-014"
     ],
+    "thumbnail": "./assets/images/techniques/programs/program-005-thumb.webp",
     "modulePath": "./data/techniques/programs/program-005",
     "text": {
       "title": "Расслабляющая последовательность — 30 минут",
@@ -5529,6 +5611,7 @@
       "self-008",
       "self-010"
     ],
+    "thumbnail": "./assets/images/techniques/programs/program-006-thumb.webp",
     "modulePath": "./data/techniques/programs/program-006",
     "text": {
       "title": "Самомассаж — 10 минут",
@@ -5596,6 +5679,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/safety/safety-001-thumb.webp",
     "modulePath": "./data/techniques/safety/safety-001",
     "text": {
       "title": "Когда массаж лучше отложить",
@@ -5661,6 +5745,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/safety/safety-002-thumb.webp",
     "modulePath": "./data/techniques/safety/safety-002",
     "text": {
       "title": "Шкала давления 1–5",
@@ -5725,6 +5810,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/safety/safety-003-thumb.webp",
     "modulePath": "./data/techniques/safety/safety-003",
     "text": {
       "title": "Согласие и личные границы",
@@ -5789,6 +5875,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/safety/safety-004-thumb.webp",
     "modulePath": "./data/techniques/safety/safety-004",
     "text": {
       "title": "Положение тела и опора",
@@ -5853,6 +5940,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/safety/safety-005-thumb.webp",
     "modulePath": "./data/techniques/safety/safety-005",
     "text": {
       "title": "Кожа, масло и скольжение",
@@ -5918,6 +6006,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/safety/safety-006-thumb.webp",
     "modulePath": "./data/techniques/safety/safety-006",
     "text": {
       "title": "Односторонний отёк и боль в ноге",
@@ -5983,6 +6072,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/safety/safety-007-thumb.webp",
     "modulePath": "./data/techniques/safety/safety-007",
     "text": {
       "title": "Обратная связь во время массажа",
@@ -6047,6 +6137,7 @@
     },
     "status": "published",
     "version": 1,
+    "thumbnail": "./assets/images/techniques/safety/safety-008-thumb.webp",
     "modulePath": "./data/techniques/safety/safety-008",
     "text": {
       "title": "После массажа",
