@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'massage-guide-v16-analytics-foundation';
+const CACHE_VERSION = 'massage-guide-v17-umami-production';
 const OFFLINE_CACHE_PREFIX = 'massage-guide-offline-library-';
 const LEGACY_OFFLINE_CACHE = 'massage-guide-offline-library';
 const OFFLINE_META_CACHE = 'massage-guide-offline-meta';

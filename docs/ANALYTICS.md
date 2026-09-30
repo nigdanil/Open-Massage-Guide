@@ -423,3 +423,42 @@ pwa_install_complete
 ```
 
 После получения реального трафика набор событий можно расширить по данным, а не заранее.
+
+---
+
+## 12. Production configuration
+
+Production Umami tracking is enabled with:
+
+```text
+provider: umami
+scriptUrl: https://cloud.umami.is/script.js
+websiteId: 25965f14-b6fb-441c-80fc-35068e0b65ec
+trackLocalhost: false
+debug: false
+```
+
+This means:
+
+- GitHub Pages sends analytics;
+- localhost does not send analytics;
+- analytics failure does not block the application;
+- product events continue to use the local analytics adapter.
+
+Production verification URL:
+
+```text
+https://nigdanil.github.io/Open-Massage-Guide/?utm_source=telegram&utm_medium=organic_social&utm_campaign=stage12_test&utm_content=test_link#/technique/back-001
+```
+
+After opening it, verify in Umami:
+
+```text
+pageview
+utm_source=telegram
+utm_medium=organic_social
+utm_campaign=stage12_test
+utm_content=test_link
+technique_open
+```
+
