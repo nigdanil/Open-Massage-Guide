@@ -456,6 +456,34 @@ convert/
 
 ---
 
+## 6.5. Проверка технического стандарта изображений
+
+После генерации full-size и thumbnails выполнить:
+
+```bash
+python scripts/check_image_spec.py
+```
+
+Проверяются:
+
+- WebP-формат;
+- размеры full-size;
+- размеры thumbnail;
+- вес файлов;
+- имя thumbnail;
+- сохранение aspect ratio;
+- технические hard limits и рекомендации по весу.
+
+Полный стандарт:
+
+```text
+docs/IMAGE-SPEC.md
+```
+
+`ERROR` блокирует CI, `WARNING` носит рекомендательный характер.
+
+---
+
 ## 7. Browser catalogs
 
 Модульные JSON остаются **источником истины**:
@@ -1064,6 +1092,7 @@ git diff --check
 node scripts/validate-content.mjs
 
 python scripts/check_image_links.py
+python scripts/check_image_spec.py
 
 node scripts/build-catalogs.mjs
 
@@ -1341,6 +1370,7 @@ python scripts/generate_thumbnails.py
 node scripts/validate-content.mjs
 
 python scripts/check_image_links.py
+python scripts/check_image_spec.py
 
 node scripts/build-catalogs.mjs
 
@@ -1595,6 +1625,7 @@ git status --short
 node scripts/validate-content.mjs
 
 python scripts/check_image_links.py
+python scripts/check_image_spec.py
 
 node scripts/build-catalogs.mjs
 
@@ -1640,6 +1671,7 @@ cd /d/Open-Massage-Guide
 node scripts/validate-content.mjs
 
 python scripts/check_image_links.py
+python scripts/check_image_spec.py
 
 node scripts/build-catalogs.mjs
 

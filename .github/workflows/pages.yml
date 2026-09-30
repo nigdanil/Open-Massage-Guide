@@ -37,6 +37,9 @@ jobs:
       - name: Validate image references
         run: python scripts/check_image_links.py
 
+      - name: Validate image specification
+        run: python scripts/check_image_spec.py
+
   build:
     needs: validate
     runs-on: ubuntu-latest
