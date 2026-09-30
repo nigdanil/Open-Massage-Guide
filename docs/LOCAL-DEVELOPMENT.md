@@ -233,6 +233,40 @@ python scripts/check_image_links.py
 
 ---
 
+# Production build
+
+Полная локальная production-сборка:
+
+```bash
+node scripts/build-site.mjs
+```
+
+Скрипт сначала пересобирает browser catalogs, затем создаёт:
+
+```text
+dist/site/
+```
+
+Проверка production build:
+
+```bash
+node scripts/check-build.mjs
+```
+
+При необходимости production build можно открыть локально:
+
+```bash
+python -m http.server 8080 --directory dist/site
+```
+
+Затем:
+
+```text
+http://localhost:8080/
+```
+
+---
+
 # 6. Запуск сайта локально
 
 Проект необходимо открывать через HTTP-сервер, а не двойным кликом по `index.html`.

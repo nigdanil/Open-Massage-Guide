@@ -112,9 +112,28 @@ node scripts/export-telegram.mjs --lang=en
 
 Экспортируются только техники, разрешённые для Telegram в `meta.json`.
 
-## GitHub Pages
+## Production build и GitHub Pages
 
-Workflow `.github/workflows/pages.yml` проверяет контент и публикует статический проект после push в `main`.
+Локальная production-сборка:
+
+```bash
+node scripts/build-site.mjs
+node scripts/check-build.mjs
+```
+
+Готовый сайт создаётся в:
+
+```text
+dist/site/
+```
+
+Workflow `.github/workflows/pages.yml` после push в `main` выполняет последовательность:
+
+```text
+validate → build → smoke-check → deploy
+```
+
+GitHub Pages получает только содержимое `dist/site`, а не весь исходный репозиторий.
 
 В настройках репозитория GitHub Pages должен использовать **Source: GitHub Actions**.
 
