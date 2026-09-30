@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'massage-guide-v13-offline-cleanup';
+const CACHE_VERSION = 'massage-guide-v15-current-shell-first';
 const OFFLINE_CACHE_PREFIX = 'massage-guide-offline-library-';
 const LEGACY_OFFLINE_CACHE = 'massage-guide-offline-library';
 const OFFLINE_META_CACHE = 'massage-guide-offline-meta';
@@ -324,16 +324,19 @@ async function handleNavigation(request) {
 }
 
 async function cacheFirst(request) {
+  // Always prefer the current application shell created by the active
+  // Service Worker. Otherwise an older downloaded offline library can pin
+  // stale app.js/CSS after a deploy.
+  const currentCache = await caches.open(CACHE_VERSION);
+  const current = await currentCache.match(request);
+  if (current) return current;
+
   const offline = await matchActiveOfflineLibrary(request);
   if (offline) return offline;
 
-  const cached = await caches.match(request);
-  if (cached) return cached;
-
   const response = await fetch(request);
   if (response.ok) {
-    const cache = await caches.open(CACHE_VERSION);
-    cache.put(request, response.clone());
+    currentCache.put(request, response.clone());
   }
   return response;
 }

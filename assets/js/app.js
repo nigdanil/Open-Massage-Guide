@@ -1,6 +1,7 @@
 const SUPPORTED_LANGUAGES = ['ru', 'en'];
 const SUPPORTED_THEMES = ['system', 'light', 'dark'];
 const THEME_STORAGE_KEY = 'massage-theme';
+const TECHNIQUE_HASH_PREFIX = '#/technique/';
 const PREVIEW_MODE = new URLSearchParams(window.location.search).get('preview') === '1';
 const systemThemeMedia = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -182,6 +183,7 @@ async function init() {
     renderStaticUi();
     renderCategories();
     render();
+    syncTechniqueRoute();
   } catch (error) {
     els.cardsGrid.innerHTML = `<div class="notice">${escapeHtml(error.message)}</div>`;
   }
@@ -272,6 +274,65 @@ function mediaHtml(item, dialog = false) {
   </div>`;
 }
 
+function techniqueHash(id) {
+  return `${TECHNIQUE_HASH_PREFIX}${encodeURIComponent(id)}`;
+}
+
+function techniqueIdFromHash() {
+  if (!window.location.hash.startsWith(TECHNIQUE_HASH_PREFIX)) return null;
+
+  const encodedId = window.location.hash.slice(TECHNIQUE_HASH_PREFIX.length);
+  if (!encodedId) return null;
+
+  try {
+    return decodeURIComponent(encodedId);
+  } catch (_) {
+    return null;
+  }
+}
+
+function techniqueById(id) {
+  return state.techniques.find((item) => item.id === id) || null;
+}
+
+function clearTechniqueRoute() {
+  if (!window.location.hash.startsWith(TECHNIQUE_HASH_PREFIX)) return;
+  history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+}
+
+function openTechniqueRoute(id) {
+  const hash = techniqueHash(id);
+
+  if (window.location.hash === hash) {
+    const item = techniqueById(id);
+    if (item) openTechnique(item);
+    return;
+  }
+
+  window.location.hash = hash;
+}
+
+function syncTechniqueRoute() {
+  if (state.techniques.length === 0) return;
+
+  const id = techniqueIdFromHash();
+
+  if (!id) {
+    if (els.dialog.open) els.dialog.close();
+    return;
+  }
+
+  const item = techniqueById(id);
+
+  if (!item) {
+    clearTechniqueRoute();
+    if (els.dialog.open) els.dialog.close();
+    return;
+  }
+
+  openTechnique(item);
+}
+
 function render() {
   const items = getFilteredTechniques();
   els.cardsGrid.replaceChildren();
@@ -311,7 +372,7 @@ function render() {
     favorite.setAttribute('aria-label', isFavorite ? ui('removeFavorite') : ui('addFavorite'));
 
     favorite.addEventListener('click', () => toggleFavorite(item.id));
-    open.addEventListener('click', () => openTechnique(item));
+    open.addEventListener('click', () => openTechniqueRoute(item.id));
     article.dataset.id = item.id;
     article.dataset.status = item.status;
     els.cardsGrid.append(node);
@@ -366,7 +427,11 @@ function openTechnique(item) {
       <div class="dialog-warning"><strong>${escapeHtml(ui('caution'))}</strong> ${escapeHtml(techniqueText(item, 'warning'))}</div>
     </div>`;
 
-  els.dialog.showModal();
+  document.title = `${techniqueText(item, 'title', item.id)} — ${ui('documentTitle', 'Open Massage Guide')}`;
+
+  if (!els.dialog.open) {
+    els.dialog.showModal();
+  }
 }
 
 async function switchLanguage(language) {
@@ -378,6 +443,7 @@ async function switchLanguage(language) {
     renderStaticUi();
     renderCategories();
     render();
+    syncTechniqueRoute();
   } finally {
     els.languageSelect.disabled = false;
   }
@@ -618,9 +684,20 @@ els.favoritesButton.addEventListener('click', () => {
   renderStaticUi();
   render();
 });
-els.closeDialog.addEventListener('click', () => els.dialog.close());
+function closeTechniqueDialog() {
+  if (els.dialog.open) els.dialog.close();
+}
+
+els.closeDialog.addEventListener('click', closeTechniqueDialog);
 els.dialog.addEventListener('click', (event) => {
-  if (event.target === els.dialog) els.dialog.close();
+  if (event.target === els.dialog) closeTechniqueDialog();
 });
+
+els.dialog.addEventListener('close', () => {
+  clearTechniqueRoute();
+  renderStaticUi();
+});
+
+window.addEventListener('hashchange', syncTechniqueRoute);
 
 init();
