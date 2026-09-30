@@ -24,7 +24,7 @@
   "telegram": {
     "publish": false
   },
-  "status": "draft",
+  "status": "published",
   "version": 1,
   "sequence": [
     "self-002",

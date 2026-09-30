@@ -1,6 +1,7 @@
 const SUPPORTED_LANGUAGES = ['ru', 'en'];
 const SUPPORTED_THEMES = ['system', 'light', 'dark'];
 const THEME_STORAGE_KEY = 'massage-theme';
+const PREVIEW_MODE = new URLSearchParams(window.location.search).get('preview') === '1';
 const systemThemeMedia = window.matchMedia('(prefers-color-scheme: dark)');
 
 function resolveInitialLanguage() {
@@ -68,17 +69,25 @@ async function loadLocale(language) {
   els.languageSelect.value = language;
 }
 
+function shouldIncludeTechnique(meta) {
+  return meta.status === 'published' || PREVIEW_MODE;
+}
+
 async function loadTechniqueModules(language) {
   const index = await loadJson('./data/techniques/index.json');
-  return Promise.all(index
+  const modules = await Promise.all(index
     .sort((a, b) => a.order - b.order)
     .map(async (entry) => {
-      const [meta, text] = await Promise.all([
-        loadJson(`${entry.path}/meta.json`),
-        loadJson(`${entry.path}/${language}.json`),
-      ]);
-      return { ...meta, modulePath: entry.path, text };
+      const meta = await loadJson(`${entry.path}/meta.json`);
+      return { ...meta, modulePath: entry.path };
     }));
+
+  return Promise.all(modules
+    .filter(shouldIncludeTechnique)
+    .map(async (item) => ({
+      ...item,
+      text: await loadJson(`${item.modulePath}/${language}.json`),
+    })));
 }
 
 async function reloadTechniqueTexts(language) {

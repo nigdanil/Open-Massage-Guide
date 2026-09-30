@@ -25,7 +25,7 @@
   "telegram": {
     "publish": false
   },
-  "status": "draft",
+  "status": "published",
   "version": 1,
   "sequence": [
     "neck-001",
