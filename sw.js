@@ -1,4 +1,6 @@
-const CACHE_VERSION = 'massage-guide-v9-card-thumbnails';
+const CACHE_VERSION = 'massage-guide-v10-offline-download';
+const OFFLINE_CACHE = 'massage-guide-offline-library';
+const OFFLINE_MARKER = './__offline-library-complete__';
 const APP_SHELL = [
   './',
   './index.html',
@@ -12,6 +14,7 @@ const APP_SHELL = [
   './data/categories.json',
   './data/generated/catalog.ru.json',
   './data/generated/catalog.en.json',
+  './data/generated/offline-manifest.json',
   './data/locales/ru.json',
   './data/locales/en.json'
 ];
@@ -24,11 +27,133 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => Promise.all(
-      keys.filter((key) => key !== CACHE_VERSION).map((key) => caches.delete(key))
+      keys
+        .filter((key) => key !== CACHE_VERSION && key !== OFFLINE_CACHE)
+        .map((key) => caches.delete(key))
     ))
   );
   self.clients.claim();
 });
+
+self.addEventListener('message', (event) => {
+  const message = event.data || {};
+
+  if (message.type === 'GET_OFFLINE_LIBRARY_STATUS') {
+    event.waitUntil(reportOfflineLibraryStatus(event.source));
+    return;
+  }
+
+  if (message.type === 'DOWNLOAD_OFFLINE_LIBRARY') {
+    event.waitUntil(downloadOfflineLibrary(event.source, message.manifest));
+  }
+});
+
+async function reportOfflineLibraryStatus(client) {
+  if (!client) return;
+
+  const cache = await caches.open(OFFLINE_CACHE);
+  const markerUrl = new URL(OFFLINE_MARKER, self.registration.scope).href;
+  const marker = await cache.match(markerUrl);
+
+  if (!marker) {
+    client.postMessage({ type: 'OFFLINE_LIBRARY_STATUS', ready: false });
+    return;
+  }
+
+  try {
+    const data = await marker.json();
+    client.postMessage({
+      type: 'OFFLINE_LIBRARY_STATUS',
+      ready: true,
+      totalBytes: data.totalBytes || 0,
+      fileCount: data.fileCount || 0,
+    });
+  } catch (_) {
+    client.postMessage({ type: 'OFFLINE_LIBRARY_STATUS', ready: true });
+  }
+}
+
+async function downloadOfflineLibrary(client, manifest) {
+  if (!client) return;
+
+  try {
+    if (!manifest || !Array.isArray(manifest.files)) {
+      throw new Error('Invalid offline manifest');
+    }
+
+    const cache = await caches.open(OFFLINE_CACHE);
+    const urls = manifest.files.map(
+      (file) => new URL(file, self.registration.scope).href,
+    );
+
+    client.postMessage({
+      type: 'OFFLINE_DOWNLOAD_STARTED',
+      total: urls.length,
+      totalBytes: manifest.totalBytes || 0,
+    });
+
+    let completed = 0;
+    let nextIndex = 0;
+
+    async function cacheNext() {
+      while (nextIndex < urls.length) {
+        const index = nextIndex;
+        nextIndex += 1;
+        const url = urls[index];
+
+        let response = await cache.match(url);
+
+        if (!response) {
+          const existing = await caches.match(url);
+          if (existing?.ok) {
+            response = existing;
+          } else {
+            response = await fetch(url);
+          }
+
+          if (!response?.ok) {
+            throw new Error(`Failed to cache ${url}`);
+          }
+
+          await cache.put(url, response.clone());
+        }
+
+        completed += 1;
+        client.postMessage({
+          type: 'OFFLINE_DOWNLOAD_PROGRESS',
+          completed,
+          total: urls.length,
+        });
+      }
+    }
+
+    const concurrency = Math.min(4, Math.max(1, urls.length));
+    await Promise.all(Array.from({ length: concurrency }, () => cacheNext()));
+
+    const markerUrl = new URL(OFFLINE_MARKER, self.registration.scope).href;
+    await cache.put(
+      markerUrl,
+      new Response(
+        JSON.stringify({
+          fileCount: manifest.fileCount || urls.length,
+          totalBytes: manifest.totalBytes || 0,
+        }),
+        { headers: { 'Content-Type': 'application/json' } },
+      ),
+    );
+
+    client.postMessage({
+      type: 'OFFLINE_DOWNLOAD_COMPLETE',
+      total: urls.length,
+      totalBytes: manifest.totalBytes || 0,
+    });
+  } catch (error) {
+    client.postMessage({
+      type: 'OFFLINE_DOWNLOAD_ERROR',
+      message: error?.message || 'Offline download failed',
+    });
+  }
+}
 
 self.addEventListener('fetch', (event) => {
   const request = event.request;

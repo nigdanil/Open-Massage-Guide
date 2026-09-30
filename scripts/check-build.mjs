@@ -41,6 +41,7 @@ for (const file of [
   'data/locales/en.json',
   'data/generated/catalog.ru.json',
   'data/generated/catalog.en.json',
+  'data/generated/offline-manifest.json',
   'docs/TELEGRAM.md',
 ]) {
   requireFile(file);
@@ -94,6 +95,35 @@ for (const language of ['ru', 'en']) {
   }
 
   console.log(`${relativePath}: ${catalog.length} techniques — OK`);
+}
+
+
+const offlineManifest = readJson('data/generated/offline-manifest.json');
+
+if (offlineManifest) {
+  if (!Array.isArray(offlineManifest.files)) {
+    fail('data/generated/offline-manifest.json: files must be an array');
+  } else {
+    if (offlineManifest.fileCount !== offlineManifest.files.length) {
+      fail(
+        'data/generated/offline-manifest.json: '
+        + `fileCount=${offlineManifest.fileCount} but files=${offlineManifest.files.length}`,
+      );
+    }
+
+    for (const webPath of offlineManifest.files) {
+      const relativePath = String(webPath).replace(/^\.\//, '');
+      if (!fs.existsSync(path.join(output, relativePath))) {
+        fail(`offline manifest file missing from production build: ${webPath}`);
+      }
+    }
+
+    console.log(
+      `data/generated/offline-manifest.json: `
+      + `${offlineManifest.techniqueCount} techniques, `
+      + `${offlineManifest.fileCount} files — OK`,
+    );
+  }
 }
 
 if (fs.existsSync(path.join(output, 'data', 'techniques'))) {

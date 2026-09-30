@@ -37,3 +37,5 @@ for (const localeId of localeIds) {
   writeJson(target, catalogs[localeId]);
   console.log(`Built ${path.relative(root, target)}: ${catalogs[localeId].length} techniques`);
 }
+
+await import('./build-offline-manifest.mjs');

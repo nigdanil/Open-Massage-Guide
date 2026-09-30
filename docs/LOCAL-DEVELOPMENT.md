@@ -950,6 +950,62 @@ http://localhost:8080/
 
 ---
 
+## Проверка полной offline library
+
+После изменения контента `build-catalogs.mjs` также обновляет:
+
+```text
+data/generated/offline-manifest.json
+```
+
+Для проверки:
+
+```bash
+node scripts/build-catalogs.mjs
+node scripts/build-site.mjs
+node scripts/check-build.mjs
+```
+
+Запустить production build:
+
+```bash
+python -m http.server 8080 --directory dist/site
+```
+
+Открыть приложение и нажать:
+
+```text
+Скачать офлайн
+```
+
+Дождаться состояния:
+
+```text
+Офлайн-библиотека загружена
+```
+
+После этого:
+
+```text
+F12
+→ Application
+→ Cache Storage
+→ massage-guide-offline-library
+```
+
+Финальная ручная проверка:
+
+1. дождаться полного скачивания;
+2. включить `Offline` в DevTools Network или отключить сеть;
+3. обновить приложение;
+4. открыть техники из разных категорий;
+5. переключить RU ↔ EN;
+6. убедиться, что thumbnails и full-size изображения доступны без сети.
+
+Полная библиотека никогда не скачивается автоматически — только после явного действия пользователя.
+
+---
+
 ## 16. GitHub Actions / GitHub Pages
 
 После push в `main` workflow:

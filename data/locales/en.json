@@ -47,7 +47,14 @@
     "switchToDarkTheme": "Switch to dark theme",
     "switchToLightTheme": "Switch to light theme",
     "imagePending": "Illustration in progress",
-    "draft": "Text ready · illustration pending"
+    "draft": "Text ready · illustration pending",
+    "offlineDownload": "Download offline",
+    "offlinePreparing": "Preparing…",
+    "offlineDownloading": "Downloading {percent}%",
+    "offlineReady": "Offline library downloaded",
+    "offlineFailed": "Retry offline download",
+    "offlineNeedConnection": "An internet connection is required for the full offline download",
+    "offlineNoSpace": "Not enough free storage for the offline library"
   },
   "categories": {
     "basics": "Basic techniques",

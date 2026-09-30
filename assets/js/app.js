@@ -33,6 +33,10 @@ const state = {
   favoritesOnly: false,
   favorites: new Set(JSON.parse(localStorage.getItem('massage-favorites') || '[]')),
   deferredPrompt: null,
+  offlineDownloadStatus: 'idle',
+  offlineDownloadProgress: 0,
+  offlineDownloadBytes: 0,
+  offlineDownloadError: '',
 };
 
 const els = {
@@ -47,6 +51,7 @@ const els = {
   categoryCount: document.querySelector('#categoryCount'),
   offlineNotice: document.querySelector('#offlineNotice'),
   installButton: document.querySelector('#installButton'),
+  offlineDownloadButton: document.querySelector('#offlineDownloadButton'),
   themeToggle: document.querySelector('#themeToggle'),
   themeToggleIcon: document.querySelector('#themeToggleIcon'),
   languageSelect: document.querySelector('#languageSelect'),
@@ -158,6 +163,7 @@ function renderStaticUi() {
   els.emptyState.textContent = ui('noResults');
   els.offlineNotice.textContent = ui('offlineNotice');
   els.installButton.textContent = ui('install');
+  renderOfflineDownloadButton();
   els.languageSelect.setAttribute('aria-label', ui('language'));
   updateThemeToggle();
   els.closeDialog.setAttribute('aria-label', ui('close'));
@@ -381,6 +387,139 @@ function escapeHtml(value = '') {
   })[char]);
 }
 
+function formatBytes(bytes) {
+  if (!Number.isFinite(bytes) || bytes <= 0) return '';
+  const megabytes = bytes / 1024 / 1024;
+  return `${megabytes.toLocaleString(state.language, { maximumFractionDigits: 1 })} MB`;
+}
+
+function renderOfflineDownloadButton() {
+  const button = els.offlineDownloadButton;
+  if (!button) return;
+
+  if (!('serviceWorker' in navigator)) {
+    button.hidden = true;
+    return;
+  }
+
+  button.hidden = false;
+  button.disabled = ['preparing', 'downloading', 'ready'].includes(state.offlineDownloadStatus);
+
+  let label = ui('offlineDownload', 'Download offline');
+
+  if (state.offlineDownloadStatus === 'preparing') {
+    label = ui('offlinePreparing', 'Preparing…');
+  } else if (state.offlineDownloadStatus === 'downloading') {
+    label = formatTemplate(ui('offlineDownloading', 'Downloading {percent}%'), {
+      percent: state.offlineDownloadProgress,
+    });
+  } else if (state.offlineDownloadStatus === 'ready') {
+    label = ui('offlineReady', 'Offline library downloaded');
+  } else if (state.offlineDownloadStatus === 'error') {
+    label = ui('offlineFailed', 'Retry offline download');
+  }
+
+  button.textContent = label;
+
+  const size = formatBytes(state.offlineDownloadBytes);
+  const details = [label, size, state.offlineDownloadError].filter(Boolean).join(' · ');
+  button.title = details;
+  button.setAttribute('aria-label', details || label);
+}
+
+async function downloadOfflineLibrary() {
+  if (!navigator.onLine) {
+    state.offlineDownloadStatus = 'error';
+    state.offlineDownloadError = ui(
+      'offlineNeedConnection',
+      'An internet connection is required for the full offline download',
+    );
+    renderOfflineDownloadButton();
+    return;
+  }
+
+  state.offlineDownloadStatus = 'preparing';
+  state.offlineDownloadProgress = 0;
+  state.offlineDownloadError = '';
+  renderOfflineDownloadButton();
+
+  try {
+    const manifest = await loadJson('./data/generated/offline-manifest.json');
+    state.offlineDownloadBytes = Number(manifest.totalBytes) || 0;
+
+    if (navigator.storage?.estimate && state.offlineDownloadBytes > 0) {
+      const estimate = await navigator.storage.estimate();
+      const available = Math.max(0, (estimate.quota || 0) - (estimate.usage || 0));
+      const safetyMargin = state.offlineDownloadBytes * 1.15;
+
+      if (available > 0 && available < safetyMargin) {
+        throw new Error(ui('offlineNoSpace', 'Not enough free storage for the offline library'));
+      }
+    }
+
+    const registration = await navigator.serviceWorker.ready;
+    const worker = registration.active || navigator.serviceWorker.controller;
+    if (!worker) throw new Error('Service Worker is not active');
+
+    worker.postMessage({
+      type: 'DOWNLOAD_OFFLINE_LIBRARY',
+      manifest,
+    });
+  } catch (error) {
+    state.offlineDownloadStatus = 'error';
+    state.offlineDownloadError = error.message;
+    renderOfflineDownloadButton();
+  }
+}
+
+function handleServiceWorkerMessage(event) {
+  const message = event.data || {};
+
+  if (message.type === 'OFFLINE_LIBRARY_STATUS') {
+    if (message.ready) {
+      state.offlineDownloadStatus = 'ready';
+      state.offlineDownloadBytes = Number(message.totalBytes) || 0;
+    }
+    renderOfflineDownloadButton();
+    return;
+  }
+
+  if (message.type === 'OFFLINE_DOWNLOAD_STARTED') {
+    state.offlineDownloadStatus = 'downloading';
+    state.offlineDownloadProgress = 0;
+    state.offlineDownloadBytes = Number(message.totalBytes) || 0;
+    state.offlineDownloadError = '';
+    renderOfflineDownloadButton();
+    return;
+  }
+
+  if (message.type === 'OFFLINE_DOWNLOAD_PROGRESS') {
+    state.offlineDownloadStatus = 'downloading';
+    const total = Number(message.total) || 0;
+    const completed = Number(message.completed) || 0;
+    state.offlineDownloadProgress = total > 0
+      ? Math.min(100, Math.round((completed / total) * 100))
+      : 0;
+    renderOfflineDownloadButton();
+    return;
+  }
+
+  if (message.type === 'OFFLINE_DOWNLOAD_COMPLETE') {
+    state.offlineDownloadStatus = 'ready';
+    state.offlineDownloadProgress = 100;
+    state.offlineDownloadBytes = Number(message.totalBytes) || state.offlineDownloadBytes;
+    state.offlineDownloadError = '';
+    renderOfflineDownloadButton();
+    return;
+  }
+
+  if (message.type === 'OFFLINE_DOWNLOAD_ERROR') {
+    state.offlineDownloadStatus = 'error';
+    state.offlineDownloadError = message.message || 'Offline download failed';
+    renderOfflineDownloadButton();
+  }
+}
+
 function updateNetworkStatus() {
   els.offlineNotice.hidden = navigator.onLine;
 }
@@ -388,11 +527,21 @@ function updateNetworkStatus() {
 async function registerServiceWorker() {
   if (!('serviceWorker' in navigator)) return;
   try {
-    await navigator.serviceWorker.register('./sw.js');
+    const registration = await navigator.serviceWorker.register('./sw.js');
+    const readyRegistration = await navigator.serviceWorker.ready;
+    const worker = readyRegistration.active || registration.active || navigator.serviceWorker.controller;
+    renderOfflineDownloadButton();
+    worker?.postMessage({ type: 'GET_OFFLINE_LIBRARY_STATUS' });
   } catch (error) {
     console.warn('Service Worker registration failed', error);
   }
 }
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.addEventListener('message', handleServiceWorkerMessage);
+}
+
+els.offlineDownloadButton?.addEventListener('click', downloadOfflineLibrary);
 
 window.addEventListener('beforeinstallprompt', (event) => {
   event.preventDefault();

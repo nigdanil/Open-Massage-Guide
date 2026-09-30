@@ -212,6 +212,43 @@ python scripts/check_image_links.py
 
 `check_image_links.py` дополнительно проверяет отсутствие битых и повреждённых изображений, техники без `image` и WebP-файлы, на которые не ссылается контент.
 
+## Offline library
+
+Обычный Service Worker кеширует app shell и ранее открытые ресурсы.
+
+Полная библиотека для offline загружается только по явному действию пользователя через кнопку:
+
+```text
+Скачать офлайн
+```
+
+Generated manifest:
+
+```text
+data/generated/offline-manifest.json
+```
+
+Он содержит только опубликованный контент:
+
+- RU/EN browser catalogs;
+- RU/EN UI locales;
+- categories;
+- thumbnails;
+- полноразмерные изображения;
+- gallery images.
+
+Offline library хранится в отдельном Cache Storage:
+
+```text
+massage-guide-offline-library
+```
+
+Shell-cache и offline library разделены. Обычное обновление shell-cache не должно автоматически удалять скачанную библиотеку.
+
+Версионирование и обновление уже скачанной offline library выполняется следующим отдельным этапом.
+
+---
+
 ## Telegram
 
 Экспорт:

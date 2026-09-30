@@ -47,7 +47,14 @@
     "switchToDarkTheme": "Включить тёмную тему",
     "switchToLightTheme": "Включить светлую тему",
     "imagePending": "Изображение готовится",
-    "draft": "Текст готов · изображение позже"
+    "draft": "Текст готов · изображение позже",
+    "offlineDownload": "Скачать офлайн",
+    "offlinePreparing": "Подготовка…",
+    "offlineDownloading": "Скачивание {percent}%",
+    "offlineReady": "Офлайн-библиотека загружена",
+    "offlineFailed": "Повторить офлайн-загрузку",
+    "offlineNeedConnection": "Для полной офлайн-загрузки требуется интернет",
+    "offlineNoSpace": "Недостаточно свободного места для офлайн-библиотеки"
   },
   "categories": {
     "basics": "Основные приёмы",
