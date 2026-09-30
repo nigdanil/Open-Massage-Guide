@@ -1,8 +1,28 @@
 # Локальная разработка и проверка
 
+Эта инструкция описывает полный локальный workflow проекта **Open Massage Guide**:
+
+- проверку окружения;
+- проверку модульного контента;
+- работу с изображениями;
+- сборку browser catalogs;
+- локальный запуск source-версии;
+- preview-режим для `draft`;
+- production build;
+- smoke-check production build;
+- проверку PWA / Service Worker;
+- проверку Git перед commit;
+- экспорт Telegram;
+- типовые рабочие сценарии.
+
+> Основной источник данных проекта — модульные файлы в `data/techniques/`.
+> Браузер напрямую их не загружает: для него собираются агрегированные каталоги в `data/generated/`.
+
+---
+
 ## 1. Перейти в каталог проекта
 
-Git Bash / Windows:
+Для Git Bash / Windows:
 
 ```bash
 cd /d/Open-Massage-Guide
@@ -20,17 +40,43 @@ pwd
 /d/Open-Massage-Guide
 ```
 
+Проверить состояние Git:
+
+```bash
+git status --short
+```
+
+Перед началом новой задачи желательно иметь чистое рабочее дерево.
+
 ---
 
 ## 2. Проверить окружение
 
+### Git
+
+```bash
+git --version
+```
+
 ### Node.js
+
+В CI используется Node.js 22, поэтому локально рекомендуется использовать Node.js 22.
 
 ```bash
 node --version
 ```
 
+Проверить npm:
+
+```bash
+npm --version
+```
+
 ### Python
+
+В CI используется Python 3.12.
+
+Проверить локальный Python:
 
 ```bash
 python --version
@@ -42,7 +88,7 @@ python --version
 python3 --version
 ```
 
-или:
+или на Windows:
 
 ```bash
 py --version
@@ -50,7 +96,7 @@ py --version
 
 ### Pillow
 
-Python-скрипты работы с изображениями используют Pillow. Например `check_image_links.py` импортирует `PIL.Image`. :chatgpt-content-reference{index="2"}
+Python-скрипты проверки и конвертации изображений используют Pillow.
 
 Проверить:
 
@@ -64,42 +110,154 @@ python -m pip show Pillow
 python -m pip install Pillow
 ```
 
+Если используется `python3`:
+
+```bash
+python3 -m pip install Pillow
+```
+
+или:
+
+```bash
+py -m pip install Pillow
+```
+
 ---
 
-# 3. Основная проверка контента
+## 3. Архитектура контента
 
-Запускать после изменений JSON, структуры техник, локализации и перед commit:
+Основной индекс техник:
+
+```text
+data/techniques/index.json
+```
+
+Каждая техника хранится отдельно:
+
+```text
+data/techniques/
+  back/
+    back-001/
+      meta.json
+      ru.json
+      en.json
+```
+
+### `meta.json`
+
+Содержит языконезависимые данные:
+
+- `id`;
+- `slug`;
+- `category`;
+- `order`;
+- `image`;
+- `images` при наличии галереи;
+- `pressure`;
+- `tempo`;
+- `difficulty`;
+- `duration`;
+- `repetitions`;
+- `areas`;
+- `tags`;
+- `status`;
+- `version`;
+- дополнительные служебные поля.
+
+### `ru.json` / `en.json`
+
+Содержат пользовательские тексты соответствующей локали.
+
+### Статусы
+
+Поддерживаются:
+
+```text
+draft
+published
+```
+
+Обычный каталог показывает только:
+
+```text
+published
+```
+
+Для просмотра `draft` используется preview-режим:
+
+```text
+?preview=1
+```
+
+---
+
+## 4. Основная проверка контента
+
+Запускать после изменений:
+
+- `data/techniques/index.json`;
+- любого `meta.json`;
+- `ru.json`;
+- `en.json`;
+- категорий;
+- локализации;
+- структуры техники.
+
+Команда:
 
 ```bash
 node scripts/validate-content.mjs
 ```
 
-Успешный результат:
+Успешный результат для текущего каталога:
 
 ```text
-OK: 91 modular techniques, locales: ru, en.
+OK: 91 modular techniques, 91 unique slugs, 91 unique orders, locales: ru, en.
 ```
 
-Валидатор проверяет:
+Количество техник может увеличиваться по мере развития проекта.
 
-- индекс техник;
-- `meta.json`;
-- RU/EN JSON;
-- обязательные поля;
-- категории;
-- `pressure`;
-- `status`;
-- существование указанных изображений;
-- gallery images;
-- наличие переводов категорий. :chatgpt-content-reference{index="3"}
+### Валидатор проверяет
 
-При ошибке commit делать не следует до исправления проблемы.
+- корректность `data/techniques/index.json`;
+- уникальность `id`;
+- уникальность `slug`;
+- уникальность `order`;
+- уникальность путей модулей;
+- соответствие директории техники её `id`;
+- соответствие `index.json ↔ meta.json`;
+- соответствие `id`;
+- соответствие `category`;
+- соответствие `order`;
+- существование категории;
+- обязательные поля `meta.json`;
+- `pressure` в диапазоне `1–5`;
+- корректный `status`;
+- положительный `version`;
+- непустые `tempo` и `difficulty`;
+- структуру `duration`;
+- структуру `repetitions`;
+- массивы `areas`;
+- массивы `tags`;
+- наличие основного изображения у `published`;
+- существование основного изображения;
+- существование gallery images;
+- наличие `ru.json`;
+- наличие `en.json`;
+- обязательные текстовые поля;
+- массивы `instructions`;
+- массивы `areasText`;
+- массивы `tips`;
+- массивы `mistakes`;
+- наличие переводов категорий в UI locale.
+
+При ошибке валидатора commit делать не следует до исправления причины.
 
 ---
 
-# 4. Проверка изображений
+## 5. Проверка изображений
 
-Запускать после работы с изображениями и желательно перед каждым commit:
+После работы с изображениями и перед значимым commit выполнить:
 
 ```bash
 python scripts/check_image_links.py
@@ -111,7 +269,7 @@ python scripts/check_image_links.py
 RESULT: OK
 ```
 
-Скрипт проверяет:
+Скрипт выводит:
 
 ```text
 Indexed techniques
@@ -123,9 +281,7 @@ Invalid images
 Orphan WebP
 ```
 
-:chatgpt-content-reference{index="4"}
-
-Идеальный результат:
+Для полностью подготовленного каталога ожидается:
 
 ```text
 No image in meta:   0
@@ -136,11 +292,29 @@ Orphan WebP:        0
 RESULT: OK
 ```
 
+### Что означают основные ошибки
+
+`No image in meta`
+
+Техника существует, но в `meta.json` не указан `image`.
+
+`Broken paths`
+
+В `meta.json` есть ссылка, но файла по этому пути нет.
+
+`Invalid images`
+
+Файл существует, но не читается как корректное изображение.
+
+`Orphan WebP`
+
+WebP лежит в `assets/images/`, но ни одна техника на него не ссылается.
+
 ---
 
-# 5. Добавление и конвертация изображений
+## 6. Добавление и конвертация изображений
 
-Этот шаг нужен **только при добавлении или замене изображений**.
+Этот workflow используется при добавлении или замене изображений.
 
 Исходники помещаются в:
 
@@ -156,23 +330,40 @@ convert/
 .jpeg
 ```
 
-Скрипт автоматически определяет категорию по имени файла, создаёт WebP и может обновить соответствующий `meta.json`. :chatgpt-content-reference{index="5"}
+Имя файла должно соответствовать `id` техники, например:
 
-### Сначала dry-run
+```text
+arms-009.png
+legs-014.jpeg
+self-010.png
+```
+
+### 6.1. Dry-run
+
+Сначала всегда рекомендуется проверить план конвертации:
 
 ```bash
 python scripts/convert_images_to_webp.py --dry-run
 ```
 
-Он показывает план изменений, ничего не записывая.
+Dry-run ничего не записывает.
 
-### Реальная конвертация
+Он показывает:
+
+- найденные изображения;
+- целевые пути WebP;
+- технику;
+- изменение `meta.json`, если оно требуется.
+
+### 6.2. Реальная конвертация
+
+Используем качество WebP 90:
 
 ```bash
 python scripts/convert_images_to_webp.py --quality 90
 ```
 
-Скрипт:
+Workflow:
 
 ```text
 convert/*.png|jpg|jpeg
@@ -185,93 +376,117 @@ data/techniques/.../meta.json
 Поле:
 
 ```json
-"image": "./assets/images/techniques/.../image.webp"
+"image": "./assets/images/techniques/.../technique-id.webp"
 ```
 
-обновляется автоматически. :chatgpt-content-reference{index="6"}
+может быть обновлено автоматически.
 
-После конвертации обязательно выполнить:
+### 6.3. После конвертации
+
+Выполнить:
 
 ```bash
 node scripts/validate-content.mjs
 python scripts/check_image_links.py
+node scripts/build-catalogs.mjs
 ```
+
+После этого проверить сайт локально.
 
 ### Важно
 
-Исходники из:
+Рабочие исходники из:
 
 ```text
 convert/
 ```
 
-не коммитить.
+не должны попадать в commit.
+
+В Git хранятся готовые WebP, используемые приложением.
 
 ---
 
-# Сборка browser catalogs
+## 7. Browser catalogs
 
-После изменения `meta.json`, `ru.json` или `en.json` пересобрать агрегированные каталоги:
+Модульные JSON остаются **источником истины**:
 
-```bash
-node scripts/build-catalogs.mjs
+```text
+data/techniques/
 ```
 
-Будут обновлены:
+Но браузер не загружает каждый `meta.json`, `ru.json` и `en.json` отдельно.
+
+Для браузера собираются:
 
 ```text
 data/generated/catalog.ru.json
 data/generated/catalog.en.json
 ```
 
-После сборки обязательно выполнить:
+### 7.1. Когда пересобирать
+
+После изменения любого:
+
+```text
+meta.json
+ru.json
+en.json
+data/techniques/index.json
+```
+
+необходимо выполнить:
 
 ```bash
-node scripts/validate-content.mjs
-python scripts/check_image_links.py
+node scripts/build-catalogs.mjs
 ```
+
+Ожидаемо:
+
+```text
+Built data/generated/catalog.ru.json: 91 techniques
+Built data/generated/catalog.en.json: 91 techniques
+```
+
+Число техник будет меняться вместе с каталогом.
+
+### 7.2. Важно
+
+Если изменить модульный контент, но не пересобрать browser catalogs, обычный локальный сайт может продолжить показывать старую версию данных.
+
+Generated catalogs не редактируются вручную.
+
+Изменения в них должны появляться только после:
+
+```bash
+node scripts/build-catalogs.mjs
+```
+
+### 7.3. Что коммитить
+
+`data/generated/catalog.ru.json` и:
+
+```text
+data/generated/catalog.en.json
+```
+
+являются частью текущей source-версии приложения и должны коммититься вместе с изменениями контента.
+
+Production build в CI всё равно пересобирает их заново, что дополнительно защищает deploy от устаревшего generated-контента.
 
 ---
 
-# Production build
+## 8. Source development — быстрый локальный запуск
 
-Полная локальная production-сборка:
+Для обычной разработки можно запускать сайт прямо из корня репозитория.
 
-```bash
-node scripts/build-site.mjs
-```
-
-Скрипт сначала пересобирает browser catalogs, затем создаёт:
-
-```text
-dist/site/
-```
-
-Проверка production build:
+Перед запуском после изменения контента:
 
 ```bash
-node scripts/check-build.mjs
+node scripts/build-catalogs.mjs
 ```
 
-При необходимости production build можно открыть локально:
-
-```bash
-python -m http.server 8080 --directory dist/site
-```
-
-Затем:
-
-```text
-http://localhost:8080/
-```
-
----
-
-# 6. Запуск сайта локально
-
-Проект необходимо открывать через HTTP-сервер, а не двойным кликом по `index.html`.
-
-Из корня проекта:
+Запустить HTTP-сервер:
 
 ```bash
 python -m http.server 8080
@@ -283,7 +498,7 @@ python -m http.server 8080
 python3 -m http.server 8080
 ```
 
-Или:
+или:
 
 ```bash
 py -m http.server 8080
@@ -295,72 +510,124 @@ py -m http.server 8080
 http://localhost:8080/
 ```
 
-Остановить сервер:
+Остановить:
 
 ```text
 Ctrl+C
 ```
 
+### Почему нельзя открывать `index.html` двойным кликом
+
+Приложение использует:
+
+- `fetch`;
+- JSON;
+- Service Worker;
+- PWA API.
+
+Поэтому запуск через `file://` не является корректным режимом разработки.
+
 ---
 
-## Preview-режим для draft-техник
+## 9. Preview-режим для draft-техник
 
-Обычный локальный адрес работает как production-каталог и показывает только `published`:
+Обычный адрес:
 
 ```text
 http://localhost:8080/
 ```
 
-Для редакционной проверки всех техник, включая `draft`, добавить параметр:
+показывает только техники:
+
+```text
+published
+```
+
+Для редакционной проверки всех техник, включая `draft`:
 
 ```text
 http://localhost:8080/?preview=1
 ```
 
-В preview-режиме draft-карточки помечаются как черновики. Этот режим предназначен для локальной/редакционной проверки и не меняет данные в `meta.json`.
+Preview-режим:
+
+- не изменяет данные;
+- не меняет `status`;
+- показывает `published + draft`;
+- предназначен для разработки и редакционной проверки.
+
+Новая техника должна начинать жизнь как:
+
+```json
+"status": "draft"
+```
+
+После проверки её можно перевести в:
+
+```json
+"status": "published"
+```
+
+После изменения `status` обязательно пересобрать catalogs:
+
+```bash
+node scripts/build-catalogs.mjs
+```
 
 ---
 
-# 7. Проверка интерфейса
+## 10. Проверка интерфейса
 
-После запуска проверить вручную:
+После запуска вручную проверить:
 
 - главная страница открывается;
-- карточки отображаются;
-- изображения загружаются;
-- нет placeholder там, где изображение уже добавлено;
-- карточки техник открываются;
+- отображается ожидаемое количество техник;
+- отображается ожидаемое количество разделов;
+- карточки загружаются;
+- изображения отображаются;
+- нет placeholder там, где изображение добавлено;
+- карточка техники открывается;
+- подробная информация отображается;
 - поиск работает;
 - фильтр категорий работает;
 - избранное работает;
 - RU → EN работает;
 - EN → RU работает;
-- переключение темы работает;
-- мобильная вёрстка не ломается.
+- тема переключается;
+- диалог закрывается;
+- мобильная вёрстка не ломается;
+- preview-mode работает отдельно от production-mode.
 
 ---
 
-# 8. Проверка Console
+## 11. Проверка Console
 
-Открыть:
+Открыть DevTools:
 
 ```text
 F12
-→ Console
 ```
 
-Не должно быть красных ошибок:
+Перейти:
 
 ```text
-Uncaught
+Console
+```
+
+Не должно быть красных ошибок приложения:
+
+```text
+Uncaught ...
 SyntaxError
 TypeError
 Failed to fetch
 ```
 
+Если есть ошибка `Failed to fetch`, см. раздел «Типовые проблемы».
+
 ---
 
-# 9. Проверка Network
+## 12. Проверка Network
 
 Открыть:
 
@@ -369,16 +636,53 @@ F12
 → Network
 ```
 
-Обновить страницу.
+Для проверки загрузки данных удобно выбрать:
 
-Не должно быть запросов:
+```text
+Fetch/XHR
+```
+
+Затем обновить страницу.
+
+### Нормальная загрузка
+
+Для русского каталога ожидаются примерно:
+
+```text
+categories.json
+ru.json
+catalog.ru.json
+```
+
+При переключении на английский будет загружаться:
+
+```text
+en.json
+catalog.en.json
+```
+
+Браузер **не должен** загружать десятки или сотни отдельных:
+
+```text
+meta.json
+ru.json
+en.json
+```
+
+из `data/techniques/...`.
+
+Именно для этого используются browser catalogs.
+
+### Ошибки
+
+Не должно быть запросов приложения со статусами:
 
 ```text
 404
 500
 ```
 
-Особенно проверить:
+Особенно проверять:
 
 ```text
 .json
@@ -387,11 +691,21 @@ F12
 .css
 ```
 
+Служебные запросы самого браузера, не относящиеся к приложению, следует оценивать отдельно.
+
+Например запрос браузера вида:
+
+```text
+/.well-known/appspecific/com.chrome.devtools.json
+```
+
+может возвращать `404` и не является ошибкой Open Massage Guide.
+
 ---
 
-# 10. Проверка без браузерного кеша
+## 13. Проверка без браузерного кеша
 
-При разработке:
+Во время разработки:
 
 ```text
 F12
@@ -405,18 +719,25 @@ F12
 Ctrl+Shift+R
 ```
 
-Это особенно важно после изменения:
+Это особенно полезно после изменения:
 
-- изображений;
-- JSON;
 - JavaScript;
-- CSS.
+- CSS;
+- JSON;
+- generated catalogs;
+- изображений.
+
+`Disable cache` работает, пока DevTools открыт.
 
 ---
 
-# 11. Service Worker и PWA-кеш
+## 14. Service Worker и PWA-кеш
 
-Если после изменения браузер показывает старую версию:
+Приложение является PWA и использует Service Worker.
+
+После изменения frontend-файлов браузер иногда может продолжать использовать старую кешированную версию.
+
+Если отображается старый код или старое изображение:
 
 ```text
 F12
@@ -433,60 +754,107 @@ Application
 → Clear site data
 ```
 
-И:
+После этого:
 
 ```text
 Ctrl+Shift+R
 ```
 
----
+### Когда особенно проверять Service Worker
 
-# 12. Проверка Git
+После изменения:
 
-Посмотреть состояние:
-
-```bash
-git status --short
+```text
+sw.js
+assets/js/app.js
+assets/css/
+manifest.webmanifest
 ```
 
-Посмотреть изменения:
+или при изменении стратегии кеширования.
 
-```bash
-git diff
-```
-
-Проверить пробельные ошибки:
-
-```bash
-git diff --check
-```
-
-После `git add` посмотреть staged changes:
-
-```bash
-git diff --cached
-```
+При изменениях app shell версия кеша в `sw.js` должна обновляться, если это требуется логикой текущей реализации.
 
 ---
 
-# 13. Финальная проверка перед commit
+## 15. Production build
 
-Стандартный набор:
+Source development и production build — разные режимы.
+
+Production build создаёт только файлы, которые должны попасть на GitHub Pages.
+
+### 15.1. Собрать production
 
 ```bash
-node scripts/validate-content.mjs
-
-python scripts/check_image_links.py
-
-git diff --check
-
-git status --short
+node scripts/build-site.mjs
 ```
 
-После этого запустить:
+`build-site.mjs`:
+
+1. пересобирает browser catalogs;
+2. очищает предыдущий production output;
+3. создаёт:
+
+```text
+dist/site/
+```
+
+4. копирует необходимые файлы сайта.
+
+Production build включает, в частности:
+
+```text
+dist/site/
+  index.html
+  manifest.webmanifest
+  sw.js
+  .nojekyll
+  assets/
+  data/
+    categories.json
+    generated/
+    locales/
+  docs/
+    TELEGRAM.md
+```
+
+Модульный source-каталог:
+
+```text
+data/techniques/
+```
+
+в production build не копируется.
+
+### 15.2. Проверить production build
 
 ```bash
-python -m http.server 8080
+node scripts/check-build.mjs
+```
+
+Ожидаемо:
+
+```text
+data/generated/catalog.ru.json: 91 techniques — OK
+data/generated/catalog.en.json: 91 techniques — OK
+Production build smoke-check: OK
+```
+
+Количество техник может меняться.
+
+Smoke-check проверяет:
+
+- обязательные production-файлы;
+- generated catalogs;
+- количество и порядок техник;
+- наличие локализованных данных;
+- наличие изображений, используемых каталогом;
+- отсутствие `data/techniques/` в production output.
+
+### 15.3. Запустить production build локально
+
+```bash
+python -m http.server 8080 --directory dist/site
 ```
 
 Открыть:
@@ -495,7 +863,183 @@ python -m http.server 8080
 http://localhost:8080/
 ```
 
-Проверить приложение вручную.
+Это наиболее близкая локальная проверка к тому, что реально получит GitHub Pages.
+
+### 15.4. `dist/` не коммитится
+
+`dist/` — локальный/CI build output.
+
+Он должен оставаться вне Git.
+
+---
+
+## 16. GitHub Actions / GitHub Pages
+
+После push в `main` workflow:
+
+```text
+.github/workflows/pages.yml
+```
+
+выполняет production pipeline.
+
+Текущая последовательность:
+
+```text
+validate
+  ↓
+image validation
+  ↓
+build
+  ↓
+smoke-check
+  ↓
+deploy
+```
+
+### Validate
+
+CI проверяет:
+
+```bash
+node scripts/validate-content.mjs
+```
+
+и:
+
+```bash
+python scripts/check_image_links.py
+```
+
+Для image validation CI устанавливает Pillow.
+
+### Build
+
+CI выполняет:
+
+```bash
+node scripts/build-site.mjs
+```
+
+Затем:
+
+```bash
+node scripts/check-build.mjs
+```
+
+### Deploy
+
+GitHub Pages получает только:
+
+```text
+dist/site/
+```
+
+а не весь репозиторий.
+
+Если `validate`, `build` или `smoke-check` завершились ошибкой, deploy выполняться не должен.
+
+После push обязательно проверить, что GitHub Actions завершился успешно.
+
+---
+
+## 17. Проверка Git
+
+Посмотреть состояние:
+
+```bash
+git status --short
+```
+
+Посмотреть unstaged-изменения:
+
+```bash
+git diff
+```
+
+Статистика:
+
+```bash
+git diff --stat
+```
+
+Проверить пробельные ошибки:
+
+```bash
+git diff --check
+```
+
+После `git add`:
+
+```bash
+git diff --cached
+```
+
+или кратко:
+
+```bash
+git diff --cached --stat
+```
+
+Проверить staged-файлы:
+
+```bash
+git status --short
+```
+
+### LF / CRLF
+
+На Windows Git может выводить предупреждение:
+
+```text
+LF will be replaced by CRLF the next time Git touches it
+```
+
+Само по себе это предупреждение не означает ошибку в проекте.
+
+Критичным является именно результат:
+
+```bash
+git diff --check
+```
+
+Если команда не выводит ошибок, whitespace-check пройден.
+
+---
+
+## 18. Финальная проверка перед commit
+
+Для значимых изменений рекомендуется полный цикл:
+
+```bash
+node scripts/validate-content.mjs
+
+python scripts/check_image_links.py
+
+node scripts/build-catalogs.mjs
+
+node scripts/build-site.mjs
+
+node scripts/check-build.mjs
+
+git diff --check
+
+git status --short
+```
+
+После этого запустить production build:
+
+```bash
+python -m http.server 8080 --directory dist/site
+```
+
+Открыть:
+
+```text
+http://localhost:8080/
+```
+
+Проверить интерфейс вручную.
 
 Остановить:
 
@@ -503,21 +1047,325 @@ http://localhost:8080/
 Ctrl+C
 ```
 
-И только после успешной проверки:
+После ручной проверки:
+
+```bash
+git status --short
+git diff
+```
+
+### Перед commit
+
+Не рекомендуется без проверки выполнять вслепую:
 
 ```bash
 git add .
+```
+
+Сначала убедиться через:
+
+```bash
 git status --short
-git diff --cached
+```
+
+что в commit не попадут:
+
+- временные apply-скрипты;
+- исходники из `convert/`;
+- локальный `dist/`;
+- случайные файлы;
+- временные тестовые артефакты.
+
+Добавить нужные файлы явно:
+
+```bash
+git add <files>
+```
+
+Проверить:
+
+```bash
+git status --short
+git diff --cached --stat
+git diff --cached --check
+```
+
+Commit:
+
+```bash
 git commit -m "..."
-git push
+```
+
+Push:
+
+```bash
+git push origin main
+```
+
+После push проверить GitHub Actions и GitHub Pages.
+
+---
+
+## 19. Workflow изменения существующей техники
+
+Если меняется текст или metadata существующей техники:
+
+1. Изменить нужные файлы:
+
+```text
+meta.json
+ru.json
+en.json
+```
+
+2. Проверить source:
+
+```bash
+node scripts/validate-content.mjs
+python scripts/check_image_links.py
+```
+
+3. Пересобрать browser catalogs:
+
+```bash
+node scripts/build-catalogs.mjs
+```
+
+4. Запустить source development:
+
+```bash
+python -m http.server 8080
+```
+
+5. Проверить:
+
+```text
+http://localhost:8080/
+```
+
+6. Для финальной проверки:
+
+```bash
+node scripts/build-site.mjs
+node scripts/check-build.mjs
+```
+
+7. Запустить production build:
+
+```bash
+python -m http.server 8080 --directory dist/site
+```
+
+8. Проверить Git и commit.
+
+---
+
+## 20. Workflow добавления новой техники
+
+Новая техника должна сначала быть `draft`.
+
+### 20.1. Создать модуль
+
+Пример:
+
+```text
+data/techniques/back/back-013/
+  meta.json
+  ru.json
+  en.json
+```
+
+### 20.2. Добавить в индекс
+
+Добавить запись в:
+
+```text
+data/techniques/index.json
+```
+
+Проверить:
+
+- уникальный `id`;
+- уникальный `slug`;
+- уникальный `order`;
+- корректную `category`;
+- корректный `path`.
+
+### 20.3. Начальный статус
+
+В `meta.json`:
+
+```json
+"status": "draft"
+```
+
+### 20.4. Добавить изображение
+
+Исходник:
+
+```text
+convert/back-013.png
+```
+
+Dry-run:
+
+```bash
+python scripts/convert_images_to_webp.py --dry-run
+```
+
+Конвертация:
+
+```bash
+python scripts/convert_images_to_webp.py --quality 90
+```
+
+### 20.5. Проверить
+
+```bash
+node scripts/validate-content.mjs
+python scripts/check_image_links.py
+node scripts/build-catalogs.mjs
+```
+
+### 20.6. Открыть preview
+
+```bash
+python -m http.server 8080
+```
+
+Открыть:
+
+```text
+http://localhost:8080/?preview=1
+```
+
+Проверить новую карточку.
+
+В обычном:
+
+```text
+http://localhost:8080/
+```
+
+draft-техника отображаться не должна.
+
+### 20.7. Публикация
+
+Когда техника полностью проверена:
+
+```json
+"status": "published"
+```
+
+После этого:
+
+```bash
+node scripts/validate-content.mjs
+python scripts/check_image_links.py
+node scripts/build-catalogs.mjs
+```
+
+Проверить обычный каталог.
+
+Финально:
+
+```bash
+node scripts/build-site.mjs
+node scripts/check-build.mjs
 ```
 
 ---
 
-# 14. Экспорт Telegram
+## 21. Workflow при добавлении или замене изображений
 
-Это не обязательная локальная проверка, а отдельная служебная операция.
+```bash
+cd /d/Open-Massage-Guide
+
+git status --short
+
+python scripts/convert_images_to_webp.py --dry-run
+
+python scripts/convert_images_to_webp.py --quality 90
+
+node scripts/validate-content.mjs
+
+python scripts/check_image_links.py
+
+node scripts/build-catalogs.mjs
+
+git diff --check
+
+git status --short
+
+python -m http.server 8080
+```
+
+Проверить:
+
+```text
+http://localhost:8080/
+```
+
+При необходимости preview:
+
+```text
+http://localhost:8080/?preview=1
+```
+
+Перед commit рекомендуется также:
+
+```bash
+node scripts/build-site.mjs
+node scripts/check-build.mjs
+```
+
+---
+
+## 22. Workflow изменения JavaScript / CSS
+
+Если меняется только frontend:
+
+```text
+assets/js/
+assets/css/
+index.html
+```
+
+пересборка browser catalogs обычно не требуется.
+
+Минимальная проверка JavaScript:
+
+```bash
+node --check assets/js/app.js
+```
+
+Для Service Worker:
+
+```bash
+node --check sw.js
+```
+
+Локально:
+
+```bash
+python -m http.server 8080
+```
+
+После проверки source-версии:
+
+```bash
+node scripts/build-site.mjs
+node scripts/check-build.mjs
+python -m http.server 8080 --directory dist/site
+```
+
+После изменений app shell отдельно проверить PWA-кеш / Service Worker.
+
+---
+
+## 23. Экспорт Telegram
+
+Это отдельная служебная операция и не является обязательной частью обычного локального запуска.
 
 Русский:
 
@@ -531,22 +1379,162 @@ node scripts/export-telegram.mjs --lang=ru
 node scripts/export-telegram.mjs --lang=en
 ```
 
-Скрипт экспортирует только опубликованные техники, у которых разрешена публикация в Telegram и присутствует изображение. :chatgpt-content-reference{index="7"}
-
-Результат создаётся в:
+Результат:
 
 ```text
 dist/telegram-feed.ru.json
 dist/telegram-feed.en.json
 ```
 
-:chatgpt-content-reference{index="8"}
+Telegram export использует модульные source-данные.
+
+Telegram-публикация зависит от настроек техники, включая:
+
+- `status`;
+- `telegram.publish`;
+- наличие изображения.
+
+Поскольку `dist/` является generated output, Telegram feed не следует автоматически считать source-файлом для commit.
 
 ---
 
-# Короткий ежедневный workflow
+## 24. Типовые проблемы
 
-Для обычных изменений:
+### `Failed to fetch`
+
+Сначала проверить:
+
+```bash
+node scripts/build-catalogs.mjs
+```
+
+Затем Network:
+
+```text
+F12 → Network → Fetch/XHR
+```
+
+Проверить наличие:
+
+```text
+catalog.ru.json
+catalog.en.json
+```
+
+Если файлы существуют, очистить Service Worker / site data.
+
+### После изменения JSON сайт показывает старые данные
+
+Скорее всего browser catalogs не пересобраны.
+
+Выполнить:
+
+```bash
+node scripts/build-catalogs.mjs
+```
+
+и обновить страницу без кеша.
+
+### После замены изображения показывается старая версия
+
+Проверить файл и ссылку:
+
+```bash
+python scripts/check_image_links.py
+```
+
+Затем:
+
+```text
+F12
+→ Application
+→ Service Workers
+→ Unregister
+```
+
+и:
+
+```text
+Application
+→ Storage
+→ Clear site data
+```
+
+После этого:
+
+```text
+Ctrl+Shift+R
+```
+
+### Появился placeholder вместо изображения
+
+Запустить:
+
+```bash
+python scripts/check_image_links.py
+```
+
+Проверить поле:
+
+```json
+"image": "..."
+```
+
+в соответствующем `meta.json`.
+
+### Production build не совпадает с source
+
+Пересобрать:
+
+```bash
+node scripts/build-site.mjs
+```
+
+Затем:
+
+```bash
+node scripts/check-build.mjs
+```
+
+Не редактировать вручную:
+
+```text
+dist/site/
+```
+
+### `404 /.well-known/appspecific/com.chrome.devtools.json`
+
+Это служебный запрос браузера/DevTools и не является ошибкой приложения.
+
+### `LF will be replaced by CRLF`
+
+На Windows это предупреждение Git о переводах строк.
+
+Дополнительно проверить:
+
+```bash
+git diff --check
+```
+
+### Порт 8080 занят
+
+Использовать другой порт:
+
+```bash
+python -m http.server 8081
+```
+
+или для production:
+
+```bash
+python -m http.server 8081 --directory dist/site
+```
+
+---
+
+## 25. Короткий ежедневный workflow
+
+Для обычных изменений контента:
 
 ```bash
 cd /d/Open-Massage-Guide
@@ -556,6 +1544,8 @@ git status --short
 node scripts/validate-content.mjs
 
 python scripts/check_image_links.py
+
+node scripts/build-catalogs.mjs
 
 git diff --check
 
@@ -568,13 +1558,19 @@ python -m http.server 8080
 http://localhost:8080/
 ```
 
+При необходимости:
+
+```text
+http://localhost:8080/?preview=1
+```
+
 После ручной проверки:
 
 ```text
 Ctrl+C
 ```
 
-Затем:
+Проверить:
 
 ```bash
 git status --short
@@ -583,22 +1579,182 @@ git diff
 
 ---
 
-# Workflow при добавлении изображений
+## 26. Полный pre-push workflow
+
+Перед важным push:
 
 ```bash
 cd /d/Open-Massage-Guide
-
-python scripts/convert_images_to_webp.py --dry-run
-
-python scripts/convert_images_to_webp.py --quality 90
 
 node scripts/validate-content.mjs
 
 python scripts/check_image_links.py
 
+node scripts/build-catalogs.mjs
+
+node scripts/build-site.mjs
+
+node scripts/check-build.mjs
+
 git diff --check
 
 git status --short
-
-python -m http.server 8080
 ```
+
+Проверить production локально:
+
+```bash
+python -m http.server 8080 --directory dist/site
+```
+
+Открыть:
+
+```text
+http://localhost:8080/
+```
+
+После проверки:
+
+```text
+Ctrl+C
+```
+
+Проверить staged changes:
+
+```bash
+git status --short
+git diff --cached --stat
+git diff --cached --check
+```
+
+Commit:
+
+```bash
+git commit -m "..."
+```
+
+Push:
+
+```bash
+git push origin main
+```
+
+После push проверить GitHub Actions.
+
+---
+
+## 27. Что является source, generated и временными файлами
+
+### Source — редактируется вручную и хранится в Git
+
+```text
+data/techniques/
+data/categories.json
+data/locales/
+assets/
+assets/js/
+assets/css/
+index.html
+manifest.webmanifest
+sw.js
+scripts/
+docs/
+.github/workflows/
+```
+
+### Generated, но хранится в Git
+
+Browser catalogs:
+
+```text
+data/generated/catalog.ru.json
+data/generated/catalog.en.json
+```
+
+Они генерируются командой:
+
+```bash
+node scripts/build-catalogs.mjs
+```
+
+и не редактируются вручную.
+
+### Generated build output — не хранится в Git
+
+```text
+dist/
+```
+
+В том числе:
+
+```text
+dist/site/
+dist/telegram-feed.ru.json
+dist/telegram-feed.en.json
+```
+
+### Локальные рабочие исходники изображений — не коммитить
+
+```text
+convert/
+```
+
+---
+
+## 28. Главное правило рабочего цикла
+
+Если изменён **контент техники**:
+
+```text
+изменить source
+→ validate
+→ check images
+→ build catalogs
+→ проверить source
+→ build site
+→ smoke-check
+→ проверить production
+→ commit
+→ push
+→ проверить Actions
+```
+
+Если изменён **frontend**:
+
+```text
+изменить frontend
+→ syntax check
+→ проверить source
+→ build site
+→ smoke-check
+→ проверить production
+→ commit
+→ push
+→ проверить Actions
+```
+
+Если добавлено **изображение**:
+
+```text
+convert source
+→ WebP
+→ meta.json
+→ validate
+→ check images
+→ build catalogs
+→ проверить source
+→ build site
+→ smoke-check
+→ commit
+→ push
+→ проверить Actions
+```
+
+Такой порядок позволяет не публиковать:
+
+- битый JSON;
+- broken image links;
+- устаревший generated catalog;
+- draft вместо published;
+- ошибочный production build;
+- случайные локальные файлы.
