@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "version": "c9035b135d26ce4c",
+  "version": "7cdaa42fb598997b",
   "techniqueCount": 91,
-  "fileCount": 198,
-  "totalBytes": 28382833,
+  "fileCount": 200,
+  "totalBytes": 28392299,
   "files": [
     "./assets/css/modular-extra.css",
     "./assets/css/styles.css",
@@ -194,7 +194,9 @@
     "./assets/images/techniques/self-massage/self-009.webp",
     "./assets/images/techniques/self-massage/self-010-thumb.webp",
     "./assets/images/techniques/self-massage/self-010.webp",
+    "./assets/js/analytics.js",
     "./assets/js/app.js",
+    "./data/analytics.json",
     "./data/categories.json",
     "./data/generated/catalog.en.json",
     "./data/generated/catalog.ru.json",

@@ -41,6 +41,7 @@ for (const directory of [
 }
 
 copyFile('data/categories.json');
+copyFile('data/analytics.json');
 
 // index.html currently links to this file.
 if (fs.existsSync(path.join(root, 'docs', 'TELEGRAM.md'))) {

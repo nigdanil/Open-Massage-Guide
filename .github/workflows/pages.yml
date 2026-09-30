@@ -40,6 +40,9 @@ jobs:
       - name: Validate image specification
         run: python scripts/check_image_spec.py
 
+      - name: Validate analytics configuration
+        run: node scripts/check-analytics.mjs
+
   build:
     needs: validate
     runs-on: ubuntu-latest

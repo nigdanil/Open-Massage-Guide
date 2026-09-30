@@ -142,6 +142,7 @@ GitHub Pages получает только содержимое `dist/site`, а 
 - [Архитектура контента](docs/CONTENT-ARCHITECTURE.md)
 - [Локальная разработка и проверки](docs/LOCAL-DEVELOPMENT.md)
 - [Стандарт изображений](docs/IMAGE-SPEC.md)
+- [Продуктовая аналитика и UTM](docs/ANALYTICS.md)
 - документация по изображениям и другим процессам находится в `docs/`.
 
 ## Безопасность

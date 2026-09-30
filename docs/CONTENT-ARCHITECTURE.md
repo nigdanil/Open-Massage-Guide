@@ -351,3 +351,34 @@ assets/images/techniques/back/back-011.webp
 ## Главное правило
 
 Редактируем исходные модульные файлы техники. Производные каталоги, SEO-страницы и другие build-артефакты в следующих этапах плана должны генерироваться автоматически и не становиться вторым ручным источником истины.
+
+## Product analytics
+
+Product analytics вынесена из `app.js` в отдельный runtime:
+
+```text
+assets/js/analytics.js
+```
+
+Конфигурация:
+
+```text
+data/analytics.json
+```
+
+Analytics-layer не является критической зависимостью приложения:
+
+- при `enabled: false` сайт работает без внешних запросов аналитики;
+- ошибка analytics provider не должна ломать каталог;
+- UTM attribution хранится только в `sessionStorage`;
+- свободный поисковый текст не отправляется;
+- product events подписываются на DOM, hash navigation и Service Worker messages без внедрения analytics-кода в основную бизнес-логику.
+
+UTM и event contract описаны в:
+
+```text
+docs/ANALYTICS.md
+```
+
+---
+

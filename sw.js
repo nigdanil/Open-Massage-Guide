@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'massage-guide-v15-current-shell-first';
+const CACHE_VERSION = 'massage-guide-v16-analytics-foundation';
 const OFFLINE_CACHE_PREFIX = 'massage-guide-offline-library-';
 const LEGACY_OFFLINE_CACHE = 'massage-guide-offline-library';
 const OFFLINE_META_CACHE = 'massage-guide-offline-meta';
@@ -11,10 +11,12 @@ const APP_SHELL = [
   './assets/css/styles.css',
   './assets/css/modular-extra.css',
   './assets/js/app.js',
+  './assets/js/analytics.js',
   './assets/icons/icon-192.png',
   './assets/icons/icon-512.png',
   './assets/icons/apple-touch-icon.png',
   './data/categories.json',
+  './data/analytics.json',
   './data/generated/catalog.ru.json',
   './data/generated/catalog.en.json',
   './data/generated/offline-manifest.json',

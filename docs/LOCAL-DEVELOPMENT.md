@@ -1994,3 +1994,41 @@ convert source
 - draft вместо published;
 - ошибочный production build;
 - случайные локальные файлы.
+
+## Проверка продуктовой аналитики и UTM
+
+Основной документ:
+
+```text
+docs/ANALYTICS.md
+```
+
+Проверить analytics config:
+
+```bash
+node scripts/check-analytics.mjs
+```
+
+По умолчанию production analytics может оставаться выключенной до получения Umami `websiteId`.
+
+Сгенерировать тестовую UTM-ссылку:
+
+```bash
+node scripts/build-utm-url.mjs \
+  --source=instagram \
+  --medium=organic_social \
+  --campaign=omg_launch_ru_2026_10 \
+  --content=reel_back_001 \
+  --technique=back-001
+```
+
+Для локальной проверки attribution открыть URL с UTM и выполнить в Console:
+
+```js
+OMG_ANALYTICS.getAttribution()
+```
+
+Raw search query в аналитику не отправляется.
+
+---
+
