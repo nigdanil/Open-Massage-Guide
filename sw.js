@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'massage-guide-v7-published-preview';
+const CACHE_VERSION = 'massage-guide-v8-generated-catalogs';
 const APP_SHELL = [
   './',
   './index.html',
@@ -10,7 +10,8 @@ const APP_SHELL = [
   './assets/icons/icon-512.png',
   './assets/icons/apple-touch-icon.png',
   './data/categories.json',
-  './data/techniques/index.json',
+  './data/generated/catalog.ru.json',
+  './data/generated/catalog.en.json',
   './data/locales/ru.json',
   './data/locales/en.json'
 ];

@@ -74,27 +74,12 @@ function shouldIncludeTechnique(meta) {
 }
 
 async function loadTechniqueModules(language) {
-  const index = await loadJson('./data/techniques/index.json');
-  const modules = await Promise.all(index
-    .sort((a, b) => a.order - b.order)
-    .map(async (entry) => {
-      const meta = await loadJson(`${entry.path}/meta.json`);
-      return { ...meta, modulePath: entry.path };
-    }));
-
-  return Promise.all(modules
-    .filter(shouldIncludeTechnique)
-    .map(async (item) => ({
-      ...item,
-      text: await loadJson(`${item.modulePath}/${language}.json`),
-    })));
+  const catalog = await loadJson(`./data/generated/catalog.${language}.json`);
+  return catalog.filter(shouldIncludeTechnique);
 }
 
 async function reloadTechniqueTexts(language) {
-  state.techniques = await Promise.all(state.techniques.map(async (item) => ({
-    ...item,
-    text: await loadJson(`${item.modulePath}/${language}.json`),
-  })));
+  state.techniques = await loadTechniqueModules(language);
 }
 
 function ui(key, fallback = '') {

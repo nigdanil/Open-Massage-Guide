@@ -209,6 +209,30 @@ convert/
 
 ---
 
+# Сборка browser catalogs
+
+После изменения `meta.json`, `ru.json` или `en.json` пересобрать агрегированные каталоги:
+
+```bash
+node scripts/build-catalogs.mjs
+```
+
+Будут обновлены:
+
+```text
+data/generated/catalog.ru.json
+data/generated/catalog.en.json
+```
+
+После сборки обязательно выполнить:
+
+```bash
+node scripts/validate-content.mjs
+python scripts/check_image_links.py
+```
+
+---
+
 # 6. Запуск сайта локально
 
 Проект необходимо открывать через HTTP-сервер, а не двойным кликом по `index.html`.

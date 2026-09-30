@@ -140,6 +140,29 @@ python scripts/convert_images_to_webp.py --quality 90
 python scripts/check_image_links.py
 ```
 
+## Generated browser catalogs
+
+Исходным источником истины остаются модульные файлы в `data/techniques/`.
+
+Для браузера из них автоматически собираются:
+
+```text
+data/generated/catalog.ru.json
+data/generated/catalog.en.json
+```
+
+Генерация:
+
+```bash
+node scripts/build-catalogs.mjs
+```
+
+Каждый generated catalog содержит объединённые `meta.json` и текст соответствующей локали. Фронтенд загружает один каталог вместо отдельных `meta.json` и локализованных файлов для каждой техники.
+
+Generated-файлы не редактируются вручную. После изменения модульного контента каталоги необходимо пересобрать.
+
+---
+
 ## Валидация
 
 Перед commit необходимо выполнить:
