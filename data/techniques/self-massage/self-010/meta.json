@@ -3,7 +3,7 @@
   "slug": "finishing-self-massage",
   "category": "self-massage",
   "order": 1100,
-  "image": null,
+  "image": "./assets/images/techniques/self-massage/self-010.webp",
   "pressure": 1,
   "tempo": "slow",
   "difficulty": "beginner",
