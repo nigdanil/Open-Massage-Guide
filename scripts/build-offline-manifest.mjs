@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -13,6 +14,16 @@ function normalizeWebPath(value) {
 }
 
 const coreFiles = [
+  './index.html',
+  './manifest.webmanifest',
+  './assets/css/styles.css',
+  './assets/css/modular-extra.css',
+  './assets/js/app.js',
+  './assets/icons/icon-192.png',
+  './assets/icons/icon-512.png',
+  './assets/icons/apple-touch-icon.png',
+  './assets/icons/maskable-512.png',
+  './docs/TELEGRAM.md',
   './data/categories.json',
   './data/locales/ru.json',
   './data/locales/en.json',
@@ -44,16 +55,28 @@ for (const entry of index) {
 
 const orderedFiles = [...files].sort();
 let totalBytes = 0;
+const hash = crypto.createHash('sha256');
 
 for (const webPath of orderedFiles) {
   const diskPath = path.join(root, webPath.replace(/^\.\//, ''));
   if (!fs.existsSync(diskPath)) {
     throw new Error(`Offline manifest file does not exist: ${webPath}`);
   }
-  totalBytes += fs.statSync(diskPath).size;
+
+  const content = fs.readFileSync(diskPath);
+  totalBytes += content.length;
+
+  hash.update(webPath);
+  hash.update('\0');
+  hash.update(content);
+  hash.update('\0');
 }
 
+const version = hash.digest('hex').slice(0, 16);
+
 const manifest = {
+  schemaVersion: 2,
+  version,
   techniqueCount,
   fileCount: orderedFiles.length,
   totalBytes,
@@ -66,6 +89,7 @@ fs.writeFileSync(target, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
 
 console.log(
   `Built ${path.relative(root, target)}: `
+  + `version ${manifest.version}, `
   + `${manifest.techniqueCount} published techniques, `
   + `${manifest.fileCount} files, `
   + `${(manifest.totalBytes / 1024 / 1024).toFixed(2)} MB`,

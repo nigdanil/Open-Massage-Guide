@@ -54,7 +54,10 @@
     "offlineReady": "Offline library downloaded",
     "offlineFailed": "Retry offline download",
     "offlineNeedConnection": "An internet connection is required for the full offline download",
-    "offlineNoSpace": "Not enough free storage for the offline library"
+    "offlineNoSpace": "Not enough free storage for the offline library",
+    "offlineUpdate": "Update offline",
+    "offlineUpdating": "Updating {percent}%",
+    "offlineUpdateAvailable": "Offline library update available"
   },
   "categories": {
     "basics": "Basic techniques",

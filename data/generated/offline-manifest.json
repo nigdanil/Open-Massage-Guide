@@ -1,8 +1,16 @@
 {
+  "schemaVersion": 2,
+  "version": "b04e48918dd2f311",
   "techniqueCount": 91,
-  "fileCount": 188,
-  "totalBytes": 28323245,
+  "fileCount": 198,
+  "totalBytes": 28381063,
   "files": [
+    "./assets/css/modular-extra.css",
+    "./assets/css/styles.css",
+    "./assets/icons/apple-touch-icon.png",
+    "./assets/icons/icon-192.png",
+    "./assets/icons/icon-512.png",
+    "./assets/icons/maskable-512.png",
     "./assets/images/cards/overview-001-thumb.webp",
     "./assets/images/cards/overview-001.webp",
     "./assets/images/cards/overview-002.webp",
@@ -186,10 +194,14 @@
     "./assets/images/techniques/self-massage/self-009.webp",
     "./assets/images/techniques/self-massage/self-010-thumb.webp",
     "./assets/images/techniques/self-massage/self-010.webp",
+    "./assets/js/app.js",
     "./data/categories.json",
     "./data/generated/catalog.en.json",
     "./data/generated/catalog.ru.json",
     "./data/locales/en.json",
-    "./data/locales/ru.json"
+    "./data/locales/ru.json",
+    "./docs/TELEGRAM.md",
+    "./index.html",
+    "./manifest.webmanifest"
   ]
 }

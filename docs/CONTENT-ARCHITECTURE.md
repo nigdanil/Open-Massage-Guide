@@ -228,14 +228,20 @@ Generated manifest:
 data/generated/offline-manifest.json
 ```
 
-Он содержит только опубликованный контент:
+Он содержит опубликованный контент и полный app shell:
 
+- `index.html`;
+- CSS и JavaScript приложения;
+- Web App Manifest и иконки;
+- Telegram guide;
 - RU/EN browser catalogs;
 - RU/EN UI locales;
 - categories;
 - thumbnails;
 - полноразмерные изображения;
 - gallery images.
+
+Это позволяет перезагрузить приложение при полностью отключённой сети, не полагаясь только на временный shell-cache Service Worker.
 
 Offline library хранится в отдельном Cache Storage:
 
@@ -248,6 +254,42 @@ Shell-cache и offline library разделены. Обычное обновле
 Версионирование и обновление уже скачанной offline library выполняется следующим отдельным этапом.
 
 ---
+
+### Версионирование offline library
+
+`offline-manifest.json` содержит детерминированную версию:
+
+```json
+{
+  "schemaVersion": 2,
+  "version": "0123456789abcdef"
+}
+```
+
+`version` вычисляется из путей и содержимого всех файлов offline package. Если опубликованный текст или изображение меняются, меняется и версия.
+
+Каждая установленная offline library хранится в cache:
+
+```text
+massage-guide-offline-library-<version>
+```
+
+Активная версия хранится отдельно в:
+
+```text
+massage-guide-offline-meta
+```
+
+Обновление выполняется безопасно:
+
+1. старая offline library продолжает работать;
+2. новая версия полностью скачивается в новый cache;
+3. только после успешного скачивания новая версия становится активной;
+4. старый cache удаляется;
+5. если загрузка новой версии завершилась ошибкой, старая библиотека остаётся активной.
+
+Stage 8 cache без версии распознаётся как legacy и предлагается к обновлению.
+
 
 ## Telegram
 

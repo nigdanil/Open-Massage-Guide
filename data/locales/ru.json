@@ -54,7 +54,10 @@
     "offlineReady": "Офлайн-библиотека загружена",
     "offlineFailed": "Повторить офлайн-загрузку",
     "offlineNeedConnection": "Для полной офлайн-загрузки требуется интернет",
-    "offlineNoSpace": "Недостаточно свободного места для офлайн-библиотеки"
+    "offlineNoSpace": "Недостаточно свободного места для офлайн-библиотеки",
+    "offlineUpdate": "Обновить офлайн",
+    "offlineUpdating": "Обновление {percent}%",
+    "offlineUpdateAvailable": "Доступно обновление офлайн-библиотеки"
   },
   "categories": {
     "basics": "Основные приёмы",

@@ -101,6 +101,23 @@ for (const language of ['ru', 'en']) {
 const offlineManifest = readJson('data/generated/offline-manifest.json');
 
 if (offlineManifest) {
+  if (offlineManifest.schemaVersion !== 2) {
+    fail(
+      'data/generated/offline-manifest.json: '
+      + `expected schemaVersion=2, got ${offlineManifest.schemaVersion}`,
+    );
+  }
+
+  if (
+    typeof offlineManifest.version !== 'string'
+    || !/^[a-f0-9]{16}$/.test(offlineManifest.version)
+  ) {
+    fail(
+      'data/generated/offline-manifest.json: '
+      + `invalid version ${offlineManifest.version}`,
+    );
+  }
+
   if (!Array.isArray(offlineManifest.files)) {
     fail('data/generated/offline-manifest.json: files must be an array');
   } else {
@@ -120,6 +137,7 @@ if (offlineManifest) {
 
     console.log(
       `data/generated/offline-manifest.json: `
+      + `version ${offlineManifest.version}, `
       + `${offlineManifest.techniqueCount} techniques, `
       + `${offlineManifest.fileCount} files — OK`,
     );

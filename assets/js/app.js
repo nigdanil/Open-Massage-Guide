@@ -37,6 +37,8 @@ const state = {
   offlineDownloadProgress: 0,
   offlineDownloadBytes: 0,
   offlineDownloadError: '',
+  offlineManifest: null,
+  offlineInstalledVersion: null,
 };
 
 const els = {
@@ -410,11 +412,20 @@ function renderOfflineDownloadButton() {
   if (state.offlineDownloadStatus === 'preparing') {
     label = ui('offlinePreparing', 'Preparing…');
   } else if (state.offlineDownloadStatus === 'downloading') {
-    label = formatTemplate(ui('offlineDownloading', 'Downloading {percent}%'), {
+    const progressKey = state.offlineInstalledVersion
+      ? 'offlineUpdating'
+      : 'offlineDownloading';
+    const progressFallback = state.offlineInstalledVersion
+      ? 'Updating {percent}%'
+      : 'Downloading {percent}%';
+
+    label = formatTemplate(ui(progressKey, progressFallback), {
       percent: state.offlineDownloadProgress,
     });
   } else if (state.offlineDownloadStatus === 'ready') {
     label = ui('offlineReady', 'Offline library downloaded');
+  } else if (state.offlineDownloadStatus === 'update') {
+    label = ui('offlineUpdate', 'Update offline');
   } else if (state.offlineDownloadStatus === 'error') {
     label = ui('offlineFailed', 'Retry offline download');
   }
@@ -444,7 +455,9 @@ async function downloadOfflineLibrary() {
   renderOfflineDownloadButton();
 
   try {
-    const manifest = await loadJson('./data/generated/offline-manifest.json');
+    const manifest = state.offlineManifest
+      || await loadJson('./data/generated/offline-manifest.json');
+    state.offlineManifest = manifest;
     state.offlineDownloadBytes = Number(manifest.totalBytes) || 0;
 
     if (navigator.storage?.estimate && state.offlineDownloadBytes > 0) {
@@ -476,10 +489,26 @@ function handleServiceWorkerMessage(event) {
   const message = event.data || {};
 
   if (message.type === 'OFFLINE_LIBRARY_STATUS') {
-    if (message.ready) {
+    state.offlineInstalledVersion = message.installedVersion || null;
+
+    if (message.ready && message.updateAvailable) {
+      state.offlineDownloadStatus = 'update';
+      state.offlineDownloadError = ui(
+        'offlineUpdateAvailable',
+        'Offline library update available',
+      );
+    } else if (message.ready) {
       state.offlineDownloadStatus = 'ready';
-      state.offlineDownloadBytes = Number(message.totalBytes) || 0;
+      state.offlineDownloadError = '';
+    } else {
+      state.offlineDownloadStatus = 'idle';
+      state.offlineDownloadError = '';
     }
+
+    state.offlineDownloadBytes = Number(message.totalBytes)
+      || Number(state.offlineManifest?.totalBytes)
+      || 0;
+
     renderOfflineDownloadButton();
     return;
   }
@@ -508,6 +537,7 @@ function handleServiceWorkerMessage(event) {
     state.offlineDownloadStatus = 'ready';
     state.offlineDownloadProgress = 100;
     state.offlineDownloadBytes = Number(message.totalBytes) || state.offlineDownloadBytes;
+    state.offlineInstalledVersion = message.version || state.offlineManifest?.version || null;
     state.offlineDownloadError = '';
     renderOfflineDownloadButton();
     return;
@@ -530,8 +560,15 @@ async function registerServiceWorker() {
     const registration = await navigator.serviceWorker.register('./sw.js');
     const readyRegistration = await navigator.serviceWorker.ready;
     const worker = readyRegistration.active || registration.active || navigator.serviceWorker.controller;
+
+    state.offlineManifest = await loadJson('./data/generated/offline-manifest.json');
+    state.offlineDownloadBytes = Number(state.offlineManifest.totalBytes) || 0;
+
     renderOfflineDownloadButton();
-    worker?.postMessage({ type: 'GET_OFFLINE_LIBRARY_STATUS' });
+    worker?.postMessage({
+      type: 'GET_OFFLINE_LIBRARY_STATUS',
+      currentVersion: state.offlineManifest.version,
+    });
   } catch (error) {
     console.warn('Service Worker registration failed', error);
   }
