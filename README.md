@@ -1,72 +1,128 @@
 # Open Massage Guide — PWA
 
-Открытый визуальный справочник массажных техник. Проект работает как обычный сайт и как устанавливаемое PWA-приложение на поддерживаемых мобильных и desktop-браузерах.
+Открытый визуальный справочник массажных техник. Проект работает как обычный сайт и как устанавливаемое PWA-приложение в поддерживаемых мобильных и desktop-браузерах.
 
 ## Что уже есть
 
 - адаптивный интерфейс;
-- каталог техник из JSON;
+- модульный каталог массажных техник;
+- русская и английская локализации;
 - поиск и фильтрация по зонам;
 - избранное локально на устройстве;
-- полноэкранное описание техники;
+- подробные карточки техник;
 - Web App Manifest;
 - Service Worker и офлайн-кэш;
-- иконки PWA;
-- структура под сотни карточек;
 - GitHub Pages workflow;
-- заготовка для Telegram-экспорта.
+- проверка структуры контента и изображений;
+- конвертация исходных изображений в WebP;
+- экспорт опубликованных техник для Telegram.
 
-## Структура
+## Архитектура контента
+
+Источник данных каталога — `data/techniques/index.json` и самостоятельные модули техник.
 
 ```text
-assets/images/cards/     готовые изображения карточек
-assets/icons/            PWA-иконки
-data/categories.json     категории
-data/techniques.json     техники и метаданные
-scripts/                 проверка данных / Telegram-экспорт
-docs/                    документация
-.github/workflows/       публикация GitHub Pages
+data/
+  categories.json
+  locales/
+    ru.json
+    en.json
+  techniques/
+    index.json
+    back/
+      back-001/
+        meta.json
+        ru.json
+        en.json
+
+assets/
+  images/
+    techniques/
+      back/
+        back-001.webp
 ```
 
-## Локальный запуск
+Для каждой техники:
 
-Service Worker не работает при простом открытии `index.html` через `file://`. Запустите локальный HTTP-сервер:
+- `meta.json` хранит языконезависимые машинные данные;
+- `ru.json` содержит пользовательский текст на русском;
+- `en.json` содержит пользовательский текст на английском;
+- изображение хранится отдельно в `assets/images/techniques/...`;
+- `data/techniques/index.json` связывает технику с её модулем и определяет порядок каталога.
+
+Старый монолитный `data/techniques.json` больше не используется.
+
+Подробное описание: [docs/CONTENT-ARCHITECTURE.md](docs/CONTENT-ARCHITECTURE.md).
+
+## Локальная разработка
+
+Полная инструкция по локальному запуску, проверкам, изображениям и рабочему циклу:
+
+[docs/LOCAL-DEVELOPMENT.md](docs/LOCAL-DEVELOPMENT.md)
+
+Минимальная проверка перед запуском:
+
+```bash
+node scripts/validate-content.mjs
+python scripts/check_image_links.py
+```
+
+Локальный HTTP-сервер:
 
 ```bash
 python -m http.server 8080
 ```
 
-Затем откройте:
+После запуска открыть:
 
 ```text
-http://localhost:8080
+http://localhost:8080/
 ```
 
-## Добавление новой карточки
+## Добавление новой техники
 
-1. Положить PNG/JPG/WebP в `assets/images/cards/`.
-2. Добавить объект в `data/techniques.json`.
-3. Выполнить:
+1. Добавить запись в `data/techniques/index.json`.
+2. Создать каталог техники, например `data/techniques/back/back-011/`.
+3. Добавить в него:
+   - `meta.json`;
+   - `ru.json`;
+   - `en.json`.
+4. Добавить исходное изображение в `convert/` с именем, совпадающим с id техники, и выполнить при необходимости:
+
+```bash
+python scripts/convert_images_to_webp.py --dry-run
+python scripts/convert_images_to_webp.py --quality 90
+```
+
+5. Проверить проект:
 
 ```bash
 node scripts/validate-content.mjs
+python scripts/check_image_links.py
 ```
 
-4. При необходимости подготовить Telegram-посты:
+Во время подготовки техника может иметь статус `draft`. Перед публикацией следует проверить изображение и перевести технику в `published`.
+
+## Telegram-экспорт
 
 ```bash
-node scripts/export-telegram.mjs
+node scripts/export-telegram.mjs --lang=ru
+node scripts/export-telegram.mjs --lang=en
 ```
+
+Экспортируются только техники, разрешённые для Telegram в `meta.json`.
 
 ## GitHub Pages
 
-Workflow `.github/workflows/pages.yml` публикует статический проект после push в `main`.
+Workflow `.github/workflows/pages.yml` проверяет контент и публикует статический проект после push в `main`.
 
-В GitHub репозитории выберите **Settings → Pages → Source: GitHub Actions**.
+В настройках репозитория GitHub Pages должен использовать **Source: GitHub Actions**.
 
-## Модель контента
+## Документация
 
-Каждая техника хранит текст, параметры и путь к изображению отдельно. Благодаря этому один JSON-каталог может использоваться PWA, Telegram-ботом, будущим мобильным wrapper-приложением и генератором PDF.
+- [Архитектура контента](docs/CONTENT-ARCHITECTURE.md)
+- [Локальная разработка и проверки](docs/LOCAL-DEVELOPMENT.md)
+- документация по изображениям и другим процессам находится в `docs/`.
 
 ## Безопасность
 
@@ -76,4 +132,4 @@ Workflow `.github/workflows/pages.yml` публикует статический
 
 Исходный код: MIT (`LICENSE`).
 
-Изображения и редакционный контент пока не получают автоматическую лицензию из MIT. Перед публичным релизом правила повторного использования контента стоит зафиксировать отдельно в `CONTENT-LICENSE.md`.
+Изображения и редакционный контент не получают автоматически лицензию MIT вместе с исходным кодом. Правила повторного использования контента следует фиксировать отдельно в `CONTENT-LICENSE.md`.
