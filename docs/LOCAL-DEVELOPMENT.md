@@ -2172,3 +2172,24 @@ docs/SOCIAL-LAUNCH.md
 
 ---
 
+---
+
+## Social cards
+
+Generate a feed card:
+
+```bash
+node scripts/build-social-card.mjs --id=back-001 --lang=ru --format=feed
+```
+
+Generate a story card:
+
+```bash
+node scripts/build-social-card.mjs --id=back-001 --lang=ru --format=story
+```
+
+Full guide:
+
+```text
+docs/SOCIAL-CARDS.md
+```

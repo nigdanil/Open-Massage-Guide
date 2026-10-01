@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "formats": {
+    "feed": {
+      "width": 1080,
+      "height": 1350,
+      "label": "Feed 4:5"
+    },
+    "story": {
+      "width": 1080,
+      "height": 1920,
+      "label": "Story / Reel 9:16"
+    }
+  },
+  "brand": {
+    "name": "Open Massage Guide",
+    "shortName": "OMG",
+    "badge": {
+      "ru": "ВИЗУАЛЬНЫЙ СПРАВОЧНИК",
+      "en": "VISUAL MASSAGE GUIDE"
+    },
+    "footer": "Open Massage Guide"
+  }
+}

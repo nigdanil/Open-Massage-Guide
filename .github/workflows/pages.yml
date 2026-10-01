@@ -43,6 +43,9 @@ jobs:
       - name: Validate social launch configuration
         run: node scripts/check-social-launch.mjs
 
+      - name: Validate social card configuration
+        run: node scripts/check-social-cards.mjs
+
       - name: Validate image references
         run: python scripts/check_image_links.py
 
@@ -73,6 +76,13 @@ jobs:
 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
+
+      - name: Smoke-test social card generator
+        run: |
+          node scripts/build-social-card.mjs --id=back-001 --lang=ru --format=feed
+          node scripts/build-social-card.mjs --id=back-001 --lang=ru --format=story
+          node scripts/check-social-card-output.mjs --file=dist/social/back-001.ru.feed.png --width=1080 --height=1350
+          node scripts/check-social-card-output.mjs --file=dist/social/back-001.ru.story.png --width=1080 --height=1920
 
       - name: Run UI smoke tests
         run: npm run test:smoke:ci
