@@ -2136,3 +2136,39 @@ Generated `dist/publishing/` artifacts are not committed.
 
 ---
 
+
+## Social launch
+
+Configuration:
+
+```text
+data/social-launch.json
+```
+
+Validation:
+
+```bash
+node scripts/check-social-launch.mjs
+```
+
+Generate the initial launch plan:
+
+```bash
+node scripts/build-social-launch.mjs
+```
+
+Outputs:
+
+```text
+dist/social-launch/launch-plan.ru.json
+dist/social-launch/launch-plan.ru.md
+```
+
+Full guide:
+
+```text
+docs/SOCIAL-LAUNCH.md
+```
+
+---
+

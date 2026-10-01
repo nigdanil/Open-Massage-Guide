@@ -40,6 +40,9 @@ jobs:
       - name: Validate publishing configuration
         run: node scripts/check-publishing.mjs
 
+      - name: Validate social launch configuration
+        run: node scripts/check-social-launch.mjs
+
       - name: Validate image references
         run: python scripts/check_image_links.py
 

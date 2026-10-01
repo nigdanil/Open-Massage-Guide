@@ -10,7 +10,9 @@
     "test:smoke:ci": "playwright test",
     "test:smoke:headed": "npm run build && playwright test --headed",
     "test:smoke:ui": "npm run build && playwright test --ui",
-    "check:publishing": "node scripts/check-publishing.mjs"
+    "check:publishing": "node scripts/check-publishing.mjs",
+    "check:social": "node scripts/check-social-launch.mjs",
+    "build:social": "node scripts/build-social-launch.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

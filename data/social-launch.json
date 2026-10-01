@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "brand": {
+    "name": "Open Massage Guide",
+    "shortName": "OMG",
+    "positioning": {
+      "ru": "Открытый визуальный справочник массажа: техники, безопасность и готовые программы.",
+      "en": "An open visual massage guide with techniques, safety guidance and ready-made routines."
+    },
+    "tagline": {
+      "ru": "Массаж — понятно, наглядно, по шагам.",
+      "en": "Massage techniques, clearly explained step by step."
+    }
+  },
+  "profiles": {
+    "telegram": {
+      "status": "planned",
+      "handle": "",
+      "profileUrl": "",
+      "name": "Open Massage Guide",
+      "description": {
+        "ru": "Открытый визуальный справочник массажа: техники, безопасность и готовые программы. RU/EN • бесплатно • без регистрации.",
+        "en": "Open visual massage guide: techniques, safety and ready-made routines. RU/EN • free • no registration."
+      }
+    },
+    "instagram": {
+      "status": "planned",
+      "handle": "",
+      "profileUrl": "",
+      "name": "Open Massage Guide",
+      "description": {
+        "ru": "Визуальный справочник массажа\nТехники • безопасность • программы\nRU/EN",
+        "en": "Visual massage guide\nTechniques • safety • routines\nRU/EN"
+      }
+    }
+  },
+  "launch": {
+    "campaign": "omg_launch_ru_2026_10",
+    "language": "ru",
+    "cadencePerWeek": 4,
+    "targetPosts": 12,
+    "techniqueCategories": [
+      "back",
+      "neck-shoulders",
+      "self-massage",
+      "legs",
+      "feet",
+      "arms",
+      "face-head",
+      "programs"
+    ]
+  },
+  "formats": {
+    "telegram": [
+      "technique",
+      "educational",
+      "project"
+    ],
+    "instagram": [
+      "feed-card",
+      "carousel",
+      "reel"
+    ]
+  },
+  "assetRatios": {
+    "feed-card": "4:5",
+    "story-reel": "9:16"
+  }
+}
