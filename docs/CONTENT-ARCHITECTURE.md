@@ -420,3 +420,43 @@ docs/TESTING.md
 
 ---
 
+
+## Editorial metadata
+
+Technique `meta.json` may optionally contain:
+
+```text
+editorial
+```
+
+The block is intentionally optional during migration.
+
+Supported workflow states:
+
+```text
+unreviewed
+in-review
+reviewed
+```
+
+A completed review requires:
+
+```text
+contentVersion
+reviewedAt
+reviewedBy
+sources[]
+```
+
+The public UI displays editorial information only for `reviewed` content.
+
+Technical validation checks structure and consistency but does not replace human medical/editorial judgment.
+
+Detailed workflow:
+
+```text
+docs/EDITORIAL.md
+```
+
+---
+

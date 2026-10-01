@@ -57,7 +57,12 @@
     "offlineNoSpace": "Not enough free storage for the offline library",
     "offlineUpdate": "Update offline",
     "offlineUpdating": "Updating {percent}%",
-    "offlineUpdateAvailable": "Offline library update available"
+    "offlineUpdateAvailable": "Offline library update available",
+    "editorialReview": "Editorial review",
+    "editorialReviewedAt": "Reviewed",
+    "editorialReviewedBy": "Reviewed by",
+    "editorialContentVersion": "Content version",
+    "editorialSources": "Sources"
   },
   "categories": {
     "basics": "Basic techniques",

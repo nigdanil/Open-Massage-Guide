@@ -2070,3 +2070,28 @@ UI smoke tests автоматически выполняются в GitHub Actio
 
 ---
 
+
+## Editorial/source metadata
+
+Full rules:
+
+```text
+docs/EDITORIAL.md
+```
+
+Validate content and print current editorial coverage:
+
+```bash
+node scripts/validate-content.mjs
+node scripts/editorial-report.mjs
+```
+
+Important:
+
+- `editorial` is optional during migration;
+- do not mark a technique as `reviewed` without a real review;
+- reviewed techniques require a date, reviewer and at least one real source;
+- technical validation cannot determine clinical/source quality.
+
+---
+

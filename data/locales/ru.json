@@ -57,7 +57,12 @@
     "offlineNoSpace": "Недостаточно свободного места для офлайн-библиотеки",
     "offlineUpdate": "Обновить офлайн",
     "offlineUpdating": "Обновление {percent}%",
-    "offlineUpdateAvailable": "Доступно обновление офлайн-библиотеки"
+    "offlineUpdateAvailable": "Доступно обновление офлайн-библиотеки",
+    "editorialReview": "Редакционная проверка",
+    "editorialReviewedAt": "Проверено",
+    "editorialReviewedBy": "Проверил",
+    "editorialContentVersion": "Версия контента",
+    "editorialSources": "Источники"
   },
   "categories": {
     "basics": "Основные приёмы",

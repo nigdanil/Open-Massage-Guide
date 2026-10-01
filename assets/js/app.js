@@ -398,6 +398,69 @@ function sectionHtml(title, body) {
   return `<section class="dialog-section"><h3>${escapeHtml(title)}</h3>${content}</section>`;
 }
 
+function editorialHtml(item) {
+  const editorial = item.editorial;
+
+  if (!editorial || editorial.reviewStatus !== 'reviewed') return '';
+
+  const facts = [
+    [ui('editorialReviewedAt', 'Reviewed'), editorial.reviewedAt],
+    [ui('editorialReviewedBy', 'Reviewed by'), editorial.reviewedBy],
+    [ui('editorialContentVersion', 'Content version'), editorial.contentVersion],
+  ]
+    .filter(([, value]) => value !== undefined && value !== null && value !== '')
+    .map(
+      ([label, value]) => `
+        <div class="dialog-fact">
+          <small>${escapeHtml(label)}</small>
+          <strong>${escapeHtml(value)}</strong>
+        </div>
+      `,
+    )
+    .join('');
+
+  const sources = Array.isArray(editorial.sources)
+    ? editorial.sources
+        .map((source) => {
+          const title = escapeHtml(source.title || '');
+          const publisher = source.publisher
+            ? ` — ${escapeHtml(source.publisher)}`
+            : '';
+          const year = source.year ? ` (${escapeHtml(source.year)})` : '';
+
+          if (source.url) {
+            return `
+              <li>
+                <a
+                  href="${escapeHtml(source.url)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >${title}</a>${publisher}${year}
+              </li>
+            `;
+          }
+
+          return `<li>${title}${publisher}${year}</li>`;
+        })
+        .join('')
+    : '';
+
+  return `
+    <section class="dialog-section editorial-review">
+      <h3>${escapeHtml(ui('editorialReview', 'Editorial review'))}</h3>
+      ${facts ? `<div class="dialog-grid">${facts}</div>` : ''}
+      ${
+        sources
+          ? `
+            <h4>${escapeHtml(ui('editorialSources', 'Sources'))}</h4>
+            <ul>${sources}</ul>
+          `
+          : ''
+      }
+    </section>
+  `;
+}
+
 function openTechnique(item) {
   const instructions = techniqueText(item, 'instructions', []);
   const instructionHtml = `<ol>${instructions.map((step) => `<li>${escapeHtml(step)}</li>`).join('')}</ol>`;
@@ -423,6 +486,7 @@ function openTechnique(item) {
       ${sectionHtml(ui('areas'), techniqueText(item, 'areasText', []))}
       ${sectionHtml(ui('tips'), techniqueText(item, 'tips', []))}
       ${sectionHtml(ui('commonMistakes'), techniqueText(item, 'mistakes', []))}
+      ${editorialHtml(item)}
 
       <div class="dialog-warning"><strong>${escapeHtml(ui('caution'))}</strong> ${escapeHtml(techniqueText(item, 'warning'))}</div>
     </div>`;

@@ -3,6 +3,15 @@ import path from 'node:path';
 
 const root = path.resolve(import.meta.dirname, '..');
 const localeIds = ['ru', 'en'];
+const editorialReviewStatuses = new Set(['unreviewed', 'in-review', 'reviewed']);
+const editorialSourceKinds = new Set([
+  'guideline',
+  'article',
+  'book',
+  'website',
+  'standard',
+  'other',
+]);
 let failed = false;
 
 function fail(message) {
@@ -48,6 +57,127 @@ function validateStringArray(value, label, { allowEmpty = false } = {}) {
       fail(`${label}[${index}] must be a non-empty string`);
     }
   });
+}
+
+function isIsoDate(value) {
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    return false;
+  }
+
+  const date = new Date(`${value}T00:00:00Z`);
+  return !Number.isNaN(date.getTime())
+    && date.toISOString().slice(0, 10) === value;
+}
+
+function isHttpUrl(value) {
+  if (!isNonEmptyString(value)) return false;
+
+  try {
+    const url = new URL(value);
+    return ['http:', 'https:'].includes(url.protocol);
+  } catch (_) {
+    return false;
+  }
+}
+
+function validateEditorial(value, techniqueId) {
+  const label = `[${techniqueId}] editorial`;
+
+  if (value === undefined || value === null) return;
+
+  if (typeof value !== 'object' || Array.isArray(value)) {
+    fail(`${label} must be an object`);
+    return;
+  }
+
+  if (!editorialReviewStatuses.has(value.reviewStatus)) {
+    fail(
+      `${label}.reviewStatus must be one of: `
+      + `${[...editorialReviewStatuses].join(', ')}`,
+    );
+  }
+
+  if (!isPositiveInteger(value.contentVersion)) {
+    fail(`${label}.contentVersion must be a positive integer`);
+  }
+
+  if (value.reviewedAt !== undefined && !isIsoDate(value.reviewedAt)) {
+    fail(`${label}.reviewedAt must use YYYY-MM-DD`);
+  }
+
+  if (value.reviewedBy !== undefined && !isNonEmptyString(value.reviewedBy)) {
+    fail(`${label}.reviewedBy must be a non-empty string`);
+  }
+
+  if (value.sources !== undefined && !Array.isArray(value.sources)) {
+    fail(`${label}.sources must be an array`);
+  }
+
+  if (Array.isArray(value.sources)) {
+    value.sources.forEach((source, index) => {
+      const sourceLabel = `${label}.sources[${index}]`;
+
+      if (!source || typeof source !== 'object' || Array.isArray(source)) {
+        fail(`${sourceLabel} must be an object`);
+        return;
+      }
+
+      if (!editorialSourceKinds.has(source.kind)) {
+        fail(
+          `${sourceLabel}.kind must be one of: `
+          + `${[...editorialSourceKinds].join(', ')}`,
+        );
+      }
+
+      if (!isNonEmptyString(source.title)) {
+        fail(`${sourceLabel}.title must be a non-empty string`);
+      }
+
+      if (source.publisher !== undefined && !isNonEmptyString(source.publisher)) {
+        fail(`${sourceLabel}.publisher must be a non-empty string`);
+      }
+
+      if (source.url !== undefined && !isHttpUrl(source.url)) {
+        fail(`${sourceLabel}.url must be an HTTP/HTTPS URL`);
+      }
+
+      if (
+        source.year !== undefined
+        && (!Number.isInteger(source.year) || source.year < 1900 || source.year > 3000)
+      ) {
+        fail(`${sourceLabel}.year must be an integer from 1900 to 3000`);
+      }
+
+      if (source.accessedAt !== undefined && !isIsoDate(source.accessedAt)) {
+        fail(`${sourceLabel}.accessedAt must use YYYY-MM-DD`);
+      }
+
+      if (source.note !== undefined && !isNonEmptyString(source.note)) {
+        fail(`${sourceLabel}.note must be a non-empty string`);
+      }
+    });
+  }
+
+  if (value.reviewStatus === 'reviewed') {
+    if (!isIsoDate(value.reviewedAt)) {
+      fail(`${label}.reviewedAt is required when reviewStatus=reviewed`);
+    }
+
+    if (!isNonEmptyString(value.reviewedBy)) {
+      fail(`${label}.reviewedBy is required when reviewStatus=reviewed`);
+    }
+
+    if (!Array.isArray(value.sources) || value.sources.length === 0) {
+      fail(`${label}.sources must contain at least one source when reviewStatus=reviewed`);
+    }
+  }
+
+  if (
+    value.reviewStatus !== 'reviewed'
+    && value.reviewedAt !== undefined
+  ) {
+    fail(`${label}.reviewedAt is allowed only when reviewStatus=reviewed`);
+  }
 }
 
 function validateDuration(value, label) {
@@ -275,6 +405,7 @@ for (const entry of entries) {
   validateRepetitions(meta.repetitions, `[${entry.id}] repetitions`);
   validateStringArray(meta.areas, `[${entry.id}] areas`);
   validateStringArray(meta.tags, `[${entry.id}] tags`);
+  validateEditorial(meta.editorial, entry.id);
 
   if (meta.image !== undefined && meta.image !== null && meta.image !== '') {
     if (!isNonEmptyString(meta.image)) {

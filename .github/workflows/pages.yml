@@ -34,6 +34,9 @@ jobs:
       - name: Validate modular content
         run: node scripts/validate-content.mjs
 
+      - name: Report editorial coverage
+        run: node scripts/editorial-report.mjs
+
       - name: Validate image references
         run: python scripts/check_image_links.py
 
