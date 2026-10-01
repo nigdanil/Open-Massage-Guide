@@ -36,6 +36,14 @@
     "status": "published",
     "version": 3,
     "thumbnail": "./assets/images/cards/overview-001-thumb.webp",
+    "publishing": {
+      "telegram": {
+        "status": "paused"
+      },
+      "instagram": {
+        "status": "draft"
+      }
+    },
     "modulePath": "./data/techniques/basics/overview-001",
     "text": {
       "title": "Complete Massage Overview",
@@ -107,6 +115,14 @@
     "status": "published",
     "version": 1,
     "thumbnail": "./assets/images/techniques/back/back-001-thumb.webp",
+    "publishing": {
+      "telegram": {
+        "status": "ready"
+      },
+      "instagram": {
+        "status": "draft"
+      }
+    },
     "modulePath": "./data/techniques/back/back-001",
     "text": {
       "title": "Longitudinal Back Stroking",
