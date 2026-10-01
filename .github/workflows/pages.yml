@@ -46,6 +46,9 @@ jobs:
       - name: Validate social card configuration
         run: node scripts/check-social-cards.mjs
 
+      - name: Validate launch kit configuration
+        run: node scripts/check-launch-kit-config.mjs
+
       - name: Validate image references
         run: python scripts/check_image_links.py
 
@@ -83,6 +86,13 @@ jobs:
           node scripts/build-social-card.mjs --id=back-001 --lang=ru --format=story
           node scripts/check-social-card-output.mjs --file=dist/social/back-001.ru.feed.png --width=1080 --height=1350
           node scripts/check-social-card-output.mjs --file=dist/social/back-001.ru.story.png --width=1080 --height=1920
+
+      - name: Smoke-test launch kit generator
+        run: |
+          node scripts/build-social-launch.mjs
+          node scripts/build-brand-avatar.mjs
+          node scripts/build-launch-kit.mjs --plan=dist/social-launch/launch-plan.ru.json --limit=2 --formats=feed
+          node scripts/check-launch-kit.mjs --dir=dist/launch-kit/omg_launch_ru_2026_10 --expected=2 --formats=feed
 
       - name: Run UI smoke tests
         run: npm run test:smoke:ci

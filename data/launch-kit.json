@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "defaultFormats": [
+    "feed",
+    "story"
+  ],
+  "avatar": {
+    "width": 1024,
+    "height": 1024
+  },
+  "copy": {
+    "ru": {
+      "telegramCta": "Открыть в справочнике:",
+      "instagramCta": "Open Massage Guide — ссылка на проект в профиле.",
+      "hashtags": {
+        "technique": [
+          "#массаж",
+          "#техникамассажа",
+          "#openmassageguide"
+        ],
+        "educational": [
+          "#массаж",
+          "#самомассаж",
+          "#openmassageguide"
+        ],
+        "project": [
+          "#массаж",
+          "#openmassageguide"
+        ]
+      }
+    },
+    "en": {
+      "telegramCta": "Open in the guide:",
+      "instagramCta": "Open Massage Guide — project link in bio.",
+      "hashtags": {
+        "technique": [
+          "#massage",
+          "#massagetechnique",
+          "#openmassageguide"
+        ],
+        "educational": [
+          "#massage",
+          "#selfmassage",
+          "#openmassageguide"
+        ],
+        "project": [
+          "#massage",
+          "#openmassageguide"
+        ]
+      }
+    }
+  }
+}

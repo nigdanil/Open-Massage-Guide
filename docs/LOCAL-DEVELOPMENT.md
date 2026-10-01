@@ -2193,3 +2193,27 @@ Full guide:
 ```text
 docs/SOCIAL-CARDS.md
 ```
+
+## Social launch kit
+
+Build:
+
+```bash
+node scripts/build-social-launch.mjs
+node scripts/build-brand-avatar.mjs
+node scripts/build-launch-kit.mjs   --plan=dist/social-launch/launch-plan.ru.json
+```
+
+Validate:
+
+```bash
+node scripts/check-launch-kit.mjs   --dir=dist/launch-kit/omg_launch_ru_2026_10   --expected=12   --formats=feed,story
+```
+
+Full guide:
+
+```text
+docs/LAUNCH-KIT.md
+```
+
+---

@@ -15,7 +15,10 @@
     "build:social": "node scripts/build-social-launch.mjs",
     "check:social-cards": "node scripts/check-social-cards.mjs",
     "build:social-card": "node scripts/build-social-card.mjs",
-    "build:social-cards": "node scripts/build-social-cards.mjs"
+    "build:social-cards": "node scripts/build-social-cards.mjs",
+    "check:launch-kit": "node scripts/check-launch-kit-config.mjs",
+    "build:brand-avatar": "node scripts/build-brand-avatar.mjs",
+    "build:launch-kit": "node scripts/build-launch-kit.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

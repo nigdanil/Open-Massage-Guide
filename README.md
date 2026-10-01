@@ -148,6 +148,7 @@ GitHub Pages получает только содержимое `dist/site`, а 
 - [Publishing workflow](docs/PUBLISHING.md)
 - [Social launch foundation](docs/SOCIAL-LAUNCH.md)
 - [Social card generator](docs/SOCIAL-CARDS.md)
+- [Social launch kit](docs/LAUNCH-KIT.md)
 - документация по изображениям и другим процессам находится в `docs/`.
 
 ## Безопасность
