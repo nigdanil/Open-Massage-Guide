@@ -382,3 +382,41 @@ docs/ANALYTICS.md
 
 ---
 
+
+## UI smoke test layer
+
+Browser-level regression protection lives outside application business logic:
+
+```text
+playwright.config.mjs
+tests/smoke/
+```
+
+Tests execute against the generated production tree:
+
+```text
+dist/site/
+```
+
+The smoke suite uses Chromium and intentionally blocks Service Worker registration so a stale cache cannot hide a broken current build.
+
+GitHub Pages deployment is allowed only after:
+
+```text
+content validation
+→ image validation
+→ analytics validation
+→ production build
+→ production build smoke-check
+→ Playwright UI smoke
+→ deploy
+```
+
+Detailed test contract:
+
+```text
+docs/TESTING.md
+```
+
+---
+

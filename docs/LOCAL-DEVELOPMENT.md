@@ -2032,3 +2032,41 @@ Raw search query в аналитику не отправляется.
 
 ---
 
+
+## UI smoke tests
+
+Полная инструкция:
+
+```text
+docs/TESTING.md
+```
+
+Первичная установка:
+
+```bash
+npm ci
+npx playwright install chromium
+```
+
+Обычный запуск:
+
+```bash
+npm run test:smoke
+```
+
+Если production build уже создан:
+
+```bash
+npm run test:smoke:ci
+```
+
+Интерактивная отладка:
+
+```bash
+npm run test:smoke:ui
+```
+
+UI smoke tests автоматически выполняются в GitHub Actions до публикации GitHub Pages. Ошибка smoke test блокирует deploy.
+
+---
+

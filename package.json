@@ -1,0 +1,18 @@
+{
+  "name": "open-massage-guide",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-site.mjs",
+    "check:build": "node scripts/check-build.mjs",
+    "test:smoke": "npm run build && playwright test",
+    "test:smoke:ci": "playwright test",
+    "test:smoke:headed": "npm run build && playwright test --headed",
+    "test:smoke:ui": "npm run build && playwright test --ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "http-server": "14.1.1"
+  }
+}

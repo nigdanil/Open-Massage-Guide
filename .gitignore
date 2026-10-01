@@ -6,3 +6,6 @@ errors.md
 
 # Local image conversion sources
 convert/
+node_modules/
+playwright-report/
+test-results/
