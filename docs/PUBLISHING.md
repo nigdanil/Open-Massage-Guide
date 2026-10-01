@@ -252,3 +252,63 @@ Only then expand the queue.
 ## Later automation
 
 This pipeline can later feed Telegram Bot API, Instagram integrations, GitHub Actions, n8n or other schedulers without changing source technique content.
+
+---
+
+## 18. Current Telegram pilot
+
+The first controlled real-publication pilot uses:
+
+```text
+technique: back-001
+language:  ru
+channel:   telegram
+campaign:  omg_launch_ru_2026_10
+```
+
+During the pilot:
+
+```text
+overview-001 → Telegram paused
+back-001     → Telegram ready
+all others   → not ready unless explicitly configured
+```
+
+Generate the queue:
+
+```bash
+node scripts/export-publishing.mjs   --channel=telegram   --lang=ru   --campaign=omg_launch_ru_2026_10   --mode=queue
+```
+
+Expected:
+
+```text
+Ready:    1
+Selected: 1
+```
+
+Inspect the exact queued record before publication.
+
+After manual publication:
+
+```bash
+node scripts/mark-published.mjs   --file=dist/publishing/telegram.ru.queue.json   --id=back-001   --url=https://t.me/<channel>/<message-id>
+```
+
+Then validate:
+
+```bash
+node scripts/check-publishing.mjs
+```
+
+Finally open the published CTA and verify in Umami:
+
+```text
+utm_source=telegram
+utm_medium=organic_social
+utm_campaign=omg_launch_ru_2026_10
+utm_content=telegram_back-001_ru
+technique_open
+```
+
+Do not expand the queue until this complete loop has been confirmed.

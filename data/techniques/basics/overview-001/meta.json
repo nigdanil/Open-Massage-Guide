@@ -34,5 +34,13 @@
   },
   "status": "published",
   "version": 3,
-  "thumbnail": "./assets/images/cards/overview-001-thumb.webp"
+  "thumbnail": "./assets/images/cards/overview-001-thumb.webp",
+  "publishing": {
+    "telegram": {
+      "status": "paused"
+    },
+    "instagram": {
+      "status": "draft"
+    }
+  }
 }

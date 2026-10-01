@@ -30,5 +30,13 @@
   },
   "status": "published",
   "version": 1,
-  "thumbnail": "./assets/images/techniques/back/back-001-thumb.webp"
+  "thumbnail": "./assets/images/techniques/back/back-001-thumb.webp",
+  "publishing": {
+    "telegram": {
+      "status": "ready"
+    },
+    "instagram": {
+      "status": "draft"
+    }
+  }
 }
