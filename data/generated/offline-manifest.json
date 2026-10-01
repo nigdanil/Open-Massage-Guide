@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "version": "d8a4633c02896da9",
+  "version": "cf814b3cf34d1bba",
   "techniqueCount": 91,
   "fileCount": 200,
-  "totalBytes": 28394680,
+  "totalBytes": 28393830,
   "files": [
     "./assets/css/modular-extra.css",
     "./assets/css/styles.css",

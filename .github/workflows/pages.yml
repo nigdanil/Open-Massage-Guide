@@ -37,6 +37,9 @@ jobs:
       - name: Report editorial coverage
         run: node scripts/editorial-report.mjs
 
+      - name: Validate publishing configuration
+        run: node scripts/check-publishing.mjs
+
       - name: Validate image references
         run: python scripts/check_image_links.py
 

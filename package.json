@@ -9,7 +9,8 @@
     "test:smoke": "npm run build && playwright test",
     "test:smoke:ci": "playwright test",
     "test:smoke:headed": "npm run build && playwright test --headed",
-    "test:smoke:ui": "npm run build && playwright test --ui"
+    "test:smoke:ui": "npm run build && playwright test --ui",
+    "check:publishing": "node scripts/check-publishing.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

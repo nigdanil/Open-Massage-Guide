@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "baseUrl": "https://nigdanil.github.io/Open-Massage-Guide/",
+  "channels": {
+    "telegram": {
+      "source": "telegram",
+      "medium": "organic_social",
+      "captionField": "telegramCaption",
+      "hashtags": {
+        "ru": ["#массаж", "#справочник", "#openmassageguide"],
+        "en": ["#massage", "#massageguide", "#openmassageguide"]
+      }
+    },
+    "instagram": {
+      "source": "instagram",
+      "medium": "organic_social",
+      "captionField": "instagramCaption",
+      "hashtags": {
+        "ru": ["#массаж", "#самомассаж", "#openmassageguide"],
+        "en": ["#massage", "#selfmassage", "#openmassageguide"]
+      }
+    }
+  }
+}

@@ -2095,3 +2095,44 @@ Important:
 
 ---
 
+
+## Publishing workflow
+
+Primary guide:
+
+```text
+docs/PUBLISHING.md
+```
+
+Validate:
+
+```bash
+node scripts/check-publishing.mjs
+```
+
+Telegram preview dry-run:
+
+```bash
+node scripts/export-publishing.mjs \
+  --channel=telegram \
+  --lang=ru \
+  --campaign=stage15_test \
+  --mode=preview \
+  --dry-run
+```
+
+Instagram preview dry-run:
+
+```bash
+node scripts/export-publishing.mjs \
+  --channel=instagram \
+  --lang=ru \
+  --campaign=stage15_test \
+  --mode=preview \
+  --dry-run
+```
+
+Generated `dist/publishing/` artifacts are not committed.
+
+---
+

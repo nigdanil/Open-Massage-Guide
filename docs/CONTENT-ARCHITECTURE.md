@@ -460,3 +460,34 @@ docs/EDITORIAL.md
 
 ---
 
+
+## Publishing pipeline
+
+Social publishing is a derived-output layer. Source of truth remains `data/techniques/`.
+
+Configuration:
+
+```text
+data/publishing.json
+```
+
+Publication journal:
+
+```text
+data/publishing-state.json
+```
+
+Generated preview/queue artifacts:
+
+```text
+dist/publishing/
+```
+
+Supported Stage 15 channels: `telegram`, `instagram`.
+
+Optional source readiness lives in `meta.publishing.<channel>.status` with `draft`, `ready`, `paused`. Actual `published` state is derived from the publication journal and deterministic fingerprint. Legacy `meta.telegram.publish` remains supported.
+
+Detailed workflow: `docs/PUBLISHING.md`.
+
+---
+

@@ -1,39 +1,46 @@
-# Telegram — план интеграции
+# Telegram integration
 
-Telegram не должен быть отдельным источником контента. Источник истины остаётся в GitHub.
-
-## Вариант 1 — простой старт
-
-`scripts/export-telegram.mjs` формирует готовый JSON с текстом поста и путём к изображению. Посты публикуются вручную.
-
-Плюсы: ноль инфраструктуры, легко проверить формат канала.
-
-## Вариант 2 — автоматизация через GitHub Actions
-
-После того как канал будет создан:
-
-1. Создать Telegram-бота.
-2. Добавить его администратором канала.
-3. Сохранить `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` в GitHub Actions Secrets.
-4. Добавить workflow, который публикует записи с `telegram.publish=true`.
-5. Добавить поле `publishedAt` или отдельный журнал публикаций, чтобы не отправлять карточку повторно.
-
-Схема:
+Telegram now uses the common publishing pipeline documented in:
 
 ```text
-push в main
-   ↓
-GitHub Actions
-   ↓
-validate JSON
-   ↓
-найти новые publish=true
-   ↓
-Telegram Bot API
-   ↓
-Telegram-канал
+docs/PUBLISHING.md
 ```
 
-## Закрытый Telegram позднее
+Source content remains in `data/techniques/`; Telegram is only a distribution channel.
 
-Закрытый канал лучше не смешивать с открытым GitHub-контентом. Бесплатное ядро остаётся в репозитории, а отдельные будущие материалы/подборки могут жить вне публичного репозитория.
+Preview:
+
+```bash
+node scripts/export-publishing.mjs \
+  --channel=telegram \
+  --lang=ru \
+  --campaign=omg_launch_ru_2026_10 \
+  --mode=preview
+```
+
+Queue:
+
+```bash
+node scripts/export-publishing.mjs \
+  --channel=telegram \
+  --lang=ru \
+  --campaign=omg_launch_ru_2026_10 \
+  --mode=queue
+```
+
+Compatibility command remains:
+
+```bash
+node scripts/export-telegram.mjs --lang=ru
+```
+
+After manual publication:
+
+```bash
+node scripts/mark-published.mjs \
+  --file=dist/publishing/telegram.ru.queue.json \
+  --id=back-001 \
+  --url=https://t.me/example/123
+```
+
+Automatic Bot API publishing remains a later stage and no Telegram credentials are stored by Stage 15.

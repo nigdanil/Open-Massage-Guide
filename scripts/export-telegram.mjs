@@ -1,54 +1,40 @@
+import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 
 const root = path.resolve(import.meta.dirname, '..');
-const languageArg = process.argv.find((arg) => arg.startsWith('--lang='));
+const userArgs = process.argv.slice(2);
+const languageArg = userArgs.find((arg) => arg.startsWith('--lang='));
 const language = languageArg?.split('=')[1] || 'ru';
-const supportedLanguages = new Set(['ru', 'en']);
+const hasCampaign = userArgs.some((arg) => arg.startsWith('--campaign='));
+const campaignArgs = hasCampaign ? [] : ['--campaign=manual_export'];
 
-if (!supportedLanguages.has(language)) {
-  console.error(`Unsupported language: ${language}. Use --lang=ru or --lang=en.`);
+const result = spawnSync(process.execPath, [
+  path.join(root, 'scripts', 'export-publishing.mjs'),
+  '--channel=telegram',
+  '--mode=queue',
+  ...campaignArgs,
+  ...userArgs,
+], { cwd: root, stdio: 'inherit' });
+
+if (result.status !== 0) process.exit(result.status ?? 1);
+
+const queueFile = path.join(root, 'dist', 'publishing', `telegram.${language}.queue.json`);
+if (!fs.existsSync(queueFile)) {
+  console.error(`Queue output not found: ${queueFile}`);
   process.exit(1);
 }
 
-function readJson(filePath) {
-  return JSON.parse(fs.readFileSync(filePath, 'utf8'));
-}
+const queue = JSON.parse(fs.readFileSync(queueFile, 'utf8'));
+const legacy = queue.records.map((record) => ({
+  id: record.techniqueId,
+  language: record.language,
+  image: record.assets.image,
+  text: record.caption,
+  ctaUrl: record.ctaUrl,
+  publicationId: record.publicationId,
+}));
 
-const index = readJson(path.join(root, 'data/techniques/index.json'));
-const locale = readJson(path.join(root, `data/locales/${language}.json`));
-const hashtags = language === 'ru' ? '#массаж #справочник' : '#massage #massageguide';
-
-const feed = [];
-
-for (const entry of index) {
-  const moduleDir = path.join(root, entry.path.replace(/^\.\//, ''));
-  const meta = readJson(path.join(moduleDir, 'meta.json'));
-
-  if (meta.status !== 'published' || !meta.telegram?.publish || !meta.image) continue;
-
-  const text = readJson(path.join(moduleDir, `${language}.json`));
-  feed.push({
-    id: meta.id,
-    language,
-    image: meta.image,
-    text: [
-      `👐 ${text.title}`,
-      `📍 ${locale.categories[meta.category] || meta.category}`,
-      '',
-      text.telegramCaption || text.summary,
-      '',
-      `${locale.ui.pressure}: ${'●'.repeat(meta.pressure)}${'○'.repeat(5 - meta.pressure)} · ${text.pressureText}`,
-      `${locale.ui.tempo}: ${text.tempoText}`,
-      `${locale.ui.time}: ${text.durationText}`,
-      '',
-      hashtags,
-    ].join('\n'),
-  });
-}
-
-const outDir = path.join(root, 'dist');
-fs.mkdirSync(outDir, { recursive: true });
-const output = path.join(outDir, `telegram-feed.${language}.json`);
-fs.writeFileSync(output, JSON.stringify(feed, null, 2));
-console.log(`Created ${feed.length} Telegram records: ${output}`);
+const legacyOutput = path.join(root, 'dist', `telegram-feed.${language}.json`);
+fs.writeFileSync(legacyOutput, `${JSON.stringify(legacy, null, 2)}\n`, 'utf8');
+console.log(`Compatibility feed: ${legacy.length} records -> ${legacyOutput}`);
