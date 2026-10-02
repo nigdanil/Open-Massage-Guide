@@ -54,6 +54,34 @@ assets/
 
 Подробное описание: [docs/CONTENT-ARCHITECTURE.md](docs/CONTENT-ARCHITECTURE.md).
 
+## Production-архитектура
+
+Основной production-хостинг проекта — **GitHub Pages**.
+
+```text
+GitHub repository
+        ↓
+GitHub Actions
+        ↓
+dist/site
+        ↓
+GitHub Pages
+```
+
+Текущий production URL:
+
+```text
+https://nigdanil.github.io/Open-Massage-Guide/
+```
+
+VPS, Nginx и собственный application server не являются обязательной
+частью архитектуры Open Massage Guide.
+
+Домен `openmassageguide.com` зарезервирован для последующего подключения
+непосредственно к GitHub Pages.
+
+Подробно: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
 ## Локальная разработка
 
 Полная инструкция по локальному запуску, проверкам, изображениям и рабочему циклу:
@@ -139,6 +167,7 @@ GitHub Pages получает только содержимое `dist/site`, а 
 
 ## Документация
 
+- [Архитектура проекта](docs/ARCHITECTURE.md)
 - [Архитектура контента](docs/CONTENT-ARCHITECTURE.md)
 - [Локальная разработка и проверки](docs/LOCAL-DEVELOPMENT.md)
 - [Стандарт изображений](docs/IMAGE-SPEC.md)
