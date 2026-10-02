@@ -75,24 +75,22 @@ node scripts/build-launch-kit.mjs \
   --formats=feed
 ```
 
-## Accounts do not exist yet
+## Active accounts
 
-Until the real profiles are created:
+The real profiles are active:
 
 ```text
-Telegram status = planned
-Instagram status = planned
+Telegram:  @openmassageguide
+Instagram: @openmassageguide
 ```
 
-Do not invent handles or profile URLs.
-
-Once the accounts exist, update:
+Profile URLs and status are stored in:
 
 ```text
 data/social-launch.json
 ```
 
-and rebuild the kit.
+Rebuild the launch plan and launch kit after social configuration changes.
 
 ## Publishing order
 

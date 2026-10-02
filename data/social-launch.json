@@ -14,9 +14,9 @@
   },
   "profiles": {
     "telegram": {
-      "status": "planned",
-      "handle": "",
-      "profileUrl": "",
+      "status": "active",
+      "handle": "openmassageguide",
+      "profileUrl": "https://t.me/openmassageguide",
       "name": "Open Massage Guide",
       "description": {
         "ru": "Открытый визуальный справочник массажа: техники, безопасность и готовые программы. RU/EN • бесплатно • без регистрации.",
@@ -24,9 +24,9 @@
       }
     },
     "instagram": {
-      "status": "planned",
-      "handle": "",
-      "profileUrl": "",
+      "status": "active",
+      "handle": "openmassageguide",
+      "profileUrl": "https://www.instagram.com/openmassageguide/",
       "name": "Open Massage Guide",
       "description": {
         "ru": "Визуальный справочник массажа\nТехники • безопасность • программы\nRU/EN",

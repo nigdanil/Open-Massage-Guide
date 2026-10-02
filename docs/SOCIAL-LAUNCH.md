@@ -39,7 +39,19 @@ An open visual massage guide with techniques, safety guidance and ready-made rou
 Current state:
 
 ```text
-planned
+active
+```
+
+Handle:
+
+```text
+@openmassageguide
+```
+
+Profile:
+
+```text
+https://t.me/openmassageguide
 ```
 
 Name:
@@ -76,7 +88,19 @@ data/social-launch.json
 Current state:
 
 ```text
-planned
+active
+```
+
+Handle:
+
+```text
+@openmassageguide
+```
+
+Profile:
+
+```text
+https://www.instagram.com/openmassageguide/
 ```
 
 Name:
@@ -245,7 +269,7 @@ create profiles
 → only then increase publication volume
 ```
 
-The existing Stage 16 Telegram pilot remains pending until the Telegram channel exists.
+The Telegram channel now exists. The next step is the single Stage 22 Telegram pilot before scaling.
 
 ---
 
